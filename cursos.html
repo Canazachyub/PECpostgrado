@@ -690,16 +690,118 @@
         body.is-admin .admin-only-inline { display: inline-flex; }
         body.is-admin .admin-only-block { display: block; }
 
+        /* ===== PROGRESO ESTUDIANTE ===== */
+        .progress-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--gray-300);
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            flex-shrink: 0;
+            padding: 0;
+            font-size: 0;
+            color: transparent;
+        }
+        .progress-check:hover {
+            border-color: var(--green);
+            background: var(--green-light);
+        }
+        .progress-check.done {
+            border-color: var(--green);
+            background: var(--green);
+            color: var(--white);
+            font-size: 0.6rem;
+            animation: checkPop 0.3s ease-out;
+        }
+        @keyframes checkPop {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .tarjeta.completed {
+            border-left-color: var(--green) !important;
+            background: linear-gradient(135deg, #F0FDF4, var(--white));
+        }
+        .tarjeta.completed .tarjeta-title { color: var(--green); }
+        .tarjeta.completed .tarjeta-content { opacity: 0.75; }
+
+        .header-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.2s;
+        }
+        .header-progress:hover { background: rgba(255,255,255,0.15); }
+        .progress-bar-mini {
+            width: 80px;
+            height: 6px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar-mini-fill {
+            height: 100%;
+            background: var(--green);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+            min-width: 0;
+        }
+        .progress-text-mini {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .progress-bar-large {
+            width: 100%;
+            height: 12px;
+            background: var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress-bar-large-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green), #34D399);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        .progress-column-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-column-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .columna { min-width: 300px; max-width: 300px; }
             .modal-content { max-width: 95vw; }
-            .header-search { width: 160px; }
-            .header-search:focus { width: 200px; }
+            .header-search { width: 140px; }
+            .header-search:focus { width: 180px; }
             .modal-video { max-width: 95vw; }
             .modal-video .video-container { padding-bottom: 75%; }
             .app-header { padding: 0 0.75rem; }
             .modal-header, .modal-body, .modal-footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .progress-bar-mini { width: 50px; }
+            .header-progress { padding: 0.3rem 0.5rem; }
         }
 
         @media (min-width: 1400px) {
@@ -730,6 +832,13 @@
         </div>
 
         <div class="header-actions">
+            <div id="headerProgress" class="header-progress" onclick="showProgressModal()" title="Ver mi progreso" style="display:none;">
+                <div class="progress-bar-mini">
+                    <div id="progressBarMiniFill" class="progress-bar-mini-fill" style="width:0%"></div>
+                </div>
+                <span id="progressTextMini" class="progress-text-mini">0/0</span>
+            </div>
+
             <div class="search-wrapper">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Buscar... (Ctrl+K)" class="header-search">
@@ -974,6 +1083,25 @@
         </div>
     </div>
 
+    <!-- ===== MODAL: PROGRESO ===== -->
+    <div id="modal-progress" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-tasks" style="color:var(--green); margin-right:0.5rem;"></i>Mi Progreso</h2>
+                <button onclick="closeModal('progress')" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="progressModalContent"></div>
+            </div>
+            <div class="modal-footer" style="justify-content:space-between;">
+                <button onclick="resetProgress()" class="btn-secondary" style="color:var(--primary); font-size:0.8rem;">
+                    <i class="fas fa-redo"></i> Reiniciar progreso
+                </button>
+                <button onclick="closeModal('progress')" class="btn-secondary">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
@@ -1091,6 +1219,7 @@
                 toggleBtn.title = 'Administrador';
                 badge.style.display = 'none';
             }
+            updateProgressUI();
         }
 
         // ============================================================
@@ -1146,6 +1275,185 @@
         var updateInterval = null;
 
         // ============================================================
+        // PROGRESO DEL ESTUDIANTE
+        // ============================================================
+
+        var PROGRESS_KEY = 'pec_progress_' + currentDiplomadoId;
+        var studentProgress = {};
+
+        function loadProgress() {
+            try {
+                var saved = localStorage.getItem(PROGRESS_KEY);
+                if (saved) {
+                    studentProgress = JSON.parse(saved);
+                }
+            } catch(e) {
+                studentProgress = {};
+            }
+            updateProgressUI();
+        }
+
+        function saveProgress() {
+            try {
+                localStorage.setItem(PROGRESS_KEY, JSON.stringify(studentProgress));
+            } catch(e) {
+                console.error('Error guardando progreso:', e);
+            }
+        }
+
+        function toggleProgress(cardId) {
+            if (studentProgress[cardId]) {
+                delete studentProgress[cardId];
+            } else {
+                studentProgress[cardId] = { done: true, at: Date.now() };
+            }
+            saveProgress();
+
+            // Actualizar UI de la tarjeta
+            var tarjetaEl = document.querySelector('.tarjeta[data-id="' + cardId + '"]');
+            if (tarjetaEl) {
+                var checkBtn = tarjetaEl.querySelector('.progress-check');
+                if (studentProgress[cardId]) {
+                    tarjetaEl.classList.add('completed');
+                    if (checkBtn) {
+                        checkBtn.classList.add('done');
+                        checkBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    }
+                } else {
+                    tarjetaEl.classList.remove('completed');
+                    if (checkBtn) {
+                        checkBtn.classList.remove('done');
+                        checkBtn.innerHTML = '';
+                    }
+                }
+            }
+
+            updateProgressUI();
+        }
+
+        function getProgressStats() {
+            var total = 0;
+            var completed = 0;
+            var byColumn = {};
+
+            padletData.columnas.forEach(function(columna) {
+                var tarjetas = padletData.tarjetas[columna.id] || [];
+                var colTotal = tarjetas.length;
+                var colDone = 0;
+
+                tarjetas.forEach(function(tarjeta) {
+                    total++;
+                    if (studentProgress[tarjeta.id]) {
+                        completed++;
+                        colDone++;
+                    }
+                });
+
+                byColumn[columna.id] = {
+                    titulo: columna.titulo,
+                    total: colTotal,
+                    completed: colDone,
+                    percentage: colTotal > 0 ? Math.round((colDone / colTotal) * 100) : 0
+                };
+            });
+
+            return {
+                total: total,
+                completed: completed,
+                percentage: total > 0 ? Math.round((completed / total) * 100) : 0,
+                byColumn: byColumn
+            };
+        }
+
+        function updateProgressUI() {
+            var stats = getProgressStats();
+            var headerProgress = document.getElementById('headerProgress');
+            var barFill = document.getElementById('progressBarMiniFill');
+            var textMini = document.getElementById('progressTextMini');
+
+            if (!headerProgress) return;
+
+            // Ocultar para admin, mostrar para estudiante
+            if (isAdmin || stats.total === 0) {
+                headerProgress.style.display = 'none';
+                return;
+            }
+
+            headerProgress.style.display = 'flex';
+            barFill.style.width = stats.percentage + '%';
+            textMini.textContent = stats.completed + '/' + stats.total;
+
+            // Color progresivo
+            if (stats.percentage === 100) {
+                barFill.style.background = 'var(--green)';
+                textMini.style.color = '#34D399';
+            } else if (stats.percentage >= 50) {
+                barFill.style.background = 'linear-gradient(90deg, var(--green), #34D399)';
+                textMini.style.color = 'rgba(255,255,255,0.9)';
+            } else {
+                barFill.style.background = 'rgba(255,255,255,0.5)';
+                textMini.style.color = 'rgba(255,255,255,0.7)';
+            }
+        }
+
+        function showProgressModal() {
+            var stats = getProgressStats();
+            var content = document.getElementById('progressModalContent');
+
+            var html = '';
+
+            // Barra total
+            html += '<div style="text-align:center; margin-bottom:1.5rem;">' +
+                '<div style="font-size:2.5rem; font-weight:800; color:' + (stats.percentage === 100 ? 'var(--green)' : 'var(--secondary)') + ';">' + stats.percentage + '%</div>' +
+                '<p style="font-size:0.85rem; color:var(--gray-500); margin-bottom:0.75rem;">' + stats.completed + ' de ' + stats.total + ' materiales completados</p>' +
+                '<div class="progress-bar-large"><div class="progress-bar-large-fill" style="width:' + stats.percentage + '%;"></div></div>' +
+            '</div>';
+
+            // Por columna
+            if (padletData.columnas.length > 0) {
+                html += '<div style="display:flex; flex-direction:column; gap:0.75rem;">';
+                padletData.columnas.forEach(function(columna) {
+                    var col = stats.byColumn[columna.id];
+                    if (!col || col.total === 0) return;
+                    var colColor = columna.color || 'var(--secondary)';
+                    html += '<div>' +
+                        '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">' +
+                            '<span style="font-size:0.8rem; font-weight:600; color:var(--gray-700);">' + col.titulo + '</span>' +
+                            '<span style="font-size:0.75rem; color:var(--gray-500);">' + col.completed + '/' + col.total + '</span>' +
+                        '</div>' +
+                        '<div class="progress-column-bar"><div class="progress-column-fill" style="width:' + col.percentage + '%; background:' + colColor + ';"></div></div>' +
+                    '</div>';
+                });
+                html += '</div>';
+            }
+
+            // Mensaje motivacional
+            if (stats.percentage === 100) {
+                html += '<div style="text-align:center; margin-top:1.5rem; padding:1rem; background:linear-gradient(135deg,#ECFDF5,#D1FAE5); border-radius:12px;">' +
+                    '<i class="fas fa-trophy" style="font-size:2rem; color:var(--accent);"></i>' +
+                    '<p style="font-weight:700; color:var(--green); margin-top:0.5rem;">Felicidades! Completaste todo el material</p>' +
+                '</div>';
+            } else if (stats.percentage >= 50) {
+                html += '<div style="text-align:center; margin-top:1rem; font-size:0.8rem; color:var(--gray-500);">' +
+                    '<i class="fas fa-fire" style="color:#F59E0B;"></i> Vas muy bien, sigue asi!' +
+                '</div>';
+            }
+
+            content.innerHTML = html;
+            showModal('progress');
+        }
+
+        function resetProgress() {
+            if (confirm('Reiniciar todo tu progreso? Esta accion no se puede deshacer.')) {
+                studentProgress = {};
+                saveProgress();
+                renderizarColumnas();
+                closeModal('progress');
+                showNotification('Progreso reiniciado', 'success');
+            }
+        }
+
+        // ============================================================
         // INICIALIZACION
         // ============================================================
 
@@ -1173,6 +1481,15 @@
 
         // Event delegation para clicks
         document.addEventListener('click', function(e) {
+            // Progress checkbox (estudiante)
+            if (e.target.closest('.progress-check')) {
+                e.preventDefault();
+                e.stopPropagation();
+                var btn = e.target.closest('.progress-check');
+                toggleProgress(btn.dataset.cardId);
+                return;
+            }
+
             if (e.target.closest('.delete-btn')) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -1235,6 +1552,7 @@
         function onDataLoaded(response) {
             if (response.success) {
                 padletData = response;
+                loadProgress();
                 renderizarColumnas();
                 document.getElementById('loadingScreen').style.display = 'none';
                 document.getElementById('columnasContainer').style.display = 'flex';
@@ -1294,6 +1612,7 @@
             });
 
             container.scrollLeft = scrollPosition;
+            updateProgressUI();
 
             // Reordenar columnas: solo admin
             new Sortable(container, {
@@ -1453,16 +1772,27 @@
                         '</div>';
             }
 
-            // Delete button solo para admin
-            var deleteHTML = isAdmin ?
-                '<button class="delete-btn" data-id="' + tarjeta.id + '" onclick="event.stopPropagation();"><i class="fas fa-trash-alt"></i></button>' :
-                getTypeBadge(tarjeta.tipo);
+            // Footer: admin ve delete, estudiante ve checkbox + badge
+            var isDone = studentProgress[tarjeta.id] ? true : false;
+            var completedClass = (!isAdmin && isDone) ? ' completed' : '';
 
-            return '<div class="tarjeta' + adminClass + '" data-id="' + tarjeta.id + '" data-tipo="' + tarjeta.tipo + '" data-url="' + (tarjeta.url || '') + '" data-titulo="' + escapeHtml(tarjeta.titulo || '') + '" data-descripcion="' + escapeHtml(tarjeta.descripcion || '') + '">' +
+            var footerLeftHTML = '';
+            var footerRightHTML = '';
+
+            if (isAdmin) {
+                footerLeftHTML = '<span class="tarjeta-date">' + formatDate(tarjeta.fechaCreacion) + '</span>';
+                footerRightHTML = '<button class="delete-btn" data-id="' + tarjeta.id + '" onclick="event.stopPropagation();"><i class="fas fa-trash-alt"></i></button>';
+            } else {
+                footerLeftHTML = '<button class="progress-check' + (isDone ? ' done' : '') + '" data-card-id="' + tarjeta.id + '">' + (isDone ? '<i class="fas fa-check"></i>' : '') + '</button>' +
+                    '<span class="tarjeta-date">' + formatDate(tarjeta.fechaCreacion) + '</span>';
+                footerRightHTML = getTypeBadge(tarjeta.tipo);
+            }
+
+            return '<div class="tarjeta' + adminClass + completedClass + '" data-id="' + tarjeta.id + '" data-tipo="' + tarjeta.tipo + '" data-url="' + (tarjeta.url || '') + '" data-titulo="' + escapeHtml(tarjeta.titulo || '') + '" data-descripcion="' + escapeHtml(tarjeta.descripcion || '') + '">' +
                 contenidoHTML +
                 '<div class="tarjeta-footer">' +
-                    '<span class="tarjeta-date">' + formatDate(tarjeta.fechaCreacion) + '</span>' +
-                    deleteHTML +
+                    footerLeftHTML +
+                    footerRightHTML +
                 '</div>' +
             '</div>';
         }
