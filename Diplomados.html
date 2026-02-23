@@ -1,0 +1,2692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Diplomados | Posgrado PEC - Especialización en Salud y Medicina</title>
+    <meta name="description" content="Explora nuestros diplomados especializados en salud: Medicina Legal, Emergencias Médicas, Ecografía, SSOMA y más. Certificación universitaria garantizada.">
+    <meta name="keywords" content="diplomados salud, medicina legal, emergencias médicas, ecografía, SSOMA, medicina alternativa, tesis salud">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ===== Variables CSS (Mismo sistema de diseño) ===== */
+        :root {
+            /* Colores Institucionales */
+            --color-primary: #E32B2B;
+            --color-primary-dark: #C41E1E;
+            --color-secondary: #1B3A57;
+            --color-secondary-dark: #0F2340;
+            --color-accent: #FFC107;
+            
+            /* Colores Neutros */
+            --color-white: #FFFFFF;
+            --color-light: #F8F9FA;
+            --color-gray-light: #E9ECEF;
+            --color-gray: #6C757D;
+            --color-gray-dark: #495057;
+            --color-dark: #212529;
+            
+            /* Tipografía */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Open Sans', sans-serif;
+            
+            /* Espaciado */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+            
+            /* Transiciones */
+            --transition: all 0.3s ease;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* ===== Header (Reutilizado) ===== */
+        .header-top {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 0;
+            font-size: 0.875rem;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+        
+        .social-links a {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .btn-login {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-login:hover {
+            background-color: var(--color-light);
+        }
+        
+        .header-main {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .logo-main {
+            height: 60px;
+        }
+        
+        .logo-partners {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--color-gray-light);
+        }
+        
+        .logo-partners img {
+            height: 40px;
+            opacity: 0.8;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav-menu a {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--color-dark);
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        
+        .btn-contact {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-contact:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* ===== Page Banner ===== */
+        .page-banner {
+            background: linear-gradient(rgba(27, 58, 87, 0.9), rgba(227, 43, 43, 0.9)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200') center/cover;
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+        
+        .page-banner h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .page-banner p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        /* ===== Filters Section ===== */
+        .filters-section {
+            background-color: var(--color-light);
+            padding: var(--spacing-lg) 0;
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border: 2px solid var(--color-gray-light);
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray);
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: var(--color-white);
+            border: 2px solid var(--color-gray-light);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+        
+        .results-count {
+            color: var(--color-gray);
+            font-weight: 500;
+        }
+        
+        /* ===== Diplomados Grid ===== */
+        .diplomados-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .diplomados-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .diplomado-card {
+            background-color: var(--color-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .diplomado-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .diplomado-header {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .diplomado-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .diplomado-card:hover .diplomado-header img {
+            transform: scale(1.1);
+        }
+        
+        .diplomado-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: var(--spacing-lg);
+            color: var(--color-white);
+        }
+        
+        .diplomado-category {
+            display: inline-block;
+            background-color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .diplomado-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .diplomado-content {
+            padding: var(--spacing-md);
+        }
+        
+        .diplomado-features {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .diplomado-features li {
+            padding: var(--spacing-xs) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--color-gray-dark);
+            font-size: 0.95rem;
+        }
+        
+        .diplomado-features li i {
+            color: var(--color-primary);
+            width: 20px;
+        }
+        
+        .diplomado-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--color-light);
+            border-top: 1px solid var(--color-gray-light);
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-item strong {
+            display: block;
+            color: var(--color-dark);
+            font-size: 1.25rem;
+        }
+        
+        .meta-item span {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        
+        .diplomado-actions {
+            padding: var(--spacing-md);
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        /* ===== Modal Detalle ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--color-white);
+            margin: 50px auto;
+            max-width: 900px;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--color-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: var(--spacing-xl);
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .modal-tabs {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--color-gray-light);
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: transparent;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            color: var(--color-gray);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--color-primary);
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tab-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: var(--spacing-sm);
+        }
+        
+        .benefit-item i {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            margin-top: 3px;
+        }
+        
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .instructor-card {
+            background-color: var(--color-light);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+        }
+        
+        .instructor-card h4 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .instructor-card p {
+            font-size: 0.875rem;
+            color: var(--color-gray-dark);
+            margin: 0;
+        }
+        
+        .syllabus-module {
+            background-color: var(--color-light);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .syllabus-module h4 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .syllabus-module h4 span {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+        
+        .syllabus-topics {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .syllabus-topics li {
+            padding: var(--spacing-xs) 0;
+            padding-left: var(--spacing-md);
+            color: var(--color-gray-dark);
+            position: relative;
+        }
+        
+        .syllabus-topics li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+        
+        .investment-box {
+            background-color: var(--color-light);
+            padding: var(--spacing-lg);
+            border-radius: 10px;
+            margin-top: var(--spacing-md);
+        }
+        
+        .investment-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+        
+        .investment-item:last-child {
+            border-bottom: none;
+        }
+        
+        .investment-item strong {
+            color: var(--color-dark);
+        }
+        
+        .investment-item span {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        
+        /* ===== No Results ===== */
+        .no-results {
+            text-align: center;
+            padding: var(--spacing-xxl);
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            color: var(--color-gray-light);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .no-results h3 {
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .no-results p {
+            color: var(--color-gray);
+        }
+        
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-content h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+        
+        .btn-white:hover {
+            background-color: var(--color-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* ===== Footer (Reutilizado) ===== */
+        .footer {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            padding-top: var(--spacing-xxl);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-logos {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .footer-logos img {
+            height: 50px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-white);
+        }
+        
+        .footer-column i {
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: var(--color-accent);
+        }
+        
+        /* ===== WhatsApp Float ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: var(--color-white);
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            
+            .logo-partners {
+                display: none;
+            }
+            
+            .nav-menu,
+            .btn-contact {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: var(--shadow-xl);
+                gap: var(--spacing-sm);
+            }
+            
+            .filters-container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .search-box {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .diplomados-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20px;
+            }
+            
+            .modal-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                font-size: 0.875rem;
+                padding: 10px 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-logos {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 950 011 044</span>
+                    <span><i class="fas fa-envelope"></i> posgrado@pec.edu.pe</span>
+                    <span><i class="fas fa-clock"></i> Lunes - Viernes: 8:00 - 15:00</span>
+                </div>
+                <div class="social-links">
+                    <span>Síguenos:</span>
+                    <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Ingreso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header Principal -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-main-content">
+                <div class="logo-container">
+                    <img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main">
+                    <div class="logo-partners">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                </div>
+                
+                <nav class="nav-main">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="diplomados.html" class="active">Diplomados</a></li>
+                        <li><a href="testimonios.html">Testimonios</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <a href="contacto.html" class="btn-contact">
+                        <i class="fas fa-headset"></i> Contáctanos
+                    </a>
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Nuestros Diplomados</h1>
+            <p>Programas especializados diseñados para impulsar tu carrera profesional en el sector salud</p>
+        </div>
+    </section>
+    
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar diplomados...">
+                </div>
+                
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="todos">Todos</button>
+                    <button class="filter-btn" data-category="medicina">Medicina</button>
+                    <button class="filter-btn" data-category="investigacion">Investigación</button>
+                    <button class="filter-btn" data-category="seguridad">Seguridad</button>
+                </div>
+                
+                <div class="results-count">
+                    <span id="resultsCount">7 diplomados encontrados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Diplomados Grid -->
+    <section class="diplomados-section">
+        <div class="container">
+            <div class="diplomados-grid" id="diplomadosGrid">
+                
+                <!-- Diplomado 1: Medicina Legal -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES">
+                    <div class="diplomado-header">
+                        <img src="DIPLOMADOS/1.jpg" alt="Medicina Legal">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 29/03/2025</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/150</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(1)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 2: Medicina Alternativa -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA">
+                    <div class="diplomado-header">
+                        <img src="https://pec.edu.pe/web/wp-content/uploads/2025/03/d94a444b-cb05-455b-8247-2fe533edf284-e1745248265310-1024x1002.jpg" alt="Medicina Alternativa">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes internacionales</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 04/04/2025</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/110</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(2)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 3: Emergencias Médicas -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS">
+                    <div class="diplomado-header">
+                        <img src="DIPLOMADOS/3.jpg" alt="Emergencias Médicas">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Triple Certificación</li>
+                            <li><i class="fas fa-heart"></i> Incluye BLS - AHA</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 31/05/2025</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/150</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(3)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 4: Ecografía -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER">
+                    <div class="diplomado-header">
+                        <img src="DIPLOMADOS/4.jpg" alt="Ecografía">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-stethoscope"></i> Prácticas con pacientes</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 22/05/2025</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/200</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(4)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 5: Artículos Científicos -->
+                <div class="diplomado-card" data-category="investigacion" data-title="DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTIFICOS EN SALUD">
+                    <div class="diplomado-header">
+                        <img src="https://pec.edu.pe/web/wp-content/uploads/2025/02/fcd523c8-f6c2-49b1-b66c-6552c8e63a07-1-1024x1024.jpg" alt="Artículos Científicos">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Investigación</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
+                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
+                            <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>24.5</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/120</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(5)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 6: Tesis -->
+                <div class="diplomado-card" data-category="investigacion" data-title="DIPLOMADO EN ASESORIA Y ELABORACIÓN DE TESIS EN SALUD">
+                    <div class="diplomado-header">
+                        <img src="DIPLOMADOS/6.jpg" alt="Tesis en Salud">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Investigación</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN ASESORÍA Y ELABORACIÓN DE TESIS EN SALUD</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-project-diagram"></i> Proyecto de tesis incluido</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio flexible</li>
+                            <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>24.5</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/100</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(6)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Diplomado 7: SSOMA -->
+                <div class="diplomado-card" data-category="seguridad" data-title="DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE SSOMA">
+                    <div class="diplomado-header">
+                        <img src="DIPLOMADOS/7.jpg" alt="SSOMA">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Seguridad</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-hard-hat"></i> Enfoque práctico</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio próximo</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/150</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(7)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No se encontraron diplomados</h3>
+                <p>Intenta con otros términos de búsqueda o filtros</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal Template -->
+    <div class="modal" id="diplomadoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalImage" src="" alt="">
+                <div class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                
+                <div class="modal-tabs">
+                    <button class="tab-btn active" onclick="switchTab('descripcion')">Descripción</button>
+                    <button class="tab-btn" onclick="switchTab('plan')">Plan de Estudios</button>
+                    <button class="tab-btn" onclick="switchTab('docentes')">Docentes</button>
+                    <button class="tab-btn" onclick="switchTab('inversion')">Inversión</button>
+                </div>
+                
+                <div id="tab-descripcion" class="tab-content active">
+                    <!-- Contenido dinámico -->
+                </div>
+                
+                <div id="tab-plan" class="tab-content">
+                    <!-- Contenido dinámico -->
+                </div>
+                
+                <div id="tab-docentes" class="tab-content">
+                    <!-- Contenido dinámico -->
+                </div>
+                
+                <div id="tab-inversion" class="tab-content">
+                    <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Necesitas más información?</h2>
+                <p>Nuestros asesores están listos para ayudarte a elegir el diplomado ideal para tu desarrollo profesional</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/51950011044" target="_blank" class="btn btn-white">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Directo
+                    </a>
+                    <a href="contacto.html" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Formulario de Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Posgrado PEC</h3>
+                    <p>Más de 20 años formando profesionales especializados en salud y medicina. Comprometidos con la excelencia académica y el desarrollo profesional.</p>
+                    
+                    <div class="footer-logos">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="inicio.html"><i class="fas fa-angle-right"></i> Inicio</a></li>
+                        <li><a href="nosotros.html"><i class="fas fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="diplomados.html"><i class="fas fa-angle-right"></i> Diplomados</a></li>
+                        <li><a href="testimonios.html"><i class="fas fa-angle-right"></i> Testimonios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Medicina</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Investigación</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Seguridad</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Todos los diplomados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:+51950011044"><i class="fas fa-phone"></i> 950 011 044</a></li>
+                        <li><a href="mailto:posgrado@pec.edu.pe"><i class="fas fa-envelope"></i> posgrado@pec.edu.pe</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Puno, Perú</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> L-V: 8:00 - 15:00</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Posgrado PEC. Todos los derechos reservados. | 
+                <a href="privacy-policy.html">Política de Privacidad</a> | 
+                <a href="terms.html">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/51950011044" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Data de diplomados
+        const diplomadosData = {
+            1: {
+                title: "DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/6741333d-4bd5-49dc-be40-df8b0972a6b4-1024x1024.jpg",
+                descripcion: {
+                    content: `<p>En el complejo mundo de la justicia y la salud, la Medicina Legal y las Ciencias Forenses juegan un papel crucial al proporcionar el conocimiento y las herramientas necesarias para la investigación de delitos, la resolución de casos legales y la garantía de justicia. La intersección entre la medicina, la ciencia y el derecho requiere una formación especializada que permita a los profesionales abordar los desafíos de manera precisa, ética y efectiva.</p>
+                    <p>El Diplomado en Medicina Legal y Ciencias Forenses es un programa de posgrado diseñado para profesionales del ámbito de la salud, la justicia y áreas afines que buscan adquirir conocimientos avanzados y habilidades prácticas en la aplicación de principios médicos y científicos en el ámbito legal.</p>`,
+                    dirigido: "Profesionales Médicos, Enfermeras, Biólogos, Psicólogos Abogados, jueces, fiscales y otros profesionales interesados que buscan profundizar su conocimiento y habilidades en el campo de la investigación forense y la medicina legal",
+                    objetivos: "Proporcionar una formación integral en Medicina Legal y Ciencias Forenses, capacitando a los participantes para aplicar técnicas científicas avanzadas en la investigación de delitos, la resolución de casos judiciales y la administración de justicia, con un enfoque en la precisión, ética y rigor científico.",
+                    beneficios: [
+                        "Modalidad Semi Presencial",
+                        "Staff Docentes Médicos Especialistas de amplia experiencia y trayectoria",
+                        "Calidad educativa garantizada",
+                        "Acceso al campus virtual PEC",
+                        "Lecturas complementarias",
+                        "Entrega de Material de Estudio por cada módulo",
+                        "Atención personalizada",
+                        "Tutoría académica permanente",
+                        "Certificación Universitaria",
+                        "Diploma con 36 créditos 576 Horas Académicas otorgado por la Unidad de posgrado Facultad de Medicina de la Universidad Nacional Hermilio Valdizán"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 1: INTRODUCCIÓN A LA MEDICINA LEGAL",
+                        hours: "7 horas",
+                        topics: [
+                            "Definición de medicina legal",
+                            "Antecedentes históricos de la medicina legal",
+                            "Métodos utilizados en la dictaminación médico legal",
+                            "Documentación médico legal",
+                            "El Peritaje y el Perito en el Nuevo Código",
+                            "Prueba pericial médico forense",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: CRIMINALÍSTICA: INVESTIGACIÓN CRIMINAL",
+                        hours: "7 horas",
+                        topics: [
+                            "Fundamentos de la criminalística",
+                            "Escena del crimen",
+                            "Técnicas de investigación criminal (recojo, embalaje, lacrado)",
+                            "Técnicas de investigación criminal (cadena de custodia)",
+                            "La fotografía forense en la investigación criminal",
+                            "La planimetría forense en la investigación criminal",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: TANATOLOGÍA FORENSE",
+                        hours: "6 horas",
+                        topics: [
+                            "Etiología médico legal de la muerte",
+                            "Necropsia Médico Legal y recojo de muestras",
+                            "Fenómenos cadavéricos y data de muerte",
+                            "Lesiones ante-morten y post-morten",
+                            "Llenado del certificado de defunción",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: TRAUMATOLOGÍA FORENSE",
+                        hours: "8 horas",
+                        topics: [
+                            "Concepto y clasificación de las lesiones",
+                            "Mecánica de Lesiones",
+                            "Agentes causales de lesiones",
+                            "Lesiones ocasionadas por agente contuso",
+                            "Lesiones ocasionadas por arma blanca",
+                            "Lesiones ocasionadas por agente térmico (quemaduras)",
+                            "Lesiones ocasionadas por proyectil de arma de fuego (PAF)",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: TOXICOLOGÍA FORENSE",
+                        hours: "7 horas",
+                        topics: [
+                            "Fundamentos de la toxicología",
+                            "Toma de muestras para la investigación toxicológica cadena de custodia",
+                            "Clasificación de sustancias tóxicas",
+                            "Toxicodinamia. Mecanismo de toxicidad",
+                            "Diagnóstico toxicológico médico legal",
+                            "Métodos de análisis de alcoholemia El método Widmark",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: SEXOLOGÍA FORENSE",
+                        hours: "6 horas",
+                        topics: [
+                            "Anatomía para el examen de integridad sexual",
+                            "Lesiones en el área genital (acceso carnal vaginal y anal)",
+                            "Lesiones en el área paragenital. extragenital",
+                            "Toma de muestras y cadena de custodia",
+                            "Código Penal y Delitos Sexuales: Iter criminis, iter victimae",
+                            "Informe pericial Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: GINECO-OBSTETRICIA FORENSE",
+                        hours: "7 horas",
+                        topics: [
+                            "Aspectos médico legales del embarazo, parto y puerperio",
+                            "Aborto Amenaza de aborto",
+                            "Tipos de aborto",
+                            "Características de las lesiones de himen, ano y extra genitales",
+                            "Lesiones recientes y antiguas",
+                            "Exámenes y muestras en la víctima y el agresor",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 8: ODONTOLOGÍA FORENSE E IDENTIFICACIÓN HUMANA",
+                        hours: "5 horas",
+                        topics: [
+                            "Aspectos generales de la odontología forense",
+                            "Identificación humana a través de la odontología forense",
+                            "Especial mención a las huellas de mordedura",
+                            "Relación de la odontología forense con otras formas de identificación",
+                            "Casos prácticos"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "Dr. José Luis Pacheco De La Cruz",
+                        credentials: "CMP. 036981 RNE. 017376",
+                        description: "Médico Cirujano, Especialista en Medicina Legal. Maestro en Salud Pública Doctor en Derecho. Docente de la UNMSM USMP UNP, Academia de la Magistratura. Ex Gerente de Criminalística del Ministerio Público. Con experiencia académica en Tokio, Francia, Miami, New York, Brasil, Chile, Argentina y Ecuador."
+                    },
+                    {
+                        name: "Mg. QF. Javier Churango Valdez",
+                        credentials: "",
+                        description: "Químico Farmacéutico UNMSM Magister en Farmacología Mención: Farmacología Experimental. Especialista perito forense Instituto de Medicina Legal y Ciencias Forenses. Sub Gerente Instituto de Medicina Legal y Ciencias Forenses Unidad de Toxicología y Químico Legal"
+                    },
+                    {
+                        name: "Dra. Nancy de la Cruz Chamilco",
+                        credentials: "CMP. 013896, RNE. 017344, RNE. 008978",
+                        description: "Médico cirujano, Especialista en Medicina Legal UNMSM Especialista en Psiquiatría UPCH, Magister en Docencia Universitaria UNP. Docente en las facultades de Derecho y Medicina Humana UNMSM USMP"
+                    },
+                    {
+                        name: "Dr. Segundo Yovera Sandoval",
+                        credentials: "CMP: 44920 RNE: 22650",
+                        description: "Médico cirujano, Especialista en Medicina Legal UNMSM. Magister en gestión de los servicios de salud, Auditor Médico. Docente de la UNMSM USMP"
+                    },
+                    {
+                        name: "Dra. Milagros Umeres Alvis",
+                        credentials: "",
+                        description: "Cirujana Dentista, Especialista en Odontología Forense UCSUR, Maestro en Docencia Universitaria. Perito Odontóloga del Instituto de Medicina Legal. Docente de la USMP UNMSM UPEU"
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 150",
+                    modulo: "S/. 180",
+                    diploma: "S/. 250"
+                }
+            },
+            2: {
+                title: "DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2025/03/d94a444b-cb05-455b-8247-2fe533edf284-e1745248265310-1024x1002.jpg",
+                descripcion: {
+                    content: `<p>Desde la Declaración de Alma-Ata (1977), la OMS ha promovido la incorporación de la Medicina Alternativa y Complementaria (MAC) en los sistemas de salud, enfatizando la necesidad de políticas adecuadas, difusión de información y colaboración interdisciplinaria. Asimismo, ha resaltado la importancia de una formación rigurosa y basada en evidencia científica para garantizar la seguridad y eficacia de estas terapias.</p>
+                    <p>El Diplomado en Medicina Alternativa y Complementaria responde a estas recomendaciones al proporcionar una formación integral que permite a los profesionales integrar tratamientos complementarios en su práctica clínica. Su enfoque científico, ético y holístico prepara a los egresados para atender a sus pacientes con una visión integral del bienestar.</p>`,
+                    dirigido: "Profesionales Médicos, Enfermeras, Biólogos, Psicólogos, Bachilleres en salud y otros profesionales afines interesados que buscan profundizar su conocimiento y habilidades en el campo de la Medicina Alternativa y complementaria",
+                    objetivos: "Proporcionar a los participantes una formación actualizada e integrada en los principios, modalidades y aplicaciones prácticas de la Medicina Alternativa y Complementaria (MAC), fundamentada en la evidencia científica, necesarios para la prevención y terapéutica que guiará las acciones profesionales procurando el desarrollo personal y la calidad de vida de las personas, familias y comunidades",
+                    beneficios: [
+                        "Modalidad Semi Presencial",
+                        "Staff Docentes Médicos Especialistas Consultores OPS OMS MTCI",
+                        "Docentes de Loma Linda University, The University of North Carolina at Chapel Hill",
+                        "Universidad Nacional de Colombia. Universidad de Zaragoza España",
+                        "Universidad Nacional Mayor de San Marcos",
+                        "Calidad educativa garantizada",
+                        "Lecturas complementarias",
+                        "Entrega de Material de Estudio por cada módulo",
+                        "Atención personalizada",
+                        "Tutoría académica permanente",
+                        "Certificación Universitaria",
+                        "Diploma con 36 créditos 576 Horas Académicas"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 1: FUNDAMENTOS DE LA MEDICINA ALTERNATIVA Y COMPLEMENTARIA",
+                        hours: "7 horas",
+                        topics: [
+                            "Historia y Evolución de la MTCI y Terapias Alternativas",
+                            "Definición Filosofía y Principios de Medicina Alternativa y Complementaria",
+                            "Normativas y regulación de prácticas y profesionales de medicina alternativa",
+                            "Rol de las organizaciones internacionales (OMS, NCCIH) en la promoción de la medicina alternativa",
+                            "Clasificación de Terapias Alternativas y Complementarias",
+                            "La Red de Medicinas Tradicionales, Complementarias e Integrativas de las Américas (Red MTCI Américas)",
+                            "Investigación y Evidencia Científica en Terapias Alternativa"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: FITOTERAPIA",
+                        hours: "4 horas",
+                        topics: [
+                            "Definición, Historia y Evolución de la Fitoterapia",
+                            "Principios Fundamentales de la Fitoterapia: Compuestos Bioactivos de las Plantas Medicinales",
+                            "Fitoterapia Aplicada: Plantas Medicinales y usos Terapéuticos en diferentes sistemas",
+                            "Investigación y Evidencia Científica en Fitoterapia"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: ACUPUNTURA",
+                        hours: "5 horas",
+                        topics: [
+                            "Introducción y fundamentos de la Medicina Tradicional China",
+                            "La Acupuntura en occidente. directrices de la Organización Mundial de la Salud (OMS)",
+                            "Bases Científicas de La Acupuntura",
+                            "Bases Fisiológicas de la Medicina Tradicional China",
+                            "Los meridianos y los Puntos de Acupuntura. Técnicas y métodos de Acupuntura",
+                            "Aplicaciones Clínicas de la Acupuntura"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: TERAPIA NEURAL",
+                        hours: "5 horas",
+                        topics: [
+                            "Historia y Evolución de la Terapia Neural",
+                            "Fundamentos básicos y Científicos de la Terapia Neural",
+                            "Mecanismos de Acción de la Terapia Neural",
+                            "Aplicación Clínica de la Terapia Neural: Indicaciones y Contraindicaciones",
+                            "Técnicas y Procedimientos en Terapia Neural"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: OZONOTERAPIA",
+                        hours: "6 horas",
+                        topics: [
+                            "El desarrollo histórico de la terapia con ozono – oxígeno",
+                            "Fundamentos físico-químicos. Usos del ozono",
+                            "Ozonoterapia: Propiedades terapéuticas del ozono",
+                            "Aplicaciones Clínicas de la Ozonoterapia",
+                            "Vías de Administración",
+                            "Protocolos, Técnicas, materiales y procedimientos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: TROFOTERAPIA ALIMENTACIÓN SALUDABLE",
+                        hours: "8 horas",
+                        topics: [
+                            "Conceptos básicos de alimentación saludable",
+                            "Granos andinos y germinados propiedades terapéuticas",
+                            "Aceites vegetales y semillas propiedades terapéuticas",
+                            "Frutas y verduras propiedades y su efecto terapéutico",
+                            "La Importancia del Ayuno",
+                            "Trofoterapia: Alimentación Terapéutica en diversas patologías",
+                            "TALLER DE COCINA: Sopa remineralizante, Sopa anticancerígena, Leches vegetales"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: HOMEOPATÍA",
+                        hours: "7 horas",
+                        topics: [
+                            "Definición, historia y fundamentos",
+                            "Medicina Homeopática. ¿Qué es y qué no es homeopatía?",
+                            "La Organización Mundial de la Salud y la homeopatía",
+                            "El medicamento homeopático: concepto, técnicas de preparación",
+                            "Farmacopeas homeopáticas: semejanzas y diferencias más importantes",
+                            "Introducción a la Fórmula Homeopática de Diagnóstico del Simillimum",
+                            "Perfil de la historia clínica homeopática. Terapéutica homeopática"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 8: AROMATERAPIA Y TERAPIA FLORAL",
+                        hours: "6 horas",
+                        topics: [
+                            "Introducción a la Aromaterapia",
+                            "Definición y Principios Básicos de la Aromaterapia",
+                            "Terapia Floral: Introducción y Principios Básicos",
+                            "Los 38 Remedios Florales del Dr. Bach",
+                            "Aplicaciones Clínicas de la Aromaterapia",
+                            "Investigación y Evidencia Científica"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "Dra. Natalia Sofía Aldana Martínez",
+                        credentials: "",
+                        description: "Médica cirujana, Especialista en Terapias Alternativas, Magister de Medicina Alternativa con amplia experiencia en la investigación y docencia en Medicina Tradicional, Complementaria e Integrativa (MTCI). Universidad Nacional de Colombia– Bogotá."
+                    },
+                    {
+                        name: "Dra. Delcy Turpo Choque",
+                        credentials: "",
+                        description: "Médico Cirujano Maestría en Salud Publica Loma Linda University EEUU. Docente de la Escuela de Posgrado de la UNMSM, experta en Alimentación Terapéutica, estilos de vida saludable, ayuno bajo supervisión médica, Hidroterapia, Ozonoterapia y Medicina Regenerativa."
+                    },
+                    {
+                        name: "Dra. Gladis Oblitas",
+                        credentials: "",
+                        description: "Médico Cirujano de la Universidad de Zaragoza, Doctora en Medicina por la Universidad de Zurich, Especialista en Medicina Bioenergética terapias complementarias y biodescodificación. Docente ordinario de la Facultad de Medicina UNSAAC"
+                    },
+                    {
+                        name: "Dr. Jose Victor Manchego Enriquez",
+                        credentials: "",
+                        description: "Médico cirujano, especialista en Medicina Familiar y Comunitaria, Segunda especialidad en Terapias alternativas y complementarias, Maestro en Ciencias: Medicina. Doctor en Ciencias: Medicina. Auditor Médico, Docente universitario de Pre y posgrado, Investigador. Past Presidente de la Sociedad Peruana de Medicina Familiar y Comunitaria."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 110",
+                    modulo: "S/. 140",
+                    diploma: "S/. 250"
+                }
+            },
+            3: {
+                title: "DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2023/03/6cca4a96-6a4f-4b23-a2ac-2d80a261ebab-1024x1024.jpg",
+                descripcion: {
+                    content: `<p>La atención de Emergencia se centra en personas que se encuentran en una condición de dependencia frente al profesional sanitario, así pues, para salir de esa condición, el paciente requiere de apoyo eficaz y eficiente del profesional de salud.</p>
+                    <p>Más aún la adecuada atención en una situación de urgencia y emergencias disminuye las complicaciones y secuelas en las que pueda estar expuesto el paciente, para ello se requiere de profesionales altamente capacitados para discernir los cuidados adecuados en el momento oportuno y en las mejores condiciones, puesto que la necesidad de atención es contra el tiempo.</p>
+                    <p>El presente Diplomado desarrolla profesionales con una visión de la atención de urgencia, emergencia de vanguardia y basado en la mejor evidencia disponible, capaces de generar respuestas efectivas a las necesidades de salud de la población.</p>`,
+                    dirigido: "Dirigido exclusivamente a profesionales Médicos: Médico Cirujano, Médicos Especialistas, Médicos Residentes, Médicos Serumistas y Bachilleres en Medicina.",
+                    objetivos: "Capacitar profesionales de la ciencia médica en Emergencias y Urgencias Médicas en el nivel de Post Grado, para el ejercicio de la misma de manera profesional y responsable. Validar a los profesionales de la ciencia médica en Emergencias y Urgencias Médicas y puedan los mismos formar parte de las unidades de Urgencia y emergencias en los distintos establecimientos del sistema nacional de salud, o en la práctica privada.",
+                    beneficios: [
+                        "Modalidad Semipresencial",
+                        "Docentes Especialistas e Instructores BLS, ACLS, PALS, NAEMT, PHTLS con amplia experiencia",
+                        "Docentes de Argentina: Universidad Nacional de Rosario – UNR",
+                        "Docentes de Perú: Universidad Peruana Cayetano Heredia, Universidad Nacional Mayor de San Marcos, Instituto Nacional Materno perinatal Lima",
+                        "Talleres prácticos presencial con aprendizaje basado en simulación",
+                        "Lecturas complementarias",
+                        "Entrega de Material de estudio por cada módulo en PDF",
+                        "Recibe tutoría académica durante el Diplomado",
+                        "TRIPLE CERTIFICACIÓN: 01 certificado Basic Life Support (BLS) Expedido por la UPCH",
+                        "01 Ecard a nombre de la American Heart Association (válido por dos años)",
+                        "01 Diploma de 36 créditos Académicos expedido por la Universidad Nacional Hermilio Valdizán"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 1: EMERGENCIAS Y URGENCIAS MÉDICO-QUIRÚRGICAS",
+                        hours: "8 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Introducción Emergencias y Urgencias Médicas",
+                            "Importancia de la Emergencia Médica",
+                            "Manejo inicial y general del Trauma",
+                            "Trauma abdominal",
+                            "Abdomen agudo quirúrgico",
+                            "Patologías médicos quirúrgicas más frecuentes",
+                            "Colocación de catéter venoso central"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: BASIC LIFE SUPPORT (BLS)",
+                        hours: "9 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Nueva ciencia y educación a partir de la actualización de las Guías de AHA 2015 para CPR y ECC",
+                            "Los componentes de la RCP de alta calidad para adultos, niños y bebés",
+                            "La Cadena de Supervivencia de la AHA para proveedores pre hospitalarios y en instalaciones",
+                            "Uso temprano importante de un DEA",
+                            "Ventilaciones eficaces utilizando un dispositivo de barrera",
+                            "Importancia de los equipos en la reanimación multidisciplinaria",
+                            "Alivio de la obstrucción de las vías respiratorias de cuerpos extraños (asfixia)",
+                            "Intubación endotraqueal"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: EMERGENCIAS Y URGENCIAS CARDIOVASCULARES",
+                        hours: "7 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Dolor torácico: diagnóstico diferencial y enfrentamiento inicial",
+                            "Síndrome Coronario agudo",
+                            "Tromboembolismo pulmonar",
+                            "Shock Cardiogénico",
+                            "Edema Pulmonar Agudo",
+                            "HTA: Recontextualizaciones necesarias para el manejo en APS – PreHospitalario",
+                            "Interpretación de EKG"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: EMERGENCIAS Y URGENCIAS RESPIRATORIAS",
+                        hours: "7 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Insuficiencia Respiratoria aguda /crónico agudizado",
+                            "Neumonía de la Comunidad",
+                            "Neumonía grave, reconocimiento, estabilización y traslado",
+                            "EPOC descompensado",
+                            "Asma, desde la Crisis al Status",
+                            "Covid-19, Insuficiencia respiratoria aguda, criterios de ventiloterapia"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: EMERGENCIAS Y URGENCIAS GINECO – OBSTÉTRICAS",
+                        hours: "5 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Diagnóstico y tratamiento de hemorragia obstétrica",
+                            "Síndrome hipertensivo del embarazo: preeclampsia y eclampsia",
+                            "Complicaciones de parto y preparto",
+                            "Monitorización fetal",
+                            "Introducción a las urgencias Ginecológicas"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: EMERGENCIAS Y URGENCIAS PEDIÁTRICAS",
+                        hours: "6 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Estabilización del paciente pediátrico grave",
+                            "Monitorización no invasiva del paciente pediátrico",
+                            "RCP pediátrico, Manejo de vía aérea pediátrico",
+                            "Acceso vascular pediátrico, Intoxicaciones en pediatría",
+                            "Manejo de micro dosis en pediatría"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: EMERGENCIAS Y URGENCIAS GENITOURINARIAS Y GASTROINTESTINALES",
+                        hours: "7 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Urolitiasis",
+                            "Testículo Agudo",
+                            "Hematuria",
+                            "Hemorragia Digestiva",
+                            "Dolor abdominal no traumático. Qué buscar y qué descartar",
+                            "Daño hepático crónico descompensado"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 8: EMERGENCIAS Y URGENCIAS MÉDICAS EN TRAUMA",
+                        hours: "10 horas",
+                        topics: [
+                            "Caso clínico introductorio",
+                            "Cinemática del trauma",
+                            "Atención prehospitalaria y traslado del politraumatizado",
+                            "TEC moderado y grave, manejo inicial, estabilización y traslado",
+                            "Trauma de Tórax, manejo inicial, estabilización y traslado",
+                            "Trauma Abdominal, manejo inicial, estabilización y traslado",
+                            "Fractura de Pelvis, manejo inicial, estabilización y traslado",
+                            "Fracturas de huesos largos y lesión vascular",
+                            "Trauma Raquimedular, manejo inicial, estabilización y traslado",
+                            "Misceláneas en Trauma (facial, ocular, urogenital)"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "YAZCITK MIGUEL SANDOVAL GUEVARA",
+                        credentials: "CMP. 034883 RNE. 020293",
+                        description: "Médico Especialista en Medicina Intensiva, Jefe de Servicio de Cardiología Perioperatoria del Instituto Nacional Cardiovascular (INCOR). Maestría en Salud Pública y Gestión Pública. Instructor NAEMT, PHTLS, AMLS, EPC, Instructor AHA, ACLS, PALS. Docente universitario de pre y posgrado."
+                    },
+                    {
+                        name: "DRA. VIVIANA LORENA MOLINA RODRIGUEZ",
+                        credentials: "CMCP : M.P. : 39149 Medicina de Emergencias Pediátricas : 18977 – Argentina",
+                        description: "Médica Pediatra – Especialista en Medicina de Emergencias Pediátricas- Especialista en Toxicología Clínica. Coordinadora de Servicio de Guardia del Hospital R. Ferreyra de Córdoba – Argentina. Instructora PALS- AHA. Socia Fundadora de la Sociedad Latinoamericana de Emergencia Pediátrica."
+                    },
+                    {
+                        name: "JORGE IVAR BRUNO RAMOS",
+                        credentials: "CMP. 064950 RNE.050090",
+                        description: "Médico Cirujano Especialista en Ginecología y Obstetricia UNMSM. Médico especialista asistente del Instituto Nacional Materno Perinatal INMP Lima. Coeditor Experto clínico invitado para el ajuste técnico de la Guía de práctica clínica MINSA 2025. Docente Universitario Pre y posgrado."
+                    },
+                    {
+                        name: "ALFREDO A. ALLAGUAL DE LA QUINTANA",
+                        credentials: "CMP. 26289 RNE. 17234",
+                        description: "Médico Cirujano con Especialidad en Cirugía General. Jefe del Departamento de emergencia y Cuidados críticos Hospital María Auxiliadora MINSA. Formación en Emergencias y desastres. Docente de la Facultad de Medicina Universidad Científica del Sur."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 150",
+                    modulo: "S/. 190",
+                    diploma: "S/. 290"
+                }
+            },
+            4: {
+                title: "DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/d7e796bd-03e1-4cb5-9cb8-7ba656dafd01-1024x1024.jpg",
+                descripcion: {
+                    content: `<p>La Ecografía en Medicina está orientada a otorgar conocimientos e instrumentos necesarios para que el Médico haga un buen uso de la Tecnología. En las últimas décadas se ha avanzado tanto en este campo que se ha convertido en un complemento indispensable para el Diagnóstico y tratamiento de las diferentes patologías.</p>
+                    <p>La necesidad de capacitar a los profesionales Médicos en diversas áreas de la medicina, es una realidad que va en crecimiento en nuestro País. Dado a que existe una aplastante demanda de estudios de ultrasonido ante el insuficiente número de médicos radiólogos, la labor de este Diplomado es formar de manera profesional a los médicos para que cubran y aminore en gran medida este problema que habita en el sector de salud.</p>
+                    <p>La Universidad Nacional Hermilio Valdizán a través de la Facultad de Medicina está organizando el presente Diplomado en Ecografía General y Velocimetría Doppler para cubrir todas las necesidades de capacitación en esta área de la ciencia Médica.</p>`,
+                    dirigido: "El Diplomado en Ecografía General y Velocimetría Doppler en salvaguarda de la Educación Médica y no incurrir en intrusismo de otras profesiones está dirigido exclusivamente a profesionales Médicos: Médico Cirujano, Médicos Especialistas, Médicos Residentes, Médicos Serumistas y Bachilleres en Medicina.",
+                    objetivos: "Capacitar profesionales médicos en Ecografía General y Velocimetría Doppler en el nivel de Post Grado, para el ejercicio de la misma de manera profesional y responsable. Validar a los profesionales de la ciencia médica en Ecografía General y Velocimetría Doppler y puedan los mismos formar parte de las unidades de apoyo en Ecografía en los distintos establecimientos del sistema nacional de salud, o en la práctica privada.",
+                    beneficios: [
+                        "Modalidad Semi presencial",
+                        "Clase Teórica Virtual vía Zoom",
+                        "Clase Práctica presencial con Pacientes",
+                        "Staff Docentes Médicos Especialistas de amplia experiencia y trayectoria",
+                        "Médicos Radiólogos de la UPCH – INEN Lima",
+                        "Médicos Gineco – obstetras de la UNMSM Instituto Nacional Materno Perinatal INMP Lima",
+                        "Modelos de informes ecográficos",
+                        "Lecturas complementarias",
+                        "Entrega de Material de Estudio",
+                        "Diploma con 36 créditos 576 Horas Académicas",
+                        "Diploma otorgado por la Facultad de Medicina de la Universidad Nacional Hermilio Valdizán"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 1: ECOGRAFÍA PRINCIPIOS Y GENERALIDADES",
+                        hours: "5 horas",
+                        topics: [
+                            "Clase Inaugural. Introducción",
+                            "Historia de la ecografía",
+                            "Terminología Ecográfica",
+                            "Manejo del Ecógrafo",
+                            "Física del ultrasonido"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: ECOGRAFÍA EN EL PRIMER TRIMESTRE DE GESTACIÓN",
+                        hours: "8 horas",
+                        topics: [
+                            "Ecografía en el primer trimestre de gestación",
+                            "Desarrollo fetal",
+                            "Biometría fetal",
+                            "Estudio ecográfico de la placenta",
+                            "Estudio ecográfico del líquido amniótico",
+                            "Estudio ecográfico del cordón umbilical",
+                            "Sexo fetal",
+                            "Perfil biofísico fetal"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: ECOGRAFÍA FETAL DEL II-III TRIMESTRE DE GESTACIÓN",
+                        hours: "6 horas",
+                        topics: [
+                            "Aborto: amenaza de aborto, aborto incompleto",
+                            "Gestación retenida - anembrionada",
+                            "Retención de restos placentarios",
+                            "Ecografía del embarazo ectópico",
+                            "Ecografía de la enfermedad trofoblástica",
+                            "Patologías de la placenta: Placenta previa, DPP"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: ECOGRAFÍA ABDOMINAL",
+                        hours: "5 horas",
+                        topics: [
+                            "Estudio ecográfico del hígado y vías biliares",
+                            "Ecografía de la vesícula biliar",
+                            "Estudio de vasos retroperitoneales",
+                            "Ecografía de páncreas y bazo",
+                            "Ecografía de riñón y vejiga"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: ECOGRAFÍA DE PARTES BLANDAS",
+                        hours: "5 horas",
+                        topics: [
+                            "Ecografía de mama",
+                            "Ecografía de tiroides",
+                            "Ecografía de partes blandas",
+                            "Ecografía de próstata",
+                            "Ecografía de testículos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: ECOGRAFÍA PÉLVICA",
+                        hours: "4 horas",
+                        topics: [
+                            "Miomatosis uterina",
+                            "Quiste de ovario, poliquistosis",
+                            "Patología endometrial",
+                            "Endometriosis – Adenomiosis"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: ECOGRAFÍA DOPPLER",
+                        hours: "4 horas",
+                        topics: [
+                            "Principios Físicos del Doppler",
+                            "Hemodinámica del flujo sanguíneo",
+                            "Velocimetría Doppler de Grandes Vasos: arterias carótidas y cerebrales, aorta, vena cava inferior",
+                            "Ecografía Doppler de Hígado, riñón, próstata y escroto"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 8: ECOGRAFÍA DOPPLER EN OBSTETRICIA",
+                        hours: "4 horas",
+                        topics: [
+                            "Velocimetría Doppler en Obstetricia. Aplicaciones clínicas",
+                            "Ecografía 3D- 4D en gineco-obstetricia",
+                            "Revisión de los principales imágenes ecográficas",
+                            "Entrega y sustentación de trabajos monográficos (tesinas)"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "Staff de Médicos Radiólogos",
+                        credentials: "",
+                        description: "Médicos Radiólogos de la UPCH – INEN Lima con amplia experiencia en diagnóstico por imágenes y docencia universitaria."
+                    },
+                    {
+                        name: "Staff de Médicos Gineco-Obstetras",
+                        credentials: "",
+                        description: "Médicos Gineco-obstetras de la UNMSM Instituto Nacional Materno Perinatal INMP Lima especializados en ecografía obstétrica y ginecológica."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 200",
+                    modulo: "S/. 220",
+                    diploma: "S/. 300"
+                }
+            },
+            5: {
+                title: "DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS EN SALUD",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/fcd523c8-f6c2-49b1-b66c-6552c8e63a07-1-1024x1024.jpg",
+                descripcion: {
+                    content: `<p>La investigación científica y la publicación de resultados son pilares fundamentales para el avance del conocimiento en ciencias de la salud. Este diplomado está diseñado para proporcionar las herramientas necesarias para la redacción efectiva y la publicación exitosa de artículos científicos en revistas indexadas.</p>
+                    <p>Los participantes aprenderán desde los fundamentos de la escritura científica hasta las estrategias avanzadas para lograr la aceptación de sus manuscritos en revistas de alto impacto.</p>`,
+                    dirigido: "Profesionales de la salud, investigadores, docentes universitarios y estudiantes de posgrado que deseen mejorar sus habilidades en redacción científica y aumentar sus publicaciones en revistas indexadas.",
+                    objetivos: "Desarrollar competencias avanzadas en redacción científica, conocer el proceso editorial de revistas indexadas, y proporcionar herramientas prácticas para la publicación exitosa de artículos de investigación en salud.",
+                    beneficios: [
+                        "Modalidad Virtual",
+                        "Docentes con publicaciones en revistas de alto impacto",
+                        "Revisión personalizada de manuscritos",
+                        "Acceso a bases de datos científicas",
+                        "Taller de manejo de gestores bibliográficos",
+                        "Certificación Universitaria",
+                        "Material de estudio actualizado",
+                        "Asesoría post-diplomado"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "Módulo pendiente de actualización",
+                        hours: "Por definir",
+                        topics: [
+                            "Contenido en proceso de actualización"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "Por confirmar",
+                        credentials: "",
+                        description: "Información de docentes próximamente disponible."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 120",
+                    modulo: "Por definir",
+                    diploma: "Por definir"
+                }
+            },
+            6: {
+                title: "DIPLOMADO EN ASESORÍA Y ELABORACIÓN DE TESIS EN SALUD",
+                image: "https://i.ibb.co/fVqqP64J/IMA.jpg",
+                descripcion: {
+                    content: `<p>En el ámbito de la investigación en salud, diseñar y llevar a cabo una tesis de excelencia no solo impulsa el conocimiento científico y mejora las prácticas sanitarias, sino que también fortalece el desarrollo académico y profesional de quienes están en plena fase de investigación.</p>
+                    <p>El Diplomado en Asesoría y Elaboración de Tesis en Salud está diseñado para proporcionar a los participantes las herramientas y técnicas necesarias para llevar a cabo investigaciones rigurosas y efectivas en el ámbito de la salud. Este curso combina teoría con práctica para ofrecer una formación completa en el proceso de elaboración de tesis, desde la concepción de la idea hasta la defensa final del trabajo.</p>
+                    <p>A través de una combinación de teoría y práctica, los estudiantes aprenderán a identificar problemas relevantes en el campo de la salud, formular hipótesis, diseñar estudios y analizar datos de manera rigurosa. Además, se hará énfasis en la ética en la investigación, asegurando que los trabajos realizados respeten las normativas y principios éticos.</p>`,
+                    dirigido: "Bachilleres y profesionales del sector salud y áreas afines. Estudiantes de posgrado y maestría que estén en proceso de tesis o investigación. En general, cualquier persona que desee fortalecer sus competencias investigadoras.",
+                    objetivos: "Desarrollar y/o validar las competencias teóricas, metodológicas y prácticas de los participantes en la asesoría y elaboración de tesis, garantizando la producción de investigaciones rigurosas y relevantes que contribuyan al avance del conocimiento en el área de la salud",
+                    beneficios: [
+                        "Modalidad: semipresencial / Virtual vía zoom",
+                        "Docentes Renacyt con amplia experiencia",
+                        "Proyecto de Tesis acabado",
+                        "Turnitin",
+                        "Parafraseo",
+                        "Revisión de redacción científica",
+                        "Tutoría y asesoramiento permanente presencial y/o virtual",
+                        "Informe Final de Tesis"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 1: METODOLOGÍA DE LA INVESTIGACIÓN CIENTÍFICA",
+                        hours: "8 horas",
+                        topics: [
+                            "Definición y tipos investigación",
+                            "Método científico",
+                            "Motores de búsqueda y Búsquedas en bases de datos",
+                            "Gestores de referencias bibliográficas",
+                            "Estilo de citación",
+                            "La definición del tema de investigación",
+                            "Procesos básicos y formulación de proyectos de investigación",
+                            "Ética en investigación"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: INTELIGENCIA ARTIFICIAL APLICADA A LA INVESTIGACIÓN CIENTÍFICA",
+                        hours: "6 horas",
+                        topics: [
+                            "Fundamentos básicos y éticos de Inteligencia Artificial para investigadores",
+                            "Herramientas de IA para la búsqueda y gestión de literatura científica",
+                            "Aplicación de IA en el diseño y desarrollo de proyectos de investigación",
+                            "Análisis de datos con Inteligencia Artificial",
+                            "Escritura científica asistida por IA",
+                            "Taller práctico"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: FORMULACIÓN DEL PROBLEMA, JUSTIFICACIÓN, OBJETIVOS E HIPÓTESIS",
+                        hours: "7 horas",
+                        topics: [
+                            "Definición y características del problema de investigación",
+                            "Cómo formular un problema, las preguntas de investigación y la vinculación entre ambos",
+                            "Redacción clara y precisa del problema de investigación",
+                            "Delimitación del Problema de Investigación",
+                            "Justificación de la Investigación: concepto, propósito y criterios",
+                            "Definición y Redacción de los Objetivos de Investigación",
+                            "Hipótesis de Investigación: Definición, criterios, tipos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: EL MARCO TEÓRICO Y EL ESTADO DEL ARTE",
+                        hours: "5 horas",
+                        topics: [
+                            "Introducción al Marco Teórico: Definición, relevancia y funciones",
+                            "Revisión de la Literatura: Evaluación crítica de fuentes",
+                            "Uso de gestores bibliográficos (Mendeley, Zotero, EndNote)",
+                            "Estructuración del Marco Teórico",
+                            "Estado del Arte: Definición y propósito",
+                            "Redacción del Marco Teórico: Estructura y estilo"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: DISEÑOS DE INVESTIGACIÓN, POBLACIÓN Y MUESTRA",
+                        hours: "7 horas",
+                        topics: [
+                            "Introducción a los diseños de Investigación",
+                            "Diseños de Investigación Cuantitativos, Cualitativos",
+                            "Diseños Mixtos de Investigación",
+                            "Definición y características de la población en la investigación",
+                            "Muestreo: Conceptos y Tipos",
+                            "Técnicas de muestreo: Muestreo probabilístico, no probabilístico",
+                            "Tamaño de la muestra: Determinación del Tamaño de la Muestra"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: TÉCNICAS DE RECOLECCIÓN Y PROCESAMIENTO DE DATOS",
+                        hours: "9 horas",
+                        topics: [
+                            "Concepto",
+                            "Plan de procedimientos para la recolección de información",
+                            "Identificación de las fuentes de información",
+                            "Técnicas para la recolección de información primaria, secundaria",
+                            "Confiabilidad y validez de los instrumentos de recolección de datos",
+                            "Organización y tabulación de datos",
+                            "Análisis de Información",
+                            "Metodología y técnicas para el procesamiento de datos",
+                            "Tecnologías de almacenamiento y procesamiento de datos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: REDACCIÓN CIENTÍFICA DEL INFORME DE INVESTIGACIÓN",
+                        hours: "9 horas",
+                        topics: [
+                            "Escritura científica: conceptos y lineamientos generales",
+                            "Redacción asistida con Inteligencia Artificial",
+                            "Construcción de oraciones y párrafos",
+                            "Técnicas de parafraseo",
+                            "Criterios generales para la redacción",
+                            "Criterios gramaticales: sintácticos y morfológicos",
+                            "Nomenclatura y unidades básicas y derivadas",
+                            "Normas ortográficas relativas a los símbolos, números",
+                            "La presentación del informe de investigación"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "JULIO LEONARDO ALBITRES FLORES",
+                        credentials: "CMP. 092082",
+                        description: "Médico cirujano. Investigador RENACYT. (P0089620). Maestría en Ciencias en Investigación Epidemiológica Universidad Peruana Cayetano Heredia UPCH. Coordinador de proyectos en CRONICAS Centro de Excelencia en Enfermedades Crónicas UPCH."
+                    },
+                    {
+                        name: "JHONATAN RICARDO MEJÍA SANTIVÁÑEZ",
+                        credentials: "CMP : 0925677",
+                        description: "Médico cirujano. Investigador RENACYT. (P0092878). Maestría en Efectividad Clínica, Universidad de Buenos Aires, Argentina. Diplomado Posgrado en Investigación Clínica UPCH. Docente de la Carrera de Medicina Humana, Universidad Científica del Sur. Ex editor académico en revista CIMEL."
+                    },
+                    {
+                        name: "DANTE ELMER HANCCO MONRROY",
+                        credentials: "CMP : 042274 RND. 00272",
+                        description: "Médico cirujano. Investigador RENACYT. (P0108092). Doctor en Ciencias de la Salud. Maestría en Salud Pública. Segunda Especialidad en Didáctica Universitaria. Director de la Unidad de Investigación Facultad de Medicina Humana UNA Puno. Docente Universitario de Pre y Posgrado."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 100",
+                    modulo: "S/. 140",
+                    diploma: "S/. 250"
+                }
+            },
+            7: {
+                title: "DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE SSOMA",
+                image: "https://pec.edu.pe/web/wp-content/uploads/2023/03/01d6da67-36ca-40a5-a0f2-10489aae806a-1-1024x1024.jpg",
+                descripcion: {
+                    content: `<p>La OMS y la OIT destacan la importancia de la seguridad y salud de los trabajadores para mantener sistemas de salud efectivos. A pesar de los esfuerzos, aún ocurren 2,8 millones de muertes laborales anualmente. El Ministerio de Salud del Perú prioriza la seguridad, salud ocupacional y ambiental para proteger a los trabajadores y mejorar los servicios de salud.</p>
+                    <p>La creciente conciencia sobre las condiciones laborales impulsa la demanda de profesionales capacitados, contribuyendo al desarrollo sostenible y al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS).</p>
+                    <p>En ese entender con un cuerpo docente selecto y una metodología de enseñanza práctica y participativa, el Diplomado en Seguridad, Salud Ocupacional y Medio Ambiente ofrece una oportunidad para adquirir las competencias necesarias para enfrentar los desafíos contemporáneos en el ámbito laboral y ambiental, contribuyendo así al desarrollo sostenible y al bienestar de las personas.</p>`,
+                    dirigido: "Titulados y/o bachilleres en: Medicina Humana, Enfermería, Ingeniería Industrial, Ingeniería Ambiental, Ingeniería Civil, Ingeniería de Minas y demás carreras afines.",
+                    objetivos: "Proporcionar y validar a los participantes los conocimientos teóricos y prácticos necesarios para comprender, evaluar y gestionar eficazmente los riesgos relacionados con la seguridad, la salud ocupacional y el medio ambiente en diferentes entornos laborales.",
+                    beneficios: [
+                        "Modalidad Semi Presencial",
+                        "Clase teórica: Virtual vía Zoom",
+                        "Clase Práctica: Presencial",
+                        "Staff Docentes Profesionales Médicos e Ingenieros Especialistas",
+                        "Docentes de Universidad del Rosario Colombia, UNMSM, UNI",
+                        "Lecturas complementarias",
+                        "Entrega de Material de Estudio",
+                        "Recibe tutoría académica durante el Diplomado",
+                        "Diploma con 36 créditos 576 Horas Académicas",
+                        "Certificación de la Universidad Nacional Hermilio Valdizán"
+                    ]
+                },
+                plan: [
+                    {
+                        module: "MÓDULO 01: FUNDAMENTOS Y NORMATIVA LEGAL EN SEGURIDAD Y SALUD EN EL TRABAJO",
+                        hours: "8 horas",
+                        topics: [
+                            "Normas legales en materia de Salud Ocupacional y Seguridad en el Trabajo",
+                            "Ley de Seguridad y Salud en el Trabajo, su reglamento y modificaciones",
+                            "Normas sectoriales",
+                            "Normas complementarias",
+                            "Normas Internacionales ISO 45001:2018",
+                            "Fiscalización en materia de Salud Ocupacional y Seguridad en el Trabajo",
+                            "Taller de Ejercicios Aplicativos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 02: IDENTIFICACIÓN DE PELIGROS, EVALUACIÓN DE RIESGOS Y MEDIDAS DE CONTROL",
+                        hours: "6 horas",
+                        topics: [
+                            "Conceptos importantes: peligro, riesgo, causas de los accidentes",
+                            "Tipos de la Identificación de Peligros",
+                            "Trabajos de Alto Riesgo",
+                            "Evaluación de Riesgos y Controles IPERC",
+                            "IPERC línea base, IPERC continuo e IPERC específico",
+                            "Casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 03: COMITÉ DE SEGURIDAD Y SALUD EN EL TRABAJO",
+                        hours: "7 horas",
+                        topics: [
+                            "Organización en Salud Ocupacional y Seguridad en el Trabajo",
+                            "Comité de Seguridad y Salud en el Trabajo. Convocatoria, Elecciones e Instalación",
+                            "Libro de Actas",
+                            "Funciones del Comité de Seguridad y Salud en el Trabajo",
+                            "Reuniones del Comité y temas de agenda",
+                            "Los reportes trimestrales e informes anuales a la alta dirección",
+                            "Supervisores de Seguridad y Salud en el Trabajo",
+                            "Taller de Ejercicios Aplicativos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 04: HIGIENE OCUPACIONAL",
+                        hours: "6 horas",
+                        topics: [
+                            "Factores de riesgos físicos, químicos y biológicos",
+                            "Límites máximos permisibles en el ambiente de trabajo",
+                            "Enfermedades Ocupacionales",
+                            "Monitoreo Ocupacional de ruido, iluminación, radiaciones, agentes químicos, biológicos",
+                            "Vigilancia, Prevención y Control del COVID. Protocolos Sectoriales",
+                            "Taller de Ejercicios Aplicativos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 05: GESTIÓN DE RIESGOS ERGONÓMICOS Y PSICOSOCIALES",
+                        hours: "6 horas",
+                        topics: [
+                            "Ergonomía y su ámbito de aplicación",
+                            "Diseño de Puestos de Trabajo. Requisitos para trabajo de pie, sentado, manipulación de cargas",
+                            "Métodos de evaluación de riesgo disergonómicos OWAS, RULA, REBA, NIOSH",
+                            "Riesgos Psicosociales, Factores de Riesgos Psicosociales, consecuencias, patologías",
+                            "Organización del Trabajo, Metodologías de Evaluación de Riesgos Psicosociales",
+                            "Taller de Ejercicios Aplicativos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 06: VIGILANCIA MÉDICO OCUPACIONAL",
+                        hours: "8 horas",
+                        topics: [
+                            "Plan de Gestión de Salud Ocupacional",
+                            "Exámenes Médicos Ocupacionales",
+                            "Protocolos de EMO, Guías de Diagnóstico de EMO",
+                            "Funciones del Médico Ocupacional",
+                            "Elaboración de un Programa de Vigilancia Médico Ocupacional",
+                            "Plan de gestión de Salud Ocupacional",
+                            "Vigilancia de la Salud de los Trabajadores",
+                            "Taller de Ejercicios Aplicativos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 07: INSPECCIONES Y FISCALIZACIÓN EN MATERIA DE SALUD OCUPACIONAL Y SST",
+                        hours: "8 horas",
+                        topics: [
+                            "Proceso de Inspecciones Internas de Seguridad y Salud en el Trabajo",
+                            "Normas Técnicas y Legales a considerar en las Inspecciones",
+                            "Inspecciones a Las Áreas Administrativas, Operativas y Equipos",
+                            "Registro de Inspecciones Internas de Seguridad y Salud en el Trabajo",
+                            "Competencias y funciones de la SUNAFIL",
+                            "Auditorías en Salud Ocupacional y Seguridad en el Trabajo",
+                            "Tipos de Auditorías, Objetivos y Alcance",
+                            "Taller de casos prácticos"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 08: IDENTIFICACIÓN DE ASPECTOS E IMPACTOS AMBIENTALES",
+                        hours: "6 horas",
+                        topics: [
+                            "Estructura y Contenido de la Norma ISO 14001:2015",
+                            "Métodos para la identificación de los aspectos ambientales",
+                            "Evaluación de los aspectos ambientales directos e indirectos",
+                            "Como gestionar los aspectos ambientales en el sistema de gestión",
+                            "Relación con otros elementos de la norma y mejora continua del desempeño",
+                            "Casos prácticos"
+                        ]
+                    }
+                ],
+                docentes: [
+                    {
+                        name: "Dr. LEONARDO BRICEÑO AYALA MD. PhD",
+                        credentials: "",
+                        description: "Médico especialista en Salud Ocupacional de nacionalidad colombiana, con experiencia en medicina del trabajo en seguridad social, medicina empresarial. Director de los programas de Especialización Médica y Maestría en Seguridad y Salud en el Trabajo Universidad del Rosario Colombia. Autor de 63 Artículos científicos, libros, capítulos de libro, documentos de trabajo, Normas nacionales, documentos de política Pública."
+                    },
+                    {
+                        name: "DR. ANDRÉS ARCE GUADALUPE",
+                        credentials: "CMP. 40678 RNE. 22458",
+                        description: "Presidente de la Sociedad Peruana de Ergonomía – Sopergo. Médico Cirujano Especialista en Medicina Ocupacional y del Medio Ambiente USMP. Magíster en Ciencias con Especialidad en Seguridad y Salud Ocupacional Internacional por la Universitat Munchen (LMU) Alemania. Master en Ergonomía Laboral; Universidad de Girona-España."
+                    },
+                    {
+                        name: "M.SC. WILLIAM MICHAEL AVILA BASTIDAS",
+                        credentials: "CIP. 130343",
+                        description: "Magister en Higiene ocupacional por la Universidad Nacional de Ingeniería UNI. Ingeniero en Higiene y Seguridad Industrial UNI. Experiencia en consultorías de Seguridad y Salud en el Trabajo (SST) para la Organización Mundial del Trabajo (OIT) y el Ministerio de Trabajo y Promoción del Empleo (MTPE). Auditor de SST autorizado por el MTPE."
+                    },
+                    {
+                        name: "DR. KEVIN VIGIL VEGA",
+                        credentials: "CMP. 61815 RNM. 01457 RNA. 03055",
+                        description: "Médico Cirujano, Máster en Medicina Ocupacional y del Medio Ambiente por la Universidad Científica del Sur, Perú. Master en Seguridad y Salud en el Trabajo Prevención de Riesgos Laborales, por la Universidad Politécnica de Cataluña, España. Miembro de la Sociedad de Medicina del Trabajo de la Provincia de Buenos Aires y de la Sociedad de Medicina Ocupacional y Medio Ambiente en SOMOMA PERÚ."
+                    },
+                    {
+                        name: "ING. MARCOS ESCOBEDO QUISPE",
+                        credentials: "CIP. 204583",
+                        description: "Especialidad en Ingeniería Ambiental y Recursos Naturales. Maestría en Gestión Integrada de Seguridad, Salud Ocupacional y Medio Ambiente en la UNMSM. Auditor de SST autorizado y acreditado por el Ministerio de Trabajo y Promoción del Empleo (MTPE). Supervisor SSOMA, Implementación, seguimiento y cumplimiento del Sistema de Gestión SSOMA. Trabajo de campo en Antamina, Lincuna y Cerro Verde."
+                    }
+                ],
+                inversion: {
+                    matricula: "S/. 150",
+                    modulo: "S/. 180",
+                    diploma: "S/. 250"
+                }
+            }
+        };
+        
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const diplomadoCards = document.querySelectorAll('.diplomado-card');
+        const resultsCount = document.getElementById('resultsCount');
+        const noResults = document.getElementById('noResults');
+        const diplomadosGrid = document.getElementById('diplomadosGrid');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                filterDiplomados(category);
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filterDiplomados(null, searchTerm);
+        });
+        
+        function filterDiplomados(category = null, searchTerm = '') {
+            let visibleCount = 0;
+            
+            diplomadoCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardTitle = card.getAttribute('data-title').toLowerCase();
+                
+                let showCard = true;
+                
+                // Filter by category
+                if (category && category !== 'todos' && cardCategory !== category) {
+                    showCard = false;
+                }
+                
+                // Filter by search term
+                if (searchTerm && !cardTitle.includes(searchTerm)) {
+                    showCard = false;
+                }
+                
+                card.style.display = showCard ? 'block' : 'none';
+                if (showCard) visibleCount++;
+            });
+            
+            // Update results count
+            resultsCount.textContent = `${visibleCount} diplomados encontrados`;
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                diplomadosGrid.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                diplomadosGrid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+        }
+        
+        // Modal functionality
+        const modal = document.getElementById('diplomadoModal');
+        
+        function openModal(diplomadoId) {
+            const data = diplomadosData[diplomadoId];
+            if (!data) return;
+            
+            // Update modal content
+            document.getElementById('modalImage').src = data.image;
+            document.getElementById('modalTitle').textContent = data.title;
+            
+            // Update description tab
+            const descTab = document.getElementById('tab-descripcion');
+            descTab.innerHTML = `
+                ${data.descripcion.content}
+                <h3>A quién va dirigido</h3>
+                <p>${data.descripcion.dirigido}</p>
+                <h3>Objetivos</h3>
+                <p>${data.descripcion.objetivos}</p>
+                <h3>Beneficios</h3>
+                <div class="benefits-grid">
+                    ${data.descripcion.beneficios.map(benefit => `
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>${benefit}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Update plan tab
+            const planTab = document.getElementById('tab-plan');
+            planTab.innerHTML = `
+                <h3>Plan de Estudios</h3>
+                ${data.plan.map(module => `
+                    <div class="syllabus-module">
+                        <h4>${module.module} <span>${module.hours}</span></h4>
+                        <ul class="syllabus-topics">
+                            ${module.topics.map(topic => `<li>${topic}</li>`).join('')}
+                        </ul>
+                    </div>
+                `).join('')}
+            `;
+            
+            // Update docentes tab
+            const docentesTab = document.getElementById('tab-docentes');
+            docentesTab.innerHTML = `
+                <h3>Plana Docente</h3>
+                <div class="instructors-grid">
+                    ${data.docentes.map(docente => `
+                        <div class="instructor-card">
+                            <h4>${docente.name}</h4>
+                            ${docente.credentials ? `<p><strong>${docente.credentials}</strong></p>` : ''}
+                            <p>${docente.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Update inversion tab
+            const inversionTab = document.getElementById('tab-inversion');
+            inversionTab.innerHTML = `
+                <h3>Inversión</h3>
+                <div class="investment-box">
+                    <div class="investment-item">
+                        <strong>Matrícula:</strong>
+                        <span>${data.inversion.matricula}</span>
+                    </div>
+                    <div class="investment-item">
+                        <strong>Pago por Módulo:</strong>
+                        <span>${data.inversion.modulo}</span>
+                    </div>
+                    <div class="investment-item">
+                        <strong>Diploma:</strong>
+                        <span>${data.inversion.diploma}</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; text-align: center;">
+                    <a href="contacto.html" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Solicitar más información
+                    </a>
+                </p>
+            `;
+            
+            // Reset tabs
+            switchTab('descripcion');
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header-main');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            filterDiplomados('todos');
+        });
+    </script>
+</body>
+</html>

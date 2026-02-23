@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Contacto | Posgrado PEC - Consulta por Nuestros Diplomados</title>
+    <meta name="description" content="Contáctanos para más información sobre nuestros diplomados en salud. Asesoría personalizada, matrícula abierta. Puno, Perú.">
+    <meta name="keywords" content="contacto posgrado pec, información diplomados, matrícula, asesoría educativa">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ===== Variables CSS (Mismo sistema de diseño) ===== */
+        :root {
+            /* Colores Institucionales */
+            --color-primary: #E32B2B;
+            --color-primary-dark: #C41E1E;
+            --color-secondary: #1B3A57;
+            --color-secondary-dark: #0F2340;
+            --color-accent: #FFC107;
+            --color-success: #00C853;
+            --color-error: #FF5252;
+            
+            /* Colores Neutros */
+            --color-white: #FFFFFF;
+            --color-light: #F8F9FA;
+            --color-gray-light: #E9ECEF;
+            --color-gray: #6C757D;
+            --color-gray-dark: #495057;
+            --color-dark: #212529;
+            
+            /* Tipografía */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Open Sans', sans-serif;
+            
+            /* Espaciado */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+            
+            /* Transiciones */
+            --transition: all 0.3s ease;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* ===== Header (Reutilizado) ===== */
+        .header-top {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 0;
+            font-size: 0.875rem;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+        
+        .social-links a {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .btn-login {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-login:hover {
+            background-color: var(--color-light);
+        }
+        
+        .header-main {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .logo-main {
+            height: 60px;
+        }
+        
+        .logo-partners {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--color-gray-light);
+        }
+        
+        .logo-partners img {
+            height: 40px;
+            opacity: 0.8;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav-menu a {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--color-dark);
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        
+        .btn-contact {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-contact:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* ===== Page Banner ===== */
+        .page-banner {
+            background: linear-gradient(rgba(27, 58, 87, 0.9), rgba(227, 43, 43, 0.9)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200') center/cover;
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+        
+        .page-banner h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .page-banner p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        /* ===== Contact Info Section ===== */
+        .contact-info-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-light);
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .info-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .info-card p,
+        .info-card a {
+            color: var(--color-gray-dark);
+            font-size: 1.1rem;
+        }
+        
+        .info-card a:hover {
+            color: var(--color-primary);
+        }
+        
+        .social-media-box {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .social-media-box a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-media-box a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== Contact Form Section ===== */
+        .contact-form-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+        
+        .form-container {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-container h2 {
+            font-size: 2rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-container p {
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 0.95rem;
+        }
+        
+        .form-group label span {
+            color: var(--color-error);
+        }
+        
+        .form-control {
+            padding: 12px 20px;
+            border: 2px solid var(--color-gray-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-secondary);
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(227, 43, 43, 0.1);
+        }
+        
+        select.form-control {
+            cursor: pointer;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        .btn-submit {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 14px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            transition: var(--transition);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-submit:disabled {
+            background-color: var(--color-gray);
+            cursor: not-allowed;
+        }
+        
+        .form-success,
+        .form-error {
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-top: var(--spacing-md);
+            display: none;
+        }
+        
+        .form-success {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: var(--color-success);
+            border: 1px solid var(--color-success);
+        }
+        
+        .form-error {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--color-error);
+            border: 1px solid var(--color-error);
+        }
+        
+        /* ===== Map Section ===== */
+        .map-container {
+            background-color: var(--color-light);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            height: 100%;
+            min-height: 600px;
+        }
+        
+        .map-container h3 {
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .map-info {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .map-info p {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--color-gray-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .map-info i {
+            color: var(--color-primary);
+            width: 20px;
+        }
+        
+        .map-wrapper {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* ===== Quick Contact Section ===== */
+        .quick-contact {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        
+        .quick-contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        .quick-contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+        
+        .quick-contact-item i {
+            font-size: 1.5rem;
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            padding-top: var(--spacing-xxl);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-logos {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .footer-logos img {
+            height: 50px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-white);
+        }
+        
+        .footer-column i {
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: var(--color-accent);
+        }
+        
+        /* ===== WhatsApp Float ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: var(--color-white);
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            
+            .logo-partners {
+                display: none;
+            }
+            
+            .nav-menu,
+            .btn-contact {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: var(--shadow-xl);
+                gap: var(--spacing-sm);
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                min-height: auto;
+                margin-top: var(--spacing-lg);
+            }
+            
+            .quick-contact-content {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-logos {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 958 146 863</span>
+                    <span><i class="fas fa-envelope"></i> posgradopec@gmail.com</span>
+                    <span><i class="fas fa-clock"></i> Lunes - Viernes: 8:00 - 15:00</span>
+                </div>
+                <div class="social-links">
+                    <span>Síguenos:</span>
+                    <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Ingreso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header Principal -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-main-content">
+                <div class="logo-container">
+                    <img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main">
+                    <div class="logo-partners">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                </div>
+                
+                <nav class="nav-main">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="diplomados.html">Diplomados</a></li>
+                        <li><a href="testimonios.html">Testimonios</a></li>
+                        <li><a href="contacto.html" class="active">Contacto</a></li>
+                    </ul>
+                    <a href="contacto.html" class="btn-contact">
+                        <i class="fas fa-headset"></i> Contáctanos
+                    </a>
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>Estamos aquí para ayudarte. Resuelve todas tus dudas sobre nuestros diplomados y comienza tu camino hacia el éxito profesional.</p>
+        </div>
+    </section>
+    
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/51958146863">958 146 863</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Correo Electrónico</h3>
+                    <p><a href="mailto:posgradopec@gmail.com">posgradopec@gmail.com</a></p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horario de Atención</h3>
+                    <p>Lunes a Viernes: 8:00 AM - 3:00 PM</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Síguenos</h3>
+                    <div class="social-media-box">
+                        <a href="https://www.facebook.com/posgradopec" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/51958146863" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="form-container">
+                    <h2>Envíanos un mensaje</h2>
+                    <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad posible.</p>
+                    
+                    <form action="https://formspree.io/f/xzzvgbkw" method="POST" class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nombre completo <span>*</span></label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Teléfono <span>*</span></label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico <span>*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="diplomado">Diplomado de interés</label>
+                            <select id="diplomado" name="diplomado" class="form-control">
+                                <option value="">Seleccione un diplomado</option>
+                                <option value="Medicina Legal y Ciencias Forenses">Medicina Legal y Ciencias Forenses</option>
+                                <option value="Medicina Alternativa y Complementaria">Medicina Alternativa y Complementaria</option>
+                                <option value="Emergencias y Urgencias Médicas">Emergencias y Urgencias Médicas</option>
+                                <option value="Ecografía General y Velocimetría Doppler">Ecografía General y Velocimetría Doppler</option>
+                                <option value="Redacción y Publicación de Artículos Científicos">Redacción y Publicación de Artículos Científicos</option>
+                                <option value="Asesoría y Elaboración de Tesis en Salud">Asesoría y Elaboración de Tesis en Salud</option>
+                                <option value="Seguridad, Salud Ocupacional y Medio Ambiente">Seguridad, Salud Ocupacional y Medio Ambiente</option>
+                                <option value="Información general">Información general</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje <span>*</span></label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar mensaje
+                        </button>
+                        
+                        <div class="form-success" id="formSuccess">
+                            <i class="fas fa-check-circle"></i>
+                            ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.
+                        </div>
+                        
+                        <div class="form-error" id="formError">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="map-container">
+                    <h3>Ubicación</h3>
+                    <div class="map-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Av. El Sol N° 1109 - 2do Piso</p>
+                        <p><i class="fas fa-building"></i> Frente al Metropolitano</p>
+                        <p><i class="fas fa-city"></i> Puno, Perú</p>
+                    </div>
+                    
+                    <div class="map-wrapper">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.5!2d-70.0209111713712!3d-15.84284539756498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDUwJzM0LjIiUyA3MMKwMDEnMTUuMyJX!5e0!3m2!1ses!2spe!4v1234567890" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: center;">
+                        <a href="https://maps.app.goo.gl/bWtCuVuVG5jscVBZ7" target="_blank" class="btn-submit" style="display: inline-flex; width: auto;">
+                            <i class="fas fa-directions"></i>
+                            Ver en Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quick Contact -->
+    <section class="quick-contact">
+        <div class="container">
+            <div class="quick-contact-content">
+                <div class="quick-contact-item">
+                    <i class="fas fa-headset"></i>
+                    <span>¿Necesitas ayuda inmediata?</span>
+                </div>
+                <div class="quick-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/51958146863" style="color: white;">
+                        Escríbenos al WhatsApp: 958 146 863
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Posgrado PEC</h3>
+                    <p>Más de 10 años formando profesionales especializados en salud y medicina. Comprometidos con la excelencia académica y el desarrollo profesional.</p>
+
+                    <div class="footer-logos">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="inicio.html"><i class="fas fa-angle-right"></i> Inicio</a></li>
+                        <li><a href="nosotros.html"><i class="fas fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="diplomados.html"><i class="fas fa-angle-right"></i> Diplomados</a></li>
+                        <li><a href="testimonios.html"><i class="fas fa-angle-right"></i> Testimonios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Diplomados</h4>
+                    <ul>
+                        <li><a href="diplomados.html#medicina"><i class="fas fa-angle-right"></i> Medicina</a></li>
+                        <li><a href="diplomados.html#investigacion"><i class="fas fa-angle-right"></i> Investigación</a></li>
+                        <li><a href="diplomados.html#seguridad"><i class="fas fa-angle-right"></i> SSOMA</a></li>
+                        <li><a href="diplomados.html"><i class="fas fa-angle-right"></i> Ver todos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:+51958146863"><i class="fas fa-phone"></i> 958 146 863</a></li>
+                        <li><a href="mailto:posgradopec@gmail.com"><i class="fas fa-envelope"></i> posgradopec@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Puno, Perú</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> L-V: 8:00 - 15:00</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Posgrado PEC. Todos los derechos reservados. | 
+                <a href="privacy-policy.html">Política de Privacidad</a> | 
+                <a href="terms.html">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/51958146863" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Form handling
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Disable submit button
+            const submitBtn = contactForm.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    formSuccess.style.display = 'block';
+                    formError.style.display = 'none';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formSuccess.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            } catch (error) {
+                // Show error message
+                formError.style.display = 'block';
+                formSuccess.style.display = 'none';
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    formError.style.display = 'none';
+                }, 5000);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar mensaje';
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header-main');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Phone number format
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,3}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+    </script>
+</body>
+</html>

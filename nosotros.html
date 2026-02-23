@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Nosotros | Posgrado PEC - Conoce Nuestra Historia y Valores</title>
+    <meta name="description" content="Conoce la historia de Posgrado PEC, nuestra misión, visión y valores. Más de 20 años formando profesionales especializados en salud y medicina.">
+    <meta name="keywords" content="posgrado pec nosotros, historia, misión, visión, valores, equipo directivo">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ===== Variables CSS (Mismo sistema de diseño) ===== */
+        :root {
+            /* Colores Institucionales */
+            --color-primary: #E32B2B;
+            --color-primary-dark: #C41E1E;
+            --color-secondary: #1B3A57;
+            --color-secondary-dark: #0F2340;
+            --color-accent: #FFC107;
+            
+            /* Colores Neutros */
+            --color-white: #FFFFFF;
+            --color-light: #F8F9FA;
+            --color-gray-light: #E9ECEF;
+            --color-gray: #6C757D;
+            --color-gray-dark: #495057;
+            --color-dark: #212529;
+            
+            /* Tipografía */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Open Sans', sans-serif;
+            
+            /* Espaciado */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+            
+            /* Transiciones */
+            --transition: all 0.3s ease;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== Reset & Base (Reutilizado de inicio.html) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* ===== Header (Mismo de inicio.html) ===== */
+        .header-top {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 0;
+            font-size: 0.875rem;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+        
+        .social-links a {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .btn-login {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-login:hover {
+            background-color: var(--color-light);
+        }
+        
+        .header-main {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .logo-main {
+            height: 60px;
+        }
+        
+        .logo-partners {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+            padding-left: var(--spacing-md);
+            border-left: 2px solid var(--color-gray-light);
+        }
+        
+        .logo-partners img {
+            height: 40px;
+            opacity: 0.8;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav-menu a {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--color-dark);
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+        
+        .btn-contact {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .btn-contact:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* ===== Page Banner ===== */
+        .page-banner {
+            background: linear-gradient(rgba(27, 58, 87, 0.9), rgba(227, 43, 43, 0.9)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200') center/cover;
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+        }
+        
+        .page-banner h1 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.1rem;
+            animation: fadeInUp 0.8s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .breadcrumb a {
+            color: var(--color-white);
+            opacity: 0.8;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+        
+        /* ===== Intro Section ===== */
+        .intro-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-light);
+        }
+        
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .intro-text {
+            animation: fadeInLeft 0.8s ease;
+        }
+        
+        .intro-text h2 {
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .intro-text h2 span {
+            color: var(--color-primary);
+        }
+        
+        .intro-text p {
+            font-size: 1.125rem;
+            color: var(--color-gray-dark);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+        
+        .intro-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+        
+        .stat-box {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-dark);
+            display: block;
+        }
+        
+        .stat-box .label {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        
+        .intro-image {
+            position: relative;
+            animation: fadeInRight 0.8s ease;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* ===== Timeline Section ===== */
+        .timeline-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-header h2 span {
+            color: var(--color-primary);
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background-color: var(--color-primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: auto;
+            right: 50%;
+            padding-right: var(--spacing-xl);
+            padding-left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            left: 50%;
+            right: auto;
+            padding-left: var(--spacing-xl);
+            padding-right: 0;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 50%;
+            padding-left: var(--spacing-xl);
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .timeline-content p {
+            color: var(--color-gray-dark);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-primary);
+            border: 4px solid var(--color-white);
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+            z-index: 1;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            width: 50%;
+            right: 50%;
+            padding-right: var(--spacing-xl);
+            text-align: right;
+            font-weight: 700;
+            color: var(--color-dark);
+            font-size: 1.25rem;
+        }
+        
+        /* ===== Mission Vision Values ===== */
+        .mvv-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-light);
+        }
+        
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .mvv-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+            opacity: 0.05;
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .mvv-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .mvv-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-md);
+        }
+        
+        .mvv-card h3 {
+            font-size: 1.75rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .mvv-card p {
+            color: var(--color-gray-dark);
+            line-height: 1.8;
+        }
+        
+        /* ===== Values Grid ===== */
+        .values-container {
+            margin-top: var(--spacing-xl);
+        }
+        
+        .values-container h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .value-item {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+        
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .value-item:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .value-item i {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .value-item h4 {
+            font-size: 1.125rem;
+            color: var(--color-dark);
+            margin: 0;
+        }
+        
+        /* ===== Why Choose Us ===== */
+        .why-us-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-white);
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .why-card {
+            background-color: var(--color-light);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .why-card h4 {
+            font-size: 1.25rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .why-card p {
+            color: var(--color-gray-dark);
+            font-size: 0.95rem;
+        }
+        
+        /* ===== Team Section ===== */
+        .team-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .team-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-xl);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-card h4 {
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .team-position {
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .team-description {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== CTA Section (Reutilizado) ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-content h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            transition: var(--transition);
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+        
+        /* ===== Footer (Mismo de inicio.html) ===== */
+        .footer {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            padding-top: var(--spacing-xxl);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-logos {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .footer-logos img {
+            height: 50px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-white);
+        }
+        
+        .footer-column i {
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-bottom a {
+            color: var(--color-accent);
+        }
+        
+        /* ===== WhatsApp Float ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: var(--color-white);
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            
+            .logo-partners {
+                display: none;
+            }
+            
+            .nav-menu,
+            .btn-contact {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                box-shadow: var(--shadow-xl);
+                gap: var(--spacing-sm);
+            }
+            
+            .intro-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .intro-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .intro-image {
+                display: none;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 60px);
+                left: 60px;
+                right: auto;
+                padding-left: var(--spacing-lg);
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                display: none;
+            }
+            
+            .mvv-grid,
+            .values-grid,
+            .why-us-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-logos {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> 950 011 044</span>
+                    <span><i class="fas fa-envelope"></i> posgrado@pec.edu.pe</span>
+                    <span><i class="fas fa-clock"></i> Lunes - Viernes: 8:00 - 15:00</span>
+                </div>
+                <div class="social-links">
+                    <span>Síguenos:</span>
+                    <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Ingreso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header Principal -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-main-content">
+                <div class="logo-container">
+                    <img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main">
+                    <div class="logo-partners">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                </div>
+                
+                <nav class="nav-main">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="nosotros.html" class="active">Nosotros</a></li>
+                        <li><a href="diplomados.html">Diplomados</a></li>
+                        <li><a href="testimonios.html">Testimonios</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                    <a href="contacto.html" class="btn-contact">
+                        <i class="fas fa-headset"></i> Contáctanos
+                    </a>
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Nosotros</h1>
+            <div class="breadcrumb">
+                <a href="inicio.html"><i class="fas fa-home"></i> Casa</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Nosotros</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Conócenos <span>Mejor</span></h2>
+                    <p>Posgrado PEC, es persona Jurídica de derecho privado con plena autonomía conforme a sus estatutos y cuyos fines entre otros son: Fomentar y contribuir con la formación académica universitaria del profesional tanto a nivel nacional como Internacional, organizando y promoviendo servicios de capacitación y/o actualización, a nivel Nacional e Internacional.</p>
+                    
+                    <div class="intro-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-user-graduate"></i>
+                            <span class="number">300+</span>
+                            <span class="label">Estudiantes</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-certificate"></i>
+                            <span class="number">20+</span>
+                            <span class="label">Diplomados y cursos</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span class="number">100+</span>
+                            <span class="label">Clases Completadas</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-heart"></i>
+                            <span class="number">95%</span>
+                            <span class="label">Tasa de satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600" alt="Equipo Posgrado PEC">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra <span>Historia</span></h2>
+                <p>Más de dos décadas formando profesionales de excelencia</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2003</div>
+                    <div class="timeline-content">
+                        <h3>Fundación</h3>
+                        <p>Iniciamos nuestra misión educativa con el compromiso de formar profesionales especializados en salud y medicina.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2008</div>
+                    <div class="timeline-content">
+                        <h3>Primera Acreditación</h3>
+                        <p>Logramos nuestra primera acreditación universitaria, consolidando nuestra calidad académica.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2015</div>
+                    <div class="timeline-content">
+                        <h3>Expansión Nacional</h3>
+                        <p>Ampliamos nuestra cobertura a nivel nacional con programas virtuales y semipresenciales.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3>Transformación Digital</h3>
+                        <p>Implementamos nuestra plataforma virtual de última generación para educación a distancia.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3>Liderazgo Regional</h3>
+                        <p>Nos consolidamos como referente en formación especializada con más de 10,000 egresados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Vision Values Section -->
+    <section class="mvv-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Misión, Visión y <span>Valores</span></h2>
+                <p>Los pilares que guían nuestra institución</p>
+            </div>
+            
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Formar profesionales especializados de excelencia en salud y educación, mediante programas académicos de alta calidad, contribuyendo al desarrollo del país con ética, innovación y responsabilidad social.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Ser la institución líder en formación de posgrado a nivel nacional, reconocida por la excelencia académica, innovación educativa y el impacto positivo de nuestros egresados en la sociedad.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Compromiso</h3>
+                    <p>Nos comprometemos a brindar educación de calidad, fomentando el desarrollo integral de nuestros estudiantes y contribuyendo activamente al progreso de la salud y educación en el país.</p>
+                </div>
+            </div>
+            
+            <div class="values-container">
+                <h3>Nuestros Valores</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <i class="fas fa-crown"></i>
+                        <h4>LIDERAZGO</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>INNOVACIÓN</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-star"></i>
+                        <h4>CALIDAD</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-heart"></i>
+                        <h4>SOLIDARIDAD</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>RESPONSABILIDAD</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <h4>INTEGRIDAD</h4>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>RESPETO</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué <span>elegirnos?</span></h2>
+                <p>Ventajas que marcan la diferencia en tu formación profesional</p>
+            </div>
+            
+            <div class="why-us-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>CAMPUS VIRTUAL PEC</h4>
+                    <p>El campus virtual estará a tu disposición desde cualquier ubicación geográfica.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>PLANA DOCENTE</h4>
+                    <p>Docentes altamente calificados y de amplia experiencia, lo que garantiza la formación de primera calidad para los participantes.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>METODOLOGÍA</h4>
+                    <p>Aplica un modelo de formación por competencias y están constituidos por clases teóricas y prácticas, se aplica una metodología de clase invertida y aprendizaje activo con participación dinámica.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h4>MATERIAL DE ESTUDIO</h4>
+                    <p>Acceso a todos los materiales de estudio que conducen didácticamente tu aprendizaje hacia el cumplimiento de objetivos establecidos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro <span>Equipo Directivo</span></h2>
+                <p>Profesionales comprometidos con la excelencia educativa</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://i.pravatar.cc/300?img=8" alt="Director General">
+                    </div>
+                    <h4>Dr. Carlos Mendoza</h4>
+                    <p class="team-position">Director General</p>
+                    <p class="team-description">Médico especialista con más de 20 años de experiencia en gestión educativa y salud pública.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://i.pravatar.cc/300?img=5" alt="Directora Académica">
+                    </div>
+                    <h4>Dra. María Rodriguez</h4>
+                    <p class="team-position">Directora Académica</p>
+                    <p class="team-description">Doctora en Educación con especialización en diseño curricular y metodologías innovadoras.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://i.pravatar.cc/300?img=7" alt="Coordinador de Programas">
+                    </div>
+                    <h4>Mg. Juan Pérez</h4>
+                    <p class="team-position">Coordinador de Programas</p>
+                    <p class="team-description">Magíster en Gestión de la Salud con amplia experiencia en coordinación de programas educativos.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Únete a nuestra comunidad educativa</h2>
+                <p>Forma parte de los miles de profesionales que han transformado su carrera con nosotros</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://wa.me/51950011044" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+                    </a>
+                    <a href="diplomados.html" class="btn btn-secondary">
+                        <i class="fas fa-graduation-cap"></i> Ver Diplomados
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Posgrado PEC</h3>
+                    <p>Más de 20 años formando profesionales especializados en salud y medicina. Comprometidos con la excelencia académica y el desarrollo profesional.</p>
+                    
+                    <div class="footer-logos">
+                        <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
+                        <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
+                        <img src="https://www.sunedu.gob.pe/sunedu/public/images/logo-sunedu.png" alt="SUNEDU">
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/posgradopec" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/posgrado.pec?igsh=MTRvd3ZmYTlrczdzbA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="inicio.html"><i class="fas fa-angle-right"></i> Inicio</a></li>
+                        <li><a href="nosotros.html"><i class="fas fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="diplomados.html"><i class="fas fa-angle-right"></i> Diplomados</a></li>
+                        <li><a href="testimonios.html"><i class="fas fa-angle-right"></i> Testimonios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Diplomados</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> SSOMA</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Medicina Legal</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Emergencias Médicas</a></li>
+                        <li><a href="diplomados.html"><i class="fas fa-angle-right"></i> Ver todos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="tel:+51950011044"><i class="fas fa-phone"></i> 950 011 044</a></li>
+                        <li><a href="mailto:posgrado@pec.edu.pe"><i class="fas fa-envelope"></i> posgrado@pec.edu.pe</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Puno, Perú</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> L-V: 8:00 - 15:00</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Posgrado PEC. Todos los derechos reservados. | 
+                <a href="privacy-policy.html">Política de Privacidad</a> | 
+                <a href="terms.html">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/51950011044" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header-main');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Animación de números al hacer scroll
+        const animateNumbers = () => {
+            const numbers = document.querySelectorAll('.stat-box .number');
+            
+            numbers.forEach(number => {
+                const target = parseInt(number.innerText.replace(/[^0-9]/g, ''));
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateNumber = () => {
+                    if (current < target) {
+                        current += increment;
+                        number.innerText = Math.ceil(current) + (number.innerText.includes('%') ? '%' : '+');
+                        setTimeout(updateNumber, 30);
+                    } else {
+                        number.innerText = number.innerText.includes('%') ? target + '%' : target + '+';
+                    }
+                };
+                
+                // Iniciar animación cuando el elemento sea visible
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        updateNumber();
+                        observer.unobserve(number);
+                    }
+                });
+                
+                observer.observe(number);
+            });
+        };
+        
+        // Animación de elementos al scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animación
+        document.querySelectorAll('.timeline-item, .mvv-card, .value-item, .why-card, .team-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Inicializar animaciones
+        document.addEventListener('DOMContentLoaded', () => {
+            animateNumbers();
+        });
+    </script>
+</body>
+</html>

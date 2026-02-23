@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual - Posgrado PEC</title>
+    <meta name="description" content="Accede a nuestra plataforma de aprendizaje virtual. Recursos, clases y materiales disponibles 24/7.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #212121;
+            background: linear-gradient(135deg, #1A237E 0%, #3949AB 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 0.8;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .redirect-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .icon-container {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FF6F00, #FFA726);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: #1A237E;
+            margin-bottom: 20px;
+        }
+        
+        .description {
+            color: #616161;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .redirect-info {
+            background: #F5F5F5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .redirect-info p {
+            color: #424242;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .countdown {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF6F00;
+            margin: 20px 0;
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #FF6F00;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #E65100;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #1A237E;
+            border: 2px solid #1A237E;
+        }
+        
+        .btn-secondary:hover {
+            background: #1A237E;
+            color: white;
+        }
+        
+        /* Features */
+        .features {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        .features h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #1A237E;
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .feature-item {
+            padding: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item h4 {
+            color: #424242;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .feature-item p {
+            color: #616161;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 111, 0, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(255, 111, 0, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 111, 0, 0);
+            }
+        }
+        
+        /* Loading animation */
+        .loading-dots {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .redirect-container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown {
+                font-size: 2.5rem;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="inicio.html" class="logo">Posgrado PEC</a>
+            <a href="inicio.html" class="back-link">
+                ← Volver al inicio
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="redirect-container">
+            <div class="icon-container">
+                🎓
+            </div>
+            
+            <h1>Aula Virtual</h1>
+            
+            <p class="description">
+                Estás siendo redirigido a nuestra plataforma de aprendizaje donde encontrarás todos tus cursos, materiales y recursos educativos.
+            </p>
+            
+            <div class="redirect-info">
+                <p>Serás redirigido automáticamente en</p>
+                <div class="countdown" id="countdown">5</div>
+                <p>segundos<span class="loading-dots"></span></p>
+            </div>
+            
+            <div class="buttons-container">
+                <a href="#" class="btn btn-primary" id="goNow">
+                    Ir ahora al Aula Virtual
+                </a>
+                <a href="inicio.html" class="btn btn-secondary">
+                    Cancelar
+                </a>
+            </div>
+            
+            <div class="features">
+                <h3>En el Aula Virtual encontrarás:</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <h4>Materiales</h4>
+                        <p>Recursos actualizados</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎥</div>
+                        <h4>Clases</h4>
+                        <p>Videos y conferencias</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💬</div>
+                        <h4>Foros</h4>
+                        <p>Interacción con docentes</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h4>Evaluaciones</h4>
+                        <p>Seguimiento continuo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Leer parametros de redirect
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectParam = urlParams.get('redirect') || '';
+        var COUNTDOWN_SECONDS = 5;
+
+        // Extraer el numero de diplomado del redirect URL (ej: ?diplomado=3)
+        // y redirigir al archivo local cursos.html
+        var REDIRECT_URL = 'login.html';
+        if (redirectParam) {
+            try {
+                var redirectUrl = new URL(redirectParam);
+                var diplomadoNum = redirectUrl.searchParams.get('diplomado');
+                if (diplomadoNum) {
+                    REDIRECT_URL = 'cursos.html?diplomado=' + diplomadoNum;
+                } else {
+                    REDIRECT_URL = redirectParam;
+                }
+            } catch(e) {
+                // Si no es URL valida, usar como esta
+                REDIRECT_URL = redirectParam;
+            }
+        }
+
+        // Actualizar el boton "Ir ahora" con la URL correcta
+        var goNowButton = document.getElementById('goNow');
+        goNowButton.href = REDIRECT_URL;
+
+        // Si no hay redirect valido, mostrar mensaje y redirigir al login
+        if (!redirectParam) {
+            document.querySelector('.description').textContent =
+                'No se encontro una sesion activa. Seras redirigido al login para iniciar sesion.';
+        }
+
+        var countdown = COUNTDOWN_SECONDS;
+        var countdownElement = document.getElementById('countdown');
+
+        // Funcion para actualizar el contador
+        function updateCountdown() {
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                window.location.href = REDIRECT_URL;
+            } else {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        // Iniciar contador
+        updateCountdown();
+
+        // Manejar clic en "Ir ahora"
+        goNowButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = REDIRECT_URL;
+        });
+
+        // Animacion del icono
+        var iconContainer = document.querySelector('.icon-container');
+        setInterval(function() {
+            iconContainer.style.animation = 'none';
+            setTimeout(function() {
+                iconContainer.style.animation = 'pulse 2s infinite';
+            }, 10);
+        }, 4000);
+    </script>
+</body>
+</html>

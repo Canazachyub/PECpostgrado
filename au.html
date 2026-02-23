@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login con Credenciales</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: url('https://raw.githubusercontent.com/Canazachyub/sinapsis-recursos/refs/heads/main/pagina%20web%20fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .backbox,
+        .frontbox {
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .backbox {
+            background: linear-gradient(135deg, rgba(64, 64, 64, 0.7), rgba(85, 85, 85, 0.7));
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .frontbox {
+            background-color: white;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        .textcontent {
+            color: white;
+            margin: 20px 0;
+        }
+
+        .textcontent p {
+            margin: 10px 0;
+        }
+
+        .loginMsg,
+        .signupMsg {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .loginMsg button,
+        .signupMsg button {
+            background-color: #404040;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .loginMsg button:hover,
+        .signupMsg button:hover {
+            background-color: white;
+            color: #404040;
+        }
+
+        .login,
+        .signup {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .login h2,
+        .signup h2 {
+            color: #35B729;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .inputbox {
+            margin-top: 20px;
+        }
+
+        .inputbox input {
+            display: block;
+            width: 100%;
+            height: 45px;
+            background-color: #f2f2f2;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 16px;
+            padding: 0 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .inputbox input:focus {
+            background-color: #e6e6e6;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login button,
+        .signup button {
+            background-color: #35B729;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login button:hover,
+        .signup button:hover {
+            background-color: #2b8f24;
+        }
+
+        .login p,
+        .signup p {
+            cursor: pointer;
+            color: #404040;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 30px auto;
+            }
+
+            .backbox,
+            .frontbox {
+                padding: 15px;
+            }
+
+            .login h2,
+            .signup h2 {
+                font-size: 20px;
+            }
+
+            .inputbox input {
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .login button,
+            .signup button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="frontbox">
+            <div class="login active">
+                <h2>INICIAR SESIÓN</h2>
+                <form id="login-form">
+                    <div class="inputbox">
+                        <input type="text" id="email" name="email" placeholder="Correo electrónico">
+                        <input type="password" id="password" name="password" placeholder="Contraseña">
+                    </div>
+                    <p onclick="forgotPassword()">¿Olvidaste tu contraseña?</p>
+                    <!-- Div para mostrar el mensaje de error -->
+                    <div id="login-error" class="error-message"></div>
+                    <button type="submit" id="login-btn">
+                        <span>Iniciar Sesión</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+            </div>
+            <div class="signup">
+                <h2>REGISTRARSE</h2>
+                <form id="signup-form" action="https://formspree.io/f/mnqkovnn" method="POST">
+                    <div class="inputbox">
+                        <input type="text" name="fullname" placeholder="Nombre completo">
+                        <input type="text" name="email" placeholder="Correo electrónico">
+                        <input type="text" name="telefono" placeholder="Celular">
+                    </div>
+                    <button type="submit" id="signup-btn">
+                        <span>Solicitar Una Cuenta</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="backbox">
+            <div class="loginMsg">
+                <div class="textcontent">
+                    <p class="title">¿No tienes una cuenta?</p>
+                    <p>Regístrate para acceder a nuestros materiales</p>
+                    <button id="switch1">Registrarse</button>
+                </div>
+            </div>
+            <div class="signupMsg">
+                <div class="textcontent">
+                    <p class="title">¿Ya tienes una cuenta?</p>
+                    <p>Inicia sesión para ver todos tus materiales.</p>
+                    <button id="switch2">Iniciar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics-compat.js"></script>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD_29xgcHE1KDdw6451G0dbrA-6bVN23t8",
+            authDomain: "cepreunap-17584.firebaseapp.com",
+            projectId: "cepreunap-17584",
+            storageBucket: "cepreunap-17584.appspot.com",
+            messagingSenderId: "1030673397132",
+            appId: "1:1030673397132:web:83b3abefbd13907b8492a9",
+            measurementId: "G-5MXDH36VEC"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        // Referencia al servicio de autenticación
+        const auth = firebase.auth();
+
+        // Selección de elementos del DOM
+        const switch1 = document.getElementById('switch1');
+        const switch2 = document.getElementById('switch2');
+        const loginBox = document.querySelector('.login');
+        const signupBox = document.querySelector('.signup');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const errorMessageDiv = document.getElementById('login-error');
+
+        switch1.addEventListener('click', () => {
+            loginBox.classList.remove('active');
+            signupBox.classList.add('active');
+        });
+
+        switch2.addEventListener('click', () => {
+            signupBox.classList.remove('active');
+            loginBox.classList.add('active');
+        });
+
+        // Evento de envío del formulario de inicio de sesión
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMessageDiv.innerText = ''; // Limpiar mensaje de error
+            showSpinner(loginBtn);
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                console.log('Autenticación exitosa');
+                window.location.href = "https://script.google.com/macros/s/AKfycbydgnyF2sky1t-imyhK-FUR7B9bGVAe28AbuR3ehOeixtUj4JWetuoymL_UtK5NHGCM/exec";
+            } catch (error) {
+                console.error('Error de autenticación:', error.message);
+                let message = '';
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        message = 'La cuenta no existe.';
+                        break;
+                    case 'auth/wrong-password':
+                        message = 'Contraseña incorrecta.';
+                        break;
+                    case 'auth/invalid-email':
+                        message = 'El correo electrónico no es válido.';
+                        break;
+                    case 'auth/user-disabled':
+                        message = 'Esta cuenta ha sido deshabilitada.';
+                        break;
+                    default:
+                        message = 'Error de autenticación. Por favor, intenta de nuevo.';
+                        break;
+                }
+                errorMessageDiv.innerText = message;
+            } finally {
+                hideSpinner(loginBtn);
+            }
+        });
+
+        // Evento de envío del formulario de registro
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showSpinner(signupBtn);
+            // Simulación del registro
+            setTimeout(() => {
+                hideSpinner(signupBtn);
+                // Aquí puedes agregar la lógica de registro real
+            }, 2000);
+        });
+
+        function showSpinner(button) {
+            button.querySelector('span').style.display = 'none';
+            button.querySelector('.spinner').style.display = 'inline-block';
+        }
+
+        function hideSpinner(button) {
+            button.querySelector('span').style.display = 'inline';
+            button.querySelector('.spinner').style.display = 'none';
+        }
+
+        function forgotPassword() {
+            const email = prompt("Por favor, ingresa tu dirección de correo electrónico:");
+            if (email) {
+                auth.sendPasswordResetEmail(email)
+                    .then(() => {
+                        alert("Se ha enviado un correo electrónico para restablecer tu contraseña. Por favor, revisa tu bandeja de entrada.");
+                    })
+                    .catch((error) => {
+                        alert("Error: " + error.message);
+                    });
+            }
+        }
+    </script>
+
+    <!-- JavaScript opcional -->
+    <!-- jQuery primero, luego Popper.js, luego Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

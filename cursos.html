@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual - Plataforma Educativa</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- SortableJS para drag and drop -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+    <!-- DOMPurify para sanitización -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #b51c24;
+            --secondary-color: #0d1d34;
+            --white: #FFFFFF;
+            --light-gray: #f0f2f5;
+            --dark-gray: #495057;
+            --forest-green: #2a7d4b;
+            --golden-ochre: #c59948;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--light-gray); }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+        .animate-scale-in { animation: scaleIn 0.2s ease-out; }
+
+        .columna {
+            min-width: 340px;
+            max-width: 340px;
+            background: var(--white);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 120px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .columna:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .columna-header {
+            padding: 1.25rem;
+            border-radius: 16px 16px 0 0;
+            background: var(--secondary-color);
+            color: var(--white);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .columna-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            min-height: 200px;
+        }
+
+        .tarjeta {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+            cursor: grab;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .tarjeta:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .tarjeta.dragging { opacity: 0.5; cursor: grabbing; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 29, 52, 0.7);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: scaleIn 0.2s ease-out;
+        }
+
+        .modal-video {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+
+        .modal-video .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .modal-video iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .modal-video { max-width: 95vw; }
+            .modal-video .video-container { padding-bottom: 75%; }
+        }
+
+        @media (min-width: 1400px) {
+            .modal-video { max-width: 1200px; }
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #951821;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(181, 28, 36, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gray);
+            color: var(--secondary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+            transform: translateY(-1px);
+        }
+
+        .drop-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: var(--light-gray);
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--primary-color);
+            background: #fef2f2;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            color: var(--dark-gray);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+            background-color: rgba(181, 28, 36, 0.05);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: rgba(181, 28, 36, 0.08);
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.3s ease-out; }
+        .tab-content.active { display: block; }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(181, 28, 36, 0.1);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .notification {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            z-index: 100;
+            animation: fadeIn 0.3s ease-out;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .notification.success { background: var(--forest-green); color: var(--white); }
+        .notification.error { background: var(--primary-color); color: var(--white); }
+
+        .spinner {
+            border: 3px solid var(--light-gray);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .columna { min-width: 300px; max-width: 300px; }
+            .modal-content { max-width: 95vw; margin: 0.5rem; }
+        }
+
+        .tarjeta-descripcion {
+            color: var(--dark-gray);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .video-thumbnail-wrapper {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-play-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: rgba(181, 28, 36, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail-wrapper:hover .video-play-button {
+            background: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .quick-action-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            color: var(--dark-gray);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .quick-action-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .video-thumbnail-wrapper img { transition: transform 0.3s ease; }
+        .video-thumbnail-wrapper:hover img { transform: scale(1.05); }
+        .tarjeta img { max-height: 300px; object-fit: cover; }
+
+        .tarjeta .clickable-card { cursor: pointer; }
+        .tarjeta:has(.clickable-card):hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .delete-btn { position: relative; z-index: 10; }
+        .tarjeta-content { position: relative; }
+        .tarjeta:has([data-url]):hover { border-color: var(--primary-color); }
+
+        .modal-video .p-4 {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-video .video-container {
+            flex: 1;
+            margin: 0 auto;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .modal.active .modal-video { animation: scaleIn 0.3s ease-out; }
+
+        @media (max-aspect-ratio: 16/9) {
+            .modal-video .video-container { padding-bottom: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold" style="color: var(--secondary-color);">
+                        <i class="fas fa-graduation-cap mr-3" style="color: var(--primary-color);"></i>
+                        <span id="diplomadoTitle">Aula Virtual</span>
+                    </h1>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="text"
+                               id="searchInput"
+                               placeholder="Buscar contenido..."
+                               class="form-input pl-10 pr-4 w-64">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+
+                    <button onclick="showModal('add-column')" class="btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Nueva Columna
+                    </button>
+
+                    <button onclick="showStats()" class="quick-action-btn">
+                        <i class="fas fa-chart-line"></i>
+                    </button>
+
+                    <a href="inicio.html" class="quick-action-btn" title="Volver al inicio">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <main class="flex-1 overflow-hidden">
+        <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+            <div class="text-center">
+                <div class="spinner mx-auto mb-4"></div>
+                <p class="text-lg" style="color: var(--secondary-color); font-family: 'Montserrat', sans-serif;">
+                    Cargando Aula Virtual...
+                </p>
+            </div>
+        </div>
+
+        <div id="columnasContainer" class="flex gap-6 p-6 overflow-x-auto h-full" style="display: none;">
+        </div>
+    </main>
+
+    <!-- Modal para agregar columna -->
+    <div id="modal-add-column" class="modal">
+        <div class="modal-content">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
+                    Nueva Columna
+                </h2>
+
+                <form id="formNuevaColumna" onsubmit="crearColumna(event)">
+                    <div class="mb-6">
+                        <label class="form-label">Titulo de la columna</label>
+                        <input type="text" name="titulo" required class="form-input" placeholder="Ej: Recursos principales">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="form-label">Color de la columna</label>
+                        <div class="flex gap-3">
+                            <button type="button" onclick="selectColor(this, '#b51c24')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #b51c24;"></button>
+                            <button type="button" onclick="selectColor(this, '#0d1d34')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #0d1d34;"></button>
+                            <button type="button" onclick="selectColor(this, '#2a7d4b')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #2a7d4b;"></button>
+                            <button type="button" onclick="selectColor(this, '#c59948')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #c59948;"></button>
+                            <button type="button" onclick="selectColor(this, '#495057')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #495057;"></button>
+                        </div>
+                        <input type="hidden" name="color" value="#0d1d34">
+                    </div>
+
+                    <div class="flex justify-end gap-3">
+                        <button type="button" onclick="closeModal('add-column')" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-check"></i> Crear Columna
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar tarjeta -->
+    <div id="modal-add-card" class="modal">
+        <div class="modal-content">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
+                    Nueva Tarjeta
+                </h2>
+
+                <div class="border-b border-gray-200 mb-6">
+                    <nav class="flex -mb-px">
+                        <button onclick="switchTab('texto')" class="tab-button active" data-tab="texto">
+                            <i class="fas fa-align-left mr-2"></i>Texto
+                        </button>
+                        <button onclick="switchTab('link')" class="tab-button" data-tab="link">
+                            <i class="fas fa-link mr-2"></i>Enlace
+                        </button>
+                        <button onclick="switchTab('video')" class="tab-button" data-tab="video">
+                            <i class="fas fa-play-circle mr-2"></i>Video
+                        </button>
+                        <button onclick="switchTab('archivo')" class="tab-button" data-tab="archivo">
+                            <i class="fas fa-file-upload mr-2"></i>Archivo
+                        </button>
+                    </nav>
+                </div>
+
+                <form id="formNuevaTarjeta" onsubmit="crearTarjeta(event)">
+                    <input type="hidden" name="columnaId" id="tarjetaColumnaId">
+                    <input type="hidden" name="tipo" value="texto">
+
+                    <!-- Tab Texto -->
+                    <div class="tab-content active" data-content="texto">
+                        <div class="mb-5">
+                            <label class="form-label">Titulo</label>
+                            <input type="text" name="titulo_texto" class="form-input" placeholder="Titulo de la tarjeta">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Contenido</label>
+                            <textarea name="contenido_texto" rows="4" class="form-input" placeholder="Escribe el contenido principal..."></textarea>
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Descripcion adicional</label>
+                            <textarea name="descripcion_texto" rows="2" class="form-input" placeholder="Descripcion o notas adicionales..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tab Link -->
+                    <div class="tab-content" data-content="link">
+                        <div class="mb-5">
+                            <label class="form-label">URL del enlace</label>
+                            <input type="url" name="url_link" class="form-input" placeholder="https://ejemplo.com" onblur="previewLink(this.value)">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Titulo del enlace</label>
+                            <input type="text" name="titulo_link" class="form-input" placeholder="Titulo descriptivo del enlace">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Descripcion</label>
+                            <textarea name="descripcion_link" rows="3" class="form-input" placeholder="Describe brevemente el contenido del enlace..."></textarea>
+                        </div>
+                        <div id="linkPreview" class="hidden"></div>
+                    </div>
+
+                    <!-- Tab Video -->
+                    <div class="tab-content" data-content="video">
+                        <div class="mb-5">
+                            <label class="form-label">URL del video (YouTube, Vimeo)</label>
+                            <input type="url" name="url_video" class="form-input" placeholder="https://youtube.com/watch?v=..." onblur="previewVideo(this.value)">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Titulo del video</label>
+                            <input type="text" name="titulo_video" class="form-input" placeholder="Titulo del video">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Descripcion</label>
+                            <textarea name="descripcion_video" rows="3" class="form-input" placeholder="Describe el contenido del video..."></textarea>
+                        </div>
+                        <div id="videoPreview" class="hidden"></div>
+                    </div>
+
+                    <!-- Tab Archivo -->
+                    <div class="tab-content" data-content="archivo">
+                        <div class="mb-5">
+                            <label class="form-label">Archivo</label>
+                            <div class="drop-zone" id="dropZone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                                <i class="fas fa-cloud-upload-alt text-5xl mb-3" style="color: var(--primary-color);"></i>
+                                <p class="text-gray-600 mb-3">Arrastra archivos aqui o</p>
+                                <input type="file" id="fileInput" name="archivo" accept=".pdf,.jpg,.jpeg,.png,.gif,.mp4,.webm,.ppt,.pptx,.doc,.docx" onchange="handleFileSelect(event)" class="hidden">
+                                <button type="button" onclick="document.getElementById('fileInput').click()" class="btn-primary">
+                                    Seleccionar archivo
+                                </button>
+                            </div>
+                            <div id="filePreview" class="hidden mt-4"></div>
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Titulo del archivo</label>
+                            <input type="text" name="titulo_archivo" class="form-input" placeholder="Titulo descriptivo">
+                        </div>
+                        <div class="mb-5">
+                            <label class="form-label">Descripcion</label>
+                            <textarea name="descripcion_archivo" rows="3" class="form-input" placeholder="Describe el contenido del archivo..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end gap-3 mt-8">
+                        <button type="button" onclick="closeModal('add-card')" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Crear Tarjeta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para reproducir videos -->
+    <div id="modal-video-player" class="modal">
+        <div class="modal-content modal-video">
+            <div class="p-4 sm:p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="video-modal-title" class="text-lg sm:text-xl font-bold pr-4" style="font-family: 'Montserrat', sans-serif;">
+                        Reproduciendo Video
+                    </h3>
+                    <button onclick="closeVideoModal()" class="quick-action-btn flex-shrink-0">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="video-container" id="video-modal-content"></div>
+                <div id="video-modal-description" class="mt-4 p-3 sm:p-4 bg-gray-50 rounded-lg" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de estadisticas -->
+    <div id="modal-stats" class="modal">
+        <div class="modal-content">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
+                    Estadisticas del Aula Virtual
+                </h2>
+                <div id="statsContent" class="space-y-6"></div>
+                <div class="flex justify-end mt-8">
+                    <button onclick="closeModal('stats')" class="btn-secondary">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // CONFIGURACION API REST
+        // ============================================================
+        // IMPORTANTE: Pega aqui la URL de tu deployment de Apps Script
+        var API_URL = 'PEGAR_URL_DEL_DEPLOYMENT_AQUI';
+
+        // ============================================================
+        // HELPERS PARA COMUNICACION CON API
+        // ============================================================
+
+        async function apiGet(action, params) {
+            params = params || {};
+            var url = API_URL + '?action=' + encodeURIComponent(action);
+            Object.keys(params).forEach(function(key) {
+                if (params[key] !== undefined && params[key] !== null) {
+                    url += '&' + encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+                }
+            });
+            var response = await fetch(url);
+            var text = await response.text();
+            return JSON.parse(text);
+        }
+
+        async function apiPost(data) {
+            var response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(data)
+            });
+            var text = await response.text();
+            return JSON.parse(text);
+        }
+
+        // ============================================================
+        // VARIABLES GLOBALES
+        // ============================================================
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var currentDiplomadoId = urlParams.get('diplomado') || '1';
+        var diplomadoInfo = { nombre: 'Cargando...', abreviatura: '' };
+
+        var padletData = {
+            columnas: [],
+            tarjetas: {},
+            config: {}
+        };
+
+        var currentColumnaId = null;
+        var selectedFile = null;
+        var sortableInstances = [];
+        var updateInterval = null;
+
+        // ============================================================
+        // INICIALIZACION
+        // ============================================================
+
+        window.addEventListener('load', async function() {
+            // Obtener info del diplomado
+            try {
+                var infoResponse = await apiGet('getDiplomadoInfo', { diplomado: currentDiplomadoId });
+                if (infoResponse.success) {
+                    diplomadoInfo = infoResponse.diplomado;
+                }
+            } catch(e) {
+                console.error('Error obteniendo info del diplomado:', e);
+            }
+
+            document.getElementById('diplomadoTitle').textContent = 'Diplomado en ' + diplomadoInfo.nombre;
+            document.title = 'Aula Virtual - ' + diplomadoInfo.nombre;
+
+            cargarDatos();
+
+            updateInterval = setInterval(function() {
+                cargarDatosEnSegundoPlano();
+            }, 10000);
+        });
+
+        // Event delegation para clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.delete-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                var btn = e.target.closest('.delete-btn');
+                var tarjetaId = btn.dataset.id;
+                eliminarTarjeta(tarjetaId);
+                return;
+            }
+
+            if (e.target.closest('.video-thumbnail-wrapper')) {
+                e.preventDefault();
+                var wrapper = e.target.closest('.video-thumbnail-wrapper');
+                var tarjetaEl = wrapper.closest('.tarjeta');
+                var videoUrl = wrapper.dataset.videoUrl || tarjetaEl.dataset.url;
+                var titulo = tarjetaEl.dataset.titulo || 'Video';
+                var descripcion = tarjetaEl.dataset.descripcion || '';
+                var embedUrl = getEmbedUrl(videoUrl);
+                if (embedUrl) {
+                    openVideoModal(tarjetaEl.dataset.id, embedUrl, titulo, descripcion);
+                }
+                return;
+            }
+
+            var clickableCard = e.target.closest('.clickable-card');
+            if (clickableCard && clickableCard.dataset.url) {
+                e.preventDefault();
+                window.open(clickableCard.dataset.url, '_blank');
+                return;
+            }
+        });
+
+        // ============================================================
+        // COMUNICACION CON API REST
+        // ============================================================
+
+        async function cargarDatos() {
+            try {
+                var response = await apiGet('getAll', { diplomado: currentDiplomadoId });
+                onDataLoaded(response);
+            } catch (error) {
+                onError(error);
+            }
+        }
+
+        async function cargarDatosEnSegundoPlano() {
+            try {
+                var response = await apiGet('getAll', { diplomado: currentDiplomadoId });
+                if (response.success) {
+                    actualizarDatosDiferencial(response);
+                }
+            } catch (error) {
+                // Silencioso
+            }
+        }
+
+        function actualizarDatosDiferencial(newData) {
+            if (JSON.stringify(newData) !== JSON.stringify(padletData)) {
+                padletData = newData;
+                renderizarColumnas();
+            }
+        }
+
+        function onDataLoaded(response) {
+            if (response.success) {
+                padletData = response;
+                renderizarColumnas();
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('columnasContainer').style.display = 'flex';
+            } else {
+                showError('Error cargando datos: ' + (response.error || 'Error desconocido'));
+            }
+        }
+
+        function onError(error) {
+            console.error('Error:', error);
+            showError('Error de conexion. Por favor, recarga la pagina.');
+        }
+
+        // ============================================================
+        // RENDERIZADO
+        // ============================================================
+
+        function renderizarColumnas() {
+            var container = document.getElementById('columnasContainer');
+            var scrollPosition = container.scrollLeft;
+            container.innerHTML = '';
+
+            sortableInstances.forEach(function(instance) { instance.destroy(); });
+            sortableInstances = [];
+
+            padletData.columnas.forEach(function(columna) {
+                var columnaEl = crearElementoColumna(columna);
+                container.appendChild(columnaEl);
+
+                var tarjetas = padletData.tarjetas[columna.id] || [];
+                var tarjetasElements = columnaEl.querySelectorAll('.tarjeta');
+                tarjetasElements.forEach(function(tarjetaEl, index) {
+                    if (tarjetas[index]) {
+                        tarjetaEl.tarjetaData = tarjetas[index];
+                    }
+                });
+
+                var sortable = new Sortable(columnaEl.querySelector('.columna-content'), {
+                    group: 'tarjetas',
+                    animation: 150,
+                    ghostClass: 'opacity-50',
+                    dragClass: 'dragging',
+                    onEnd: function(evt) {
+                        var tarjetaId = evt.item.dataset.id;
+                        var fromColumnaId = evt.from.dataset.columnaId;
+                        var toColumnaId = evt.to.dataset.columnaId;
+                        var newIndex = evt.newIndex;
+
+                        if (fromColumnaId !== toColumnaId || evt.oldIndex !== evt.newIndex) {
+                            moverTarjeta(tarjetaId, toColumnaId, newIndex + 1);
+                        }
+                    }
+                });
+                sortableInstances.push(sortable);
+            });
+
+            container.scrollLeft = scrollPosition;
+
+            new Sortable(container, {
+                animation: 150,
+                handle: '.columna-header',
+                onEnd: function(evt) {
+                    var newOrder = Array.from(container.children).map(function(col) {
+                        return col.dataset.columnaId;
+                    });
+                    reordenarColumnas(newOrder);
+                }
+            });
+        }
+
+        function crearElementoColumna(columna) {
+            var div = document.createElement('div');
+            div.className = 'columna animate-fade-in';
+            div.dataset.columnaId = columna.id;
+
+            var tarjetas = padletData.tarjetas[columna.id] || [];
+
+            div.innerHTML =
+                '<div class="columna-header flex justify-between items-center" style="background-color: ' + (columna.color || 'var(--secondary-color)') + '">' +
+                    '<h3 class="font-semibold text-lg">' + columna.titulo + '</h3>' +
+                    '<div class="flex items-center gap-3">' +
+                        '<span class="text-sm opacity-90 bg-white/20 px-2 py-1 rounded-full">' + tarjetas.length + '</span>' +
+                        '<button onclick="showAddCardModal(\'' + columna.id + '\')" class="hover:bg-white/20 p-2 rounded-lg transition-colors">' +
+                            '<i class="fas fa-plus"></i>' +
+                        '</button>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="columna-content" data-columna-id="' + columna.id + '">' +
+                    tarjetas.map(function(tarjeta) { return crearElementoTarjeta(tarjeta); }).join('') +
+                '</div>';
+
+            return div;
+        }
+
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function crearElementoTarjeta(tarjeta) {
+            var cursorStyle = (tarjeta.url || tarjeta.tipo === 'video' || tarjeta.tipo === 'imagen' || tarjeta.tipo === 'pdf') ? 'cursor: pointer;' : '';
+            var contenidoHTML = '';
+
+            switch(tarjeta.tipo) {
+                case 'texto':
+                    contenidoHTML =
+                        '<div class="tarjeta-content">' +
+                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Sin titulo') + '</h4>' +
+                            '<p class="text-gray-600 text-sm">' + (tarjeta.contenido || '') + '</p>' +
+                            (tarjeta.descripcion ? '<div class="tarjeta-descripcion">' + tarjeta.descripcion + '</div>' : '') +
+                        '</div>';
+                    break;
+
+                case 'link':
+                    var hostname = '';
+                    try { hostname = new URL(tarjeta.url || 'https://example.com').hostname; } catch(e) { hostname = 'enlace'; }
+                    contenidoHTML =
+                        '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '#') + '">' +
+                            '<div class="mb-2">' +
+                                '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Enlace') + '</h4>' +
+                                (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mt-1">' + tarjeta.descripcion + '</p>' : '') +
+                            '</div>' +
+                            (tarjeta.thumbnailUrl ?
+                                '<div class="mt-3 rounded-lg overflow-hidden border border-gray-200 hover:border-blue-400 transition-colors">' +
+                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-32 object-cover" alt="Preview" onerror="this.parentElement.style.display=\'none\'">' +
+                                '</div>' : '') +
+                            '<div class="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors mt-3">' +
+                                '<i class="fas fa-external-link-alt"></i>' +
+                                '<span class="underline text-sm">' + hostname + '</span>' +
+                            '</div>' +
+                        '</div>';
+                    break;
+
+                case 'video':
+                    contenidoHTML =
+                        '<div class="tarjeta-content">' +
+                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Video') + '</h4>' +
+                            (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mb-2">' + tarjeta.descripcion + '</p>' : '') +
+                            '<div class="video-thumbnail-wrapper relative overflow-hidden rounded-lg bg-gray-200" data-video-id="' + tarjeta.id + '" data-video-url="' + (tarjeta.url || '') + '" style="cursor: pointer; aspect-ratio: 16/9;">' +
+                                (tarjeta.thumbnailUrl ?
+                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-full object-cover" alt="' + (tarjeta.titulo || 'Video') + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' : '') +
+                                '<div class="flex items-center justify-center w-full h-full ' + (tarjeta.thumbnailUrl ? 'absolute inset-0' : '') + '" ' + (tarjeta.thumbnailUrl ? 'style="display:none;"' : '') + '>' +
+                                    '<i class="fas fa-video text-4xl text-gray-400"></i>' +
+                                '</div>' +
+                                '<div class="video-play-button">' +
+                                    '<i class="fas fa-play text-white text-xl ml-1"></i>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                    break;
+
+                case 'pdf':
+                    contenidoHTML =
+                        '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '#') + '">' +
+                            '<div class="flex items-start gap-3 mb-3">' +
+                                '<div class="flex-shrink-0"><i class="fas fa-file-pdf text-3xl" style="color: var(--primary-color);"></i></div>' +
+                                '<div class="flex-grow">' +
+                                    '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Documento PDF') + '</h4>' +
+                                    (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mt-1">' + tarjeta.descripcion + '</p>' : '') +
+                                '</div>' +
+                            '</div>' +
+                            (tarjeta.thumbnailUrl ?
+                                '<div class="mb-3 rounded-lg overflow-hidden border border-gray-200 hover:opacity-90 transition-opacity">' +
+                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-48 object-cover" alt="' + (tarjeta.titulo || 'PDF') + '" onerror="this.parentElement.style.display=\'none\'">' +
+                                '</div>' : '') +
+                            '<div class="text-center text-sm text-red-600 hover:text-red-700"><i class="fas fa-eye mr-1"></i>Ver PDF</div>' +
+                        '</div>';
+                    break;
+
+                case 'imagen':
+                    var imageSrc = tarjeta.thumbnailUrl || tarjeta.url || '';
+                    contenidoHTML =
+                        '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '') + '">' +
+                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Imagen') + '</h4>' +
+                            (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mb-2">' + tarjeta.descripcion + '</p>' : '') +
+                            '<img src="' + imageSrc + '" class="w-full rounded-lg hover:opacity-95 transition-opacity" alt="' + (tarjeta.titulo || '') + '" onerror="this.src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZTBlMCIvPjwvc3ZnPg==\'">' +
+                        '</div>';
+                    break;
+
+                default:
+                    contenidoHTML =
+                        '<div class="tarjeta-content">' +
+                            '<div class="flex items-start gap-3">' +
+                                '<i class="fas fa-file text-2xl text-gray-400 mt-1"></i>' +
+                                '<div>' +
+                                    '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Archivo') + '</h4>' +
+                                    '<p class="text-gray-600 text-sm mt-1">' + (tarjeta.contenido || '') + '</p>' +
+                                    (tarjeta.descripcion ? '<div class="tarjeta-descripcion">' + tarjeta.descripcion + '</div>' : '') +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+            }
+
+            return '<div class="tarjeta" data-id="' + tarjeta.id + '" data-tipo="' + tarjeta.tipo + '" data-url="' + (tarjeta.url || '') + '" data-titulo="' + escapeHtml(tarjeta.titulo || '') + '" data-descripcion="' + escapeHtml(tarjeta.descripcion || '') + '" style="' + cursorStyle + '">' +
+                contenidoHTML +
+                '<div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">' +
+                    '<span class="text-xs text-gray-500">' + formatDate(tarjeta.fechaCreacion) + '</span>' +
+                    '<button class="delete-btn text-red-500 hover:text-red-700 text-sm transition-colors" data-id="' + tarjeta.id + '" onclick="event.stopPropagation();">' +
+                        '<i class="fas fa-trash"></i>' +
+                    '</button>' +
+                '</div>' +
+            '</div>';
+        }
+
+        // ============================================================
+        // FUNCIONES DE VIDEO
+        // ============================================================
+
+        function openVideoModal(tarjetaId, embedUrl, title, description) {
+            var modal = document.getElementById('modal-video-player');
+            var titleEl = document.getElementById('video-modal-title');
+            var contentEl = document.getElementById('video-modal-content');
+            var descriptionEl = document.getElementById('video-modal-description');
+
+            titleEl.textContent = title || 'Reproduciendo Video';
+
+            if (embedUrl && embedUrl !== 'null' && embedUrl !== '') {
+                var finalEmbedUrl = embedUrl;
+                if (embedUrl.includes('youtube.com')) {
+                    var sep = embedUrl.includes('?') ? '&' : '?';
+                    finalEmbedUrl = embedUrl + sep + 'autoplay=1&rel=0&modestbranding=1';
+                } else if (embedUrl.includes('vimeo.com')) {
+                    var sep2 = embedUrl.includes('?') ? '&' : '?';
+                    finalEmbedUrl = embedUrl + sep2 + 'autoplay=1&title=0&byline=0&portrait=0';
+                }
+
+                contentEl.innerHTML = '<iframe src="' + finalEmbedUrl + '" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="' + escapeHtml(title || 'Video') + '" loading="lazy"></iframe>';
+            } else {
+                contentEl.innerHTML = '<div class="flex items-center justify-center h-full min-h-[300px] bg-gray-100 rounded-lg"><div class="text-center"><i class="fas fa-exclamation-triangle text-4xl text-gray-400 mb-3"></i><p class="text-gray-600">No se puede cargar el video</p></div></div>';
+            }
+
+            if (description && description !== 'null' && description !== '') {
+                descriptionEl.innerHTML = '<h4 class="font-semibold mb-2 text-sm sm:text-base">Descripcion</h4><p class="text-gray-600 text-sm">' + escapeHtml(description) + '</p>';
+                descriptionEl.style.display = 'block';
+            } else {
+                descriptionEl.style.display = 'none';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            var modal = document.getElementById('modal-video-player');
+            document.getElementById('video-modal-content').innerHTML = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            var descriptionEl = document.getElementById('video-modal-description');
+            if (descriptionEl) { descriptionEl.innerHTML = ''; descriptionEl.style.display = 'none'; }
+        }
+
+        function getEmbedUrl(url) {
+            if (!url) return null;
+            try {
+                if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                    var videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+                    return videoId ? 'https://www.youtube.com/embed/' + videoId[1] : null;
+                }
+                if (url.includes('vimeo.com')) {
+                    var vimeoId = url.match(/vimeo\.com\/(\d+)/);
+                    return vimeoId ? 'https://player.vimeo.com/video/' + vimeoId[1] : null;
+                }
+                if (url.includes('drive.google.com')) {
+                    var fileId = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+                    return fileId ? 'https://drive.google.com/file/d/' + fileId[1] + '/preview' : null;
+                }
+            } catch (error) {
+                console.error('Error getting embed URL:', error);
+            }
+            return null;
+        }
+
+        // ============================================================
+        // OPERACIONES CRUD
+        // ============================================================
+
+        async function crearColumna(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            var columna = {
+                titulo: formData.get('titulo'),
+                color: formData.get('color')
+            };
+
+            showLoading('Creando columna...');
+            try {
+                await apiPost({
+                    action: 'createColumna',
+                    columna: columna,
+                    diplomadoId: currentDiplomadoId
+                });
+                hideLoading();
+                closeModal('add-column');
+                event.target.reset();
+                cargarDatos();
+                showNotification('Columna creada exitosamente', 'success');
+            } catch (error) {
+                hideLoading();
+                onError(error);
+            }
+        }
+
+        async function crearTarjeta(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            var tipo = formData.get('tipo');
+
+            var tarjeta = {
+                columnaId: formData.get('columnaId'),
+                tipo: tipo,
+                diplomadoId: currentDiplomadoId
+            };
+
+            switch(tipo) {
+                case 'texto':
+                    tarjeta.titulo = formData.get('titulo_texto');
+                    tarjeta.contenido = formData.get('contenido_texto');
+                    tarjeta.descripcion = formData.get('descripcion_texto');
+                    break;
+                case 'link':
+                    tarjeta.url = formData.get('url_link');
+                    tarjeta.titulo = formData.get('titulo_link') || 'Enlace';
+                    tarjeta.descripcion = formData.get('descripcion_link');
+                    break;
+                case 'video':
+                    tarjeta.url = formData.get('url_video');
+                    tarjeta.titulo = formData.get('titulo_video') || 'Video';
+                    tarjeta.descripcion = formData.get('descripcion_video');
+                    break;
+                case 'archivo':
+                    if (selectedFile) {
+                        var titulo = formData.get('titulo_archivo') || selectedFile.name;
+                        var descripcion = formData.get('descripcion_archivo');
+                        uploadFile(selectedFile, tarjeta.columnaId, titulo, descripcion);
+                        closeModal('add-card');
+                        return;
+                    }
+                    break;
+            }
+
+            showLoading('Creando tarjeta...');
+            try {
+                await apiPost({
+                    action: 'createTarjeta',
+                    tarjeta: tarjeta,
+                    diplomadoId: currentDiplomadoId
+                });
+                hideLoading();
+                closeModal('add-card');
+                event.target.reset();
+                cargarDatos();
+                showNotification('Tarjeta creada exitosamente', 'success');
+            } catch (error) {
+                hideLoading();
+                onError(error);
+            }
+        }
+
+        async function moverTarjeta(tarjetaId, toColumnaId, position) {
+            try {
+                await apiPost({
+                    action: 'moveTarjeta',
+                    id: tarjetaId,
+                    toColumnaId: toColumnaId,
+                    position: position,
+                    diplomadoId: currentDiplomadoId
+                });
+                showNotification('Tarjeta movida', 'success');
+            } catch (error) {
+                onError(error);
+            }
+        }
+
+        async function eliminarTarjeta(tarjetaId) {
+            if (confirm('Confirmas eliminar esta tarjeta?')) {
+                try {
+                    await apiPost({
+                        action: 'deleteTarjeta',
+                        id: tarjetaId,
+                        diplomadoId: currentDiplomadoId
+                    });
+                    cargarDatos();
+                    showNotification('Tarjeta eliminada', 'success');
+                } catch (error) {
+                    onError(error);
+                }
+            }
+        }
+
+        async function reordenarColumnas(newOrder) {
+            try {
+                await apiPost({
+                    action: 'reorderColumnas',
+                    order: newOrder,
+                    diplomadoId: currentDiplomadoId
+                });
+                showNotification('Columnas reordenadas', 'success');
+            } catch (error) {
+                onError(error);
+            }
+        }
+
+        // ============================================================
+        // MANEJO DE ARCHIVOS
+        // ============================================================
+
+        function handleFileSelect(event) {
+            var file = event.target.files[0];
+            if (file) { selectedFile = file; showFilePreview(file); }
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById('dropZone').classList.remove('drag-over');
+            var files = event.dataTransfer.files;
+            if (files.length > 0) { selectedFile = files[0]; showFilePreview(files[0]); }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById('dropZone').classList.add('drag-over');
+        }
+
+        function handleDragLeave(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById('dropZone').classList.remove('drag-over');
+        }
+
+        function showFilePreview(file) {
+            var preview = document.getElementById('filePreview');
+            var fileIcon = getFileIcon(file.type);
+            preview.innerHTML =
+                '<div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">' +
+                    '<i class="fas ' + fileIcon + ' text-3xl" style="color: var(--primary-color);"></i>' +
+                    '<div><p class="font-semibold">' + file.name + '</p>' +
+                    '<p class="text-sm text-gray-500">' + (file.size / 1024 / 1024).toFixed(2) + ' MB</p></div>' +
+                '</div>';
+            preview.classList.remove('hidden');
+        }
+
+        function getFileIcon(mimeType) {
+            if (mimeType.includes('pdf')) return 'fa-file-pdf';
+            if (mimeType.includes('image')) return 'fa-file-image';
+            if (mimeType.includes('video')) return 'fa-file-video';
+            if (mimeType.includes('presentation')) return 'fa-file-powerpoint';
+            if (mimeType.includes('document')) return 'fa-file-word';
+            return 'fa-file';
+        }
+
+        function uploadFile(file, columnaId, titulo, descripcion) {
+            var reader = new FileReader();
+            reader.onload = async function(e) {
+                var fileData = e.target.result.split(',')[1];
+                var data = {
+                    action: 'uploadFile',
+                    fileData: fileData,
+                    fileName: file.name,
+                    fileType: file.type,
+                    columnaId: columnaId,
+                    diplomadoId: currentDiplomadoId,
+                    titulo: titulo || file.name,
+                    descripcion: descripcion || ''
+                };
+
+                showLoading('Subiendo archivo...');
+                try {
+                    await apiPost(data);
+                    hideLoading();
+                    selectedFile = null;
+                    cargarDatos();
+                    showNotification('Archivo subido exitosamente', 'success');
+                } catch (error) {
+                    hideLoading();
+                    onError(error);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ============================================================
+        // UTILIDADES UI
+        // ============================================================
+
+        function showModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+            var form = document.querySelector('#modal-' + modalId + ' form');
+            if (form) form.reset();
+            var linkPreview = document.getElementById('linkPreview');
+            var videoPreview = document.getElementById('videoPreview');
+            var filePreview = document.getElementById('filePreview');
+            if (linkPreview) linkPreview.classList.add('hidden');
+            if (videoPreview) videoPreview.classList.add('hidden');
+            if (filePreview) filePreview.classList.add('hidden');
+            selectedFile = null;
+        }
+
+        function showAddCardModal(columnaId) {
+            currentColumnaId = columnaId;
+            document.getElementById('tarjetaColumnaId').value = columnaId;
+            showModal('add-card');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-button').forEach(function(btn) { btn.classList.remove('active'); });
+            document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(function(content) { content.classList.remove('active'); });
+            document.querySelector('[data-content="' + tabName + '"]').classList.add('active');
+            document.querySelector('input[name="tipo"]').value = tabName;
+        }
+
+        function selectColor(button, color) {
+            button.parentElement.querySelectorAll('button').forEach(function(btn) {
+                btn.classList.remove('ring-4', 'ring-offset-2');
+                btn.style.transform = 'scale(1)';
+            });
+            button.classList.add('ring-4', 'ring-offset-2');
+            button.style.transform = 'scale(1.1)';
+            document.querySelector('input[name="color"]').value = color;
+        }
+
+        function showNotification(message, type) {
+            type = type || 'success';
+            var notification = document.createElement('div');
+            notification.className = 'notification ' + type + ' animate-fade-in';
+            notification.innerHTML = '<i class="fas fa-' + (type === 'success' ? 'check-circle' : 'exclamation-circle') + ' text-xl"></i><span>' + message + '</span>';
+            document.body.appendChild(notification);
+            setTimeout(function() {
+                notification.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(function() { notification.remove(); }, 300);
+            }, 3000);
+        }
+
+        function showSuccess(message) { showNotification(message, 'success'); }
+        function showError(message) { showNotification(message, 'error'); }
+
+        function showLoading(message) {
+            message = message || 'Cargando...';
+            var loading = document.createElement('div');
+            loading.id = 'loadingOverlay';
+            loading.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+            loading.innerHTML = '<div class="bg-white rounded-2xl p-8 flex items-center gap-4 shadow-2xl"><div class="spinner"></div><span class="text-lg font-medium">' + message + '</span></div>';
+            document.body.appendChild(loading);
+        }
+
+        function hideLoading() {
+            var loading = document.getElementById('loadingOverlay');
+            if (loading) loading.remove();
+        }
+
+        // ============================================================
+        // FUNCIONES AUXILIARES
+        // ============================================================
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            try {
+                var date = new Date(dateString);
+                var now = new Date();
+                var diffMs = now - date;
+                var diffMins = Math.floor(diffMs / 60000);
+                if (diffMins < 1) return 'Ahora';
+                if (diffMins < 60) return 'Hace ' + diffMins + 'm';
+                var diffHours = Math.floor(diffMins / 60);
+                if (diffHours < 24) return 'Hace ' + diffHours + 'h';
+                var diffDays = Math.floor(diffHours / 24);
+                if (diffDays < 7) return 'Hace ' + diffDays + 'd';
+                return date.toLocaleDateString('es-ES');
+            } catch (e) { return ''; }
+        }
+
+        function previewLink(url) {
+            if (!url) return;
+            var preview = document.getElementById('linkPreview');
+            try {
+                var urlObj = new URL(url);
+                preview.innerHTML =
+                    '<div class="p-4 bg-gray-50 rounded-lg border border-gray-200">' +
+                        '<div class="flex items-center gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-globe"></i><span>Vista previa del enlace</span></div>' +
+                        '<div class="flex items-center gap-2">' +
+                            '<img src="https://www.google.com/s2/favicons?domain=' + urlObj.hostname + '&sz=32" alt="favicon" class="w-6 h-6" onerror="this.style.display=\'none\'">' +
+                            '<div><p class="font-semibold text-gray-800">' + urlObj.hostname + '</p><p class="text-xs text-gray-500">' + url + '</p></div>' +
+                        '</div>' +
+                    '</div>';
+                preview.classList.remove('hidden');
+            } catch (e) {
+                preview.innerHTML = '<div class="p-4 bg-red-50 rounded-lg border border-red-200"><p class="text-sm text-red-600">URL invalida</p></div>';
+                preview.classList.remove('hidden');
+            }
+        }
+
+        function previewVideo(url) {
+            if (!url) return;
+            var embedUrl = getEmbedUrl(url);
+            if (embedUrl) {
+                var preview = document.getElementById('videoPreview');
+                preview.innerHTML = '<div class="border rounded-lg overflow-hidden"><div class="aspect-w-16 aspect-h-9"><iframe src="' + embedUrl + '" allowfullscreen class="w-full h-64"></iframe></div></div>';
+                preview.classList.remove('hidden');
+            }
+        }
+
+        async function showStats() {
+            showModal('stats');
+            try {
+                var response = await apiGet('getStats');
+                if (response.success) {
+                    var stats = response.stats;
+                    var content = document.getElementById('statsContent');
+                    content.innerHTML =
+                        '<div class="grid grid-cols-2 gap-4">' +
+                            '<div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">' +
+                                '<h3 class="font-bold text-blue-900 mb-2">Columnas</h3>' +
+                                '<p class="text-3xl font-bold text-blue-700">' + stats.columnas.total + '</p>' +
+                                '<p class="text-sm text-blue-600 mt-1">' + stats.columnas.activas + ' activas</p>' +
+                            '</div>' +
+                            '<div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">' +
+                                '<h3 class="font-bold text-green-900 mb-2">Tarjetas</h3>' +
+                                '<p class="text-3xl font-bold text-green-700">' + stats.tarjetas.total + '</p>' +
+                                '<p class="text-sm text-green-600 mt-1">' + (stats.tarjetas.ultimaSemana || 0) + ' esta semana</p>' +
+                            '</div>' +
+                            '<div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">' +
+                                '<h3 class="font-bold text-purple-900 mb-2">Archivos</h3>' +
+                                '<p class="text-3xl font-bold text-purple-700">' + (stats.archivos.fileCount || 0) + '</p>' +
+                                '<p class="text-sm text-purple-600 mt-1">' + (stats.archivos.totalSizeFormatted || '0 MB') + '</p>' +
+                            '</div>' +
+                            '<div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl">' +
+                                '<h3 class="font-bold text-amber-900 mb-2">Actividad</h3>' +
+                                '<p class="text-3xl font-bold text-amber-700">' + (stats.tarjetas.ultimoMes || 0) + '</p>' +
+                                '<p class="text-sm text-amber-600 mt-1">Ultimo mes</p>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="mt-4 text-center text-sm text-gray-500">' +
+                            '<p>Diplomado: ' + diplomadoInfo.nombre + '</p>' +
+                        '</div>';
+                }
+            } catch (error) {
+                onError(error);
+            }
+        }
+
+        // Busqueda en tiempo real
+        var searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            var query = e.target.value.toLowerCase();
+            searchTimeout = setTimeout(function() {
+                document.querySelectorAll('.tarjeta').forEach(function(tarjeta) {
+                    var content = tarjeta.textContent.toLowerCase();
+                    var columna = tarjeta.closest('.columna');
+                    var matches = content.includes(query);
+                    tarjeta.style.display = matches || !query ? 'block' : 'none';
+                    var visibleCards = columna.querySelectorAll('.tarjeta[style="display: block;"]').length;
+                    columna.style.opacity = visibleCards > 0 || !query ? '1' : '0.5';
+                });
+            }, 300);
+        });
+
+        // Cerrar modales al hacer clic fuera
+        document.querySelectorAll('.modal').forEach(function(modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    var modalId = modal.id.replace('modal-', '');
+                    if (modalId === 'video-player') {
+                        closeVideoModal();
+                    } else {
+                        closeModal(modalId);
+                    }
+                }
+            });
+        });
+
+        // Atajos de teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(function(modal) {
+                    var modalId = modal.id.replace('modal-', '');
+                    if (modalId === 'video-player') { closeVideoModal(); } else { closeModal(modalId); }
+                });
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        // Limpiar intervalos al salir
+        window.addEventListener('beforeunload', function() {
+            if (updateInterval) clearInterval(updateInterval);
+        });
+    </script>
+</body>
+</html>
