@@ -154,6 +154,8 @@ Segun el ROL del usuario:
    - Ver contenido (texto, links, videos, PDFs, imagenes)
    - Buscar contenido (Ctrl+K)
    - Ver estadisticas
+   - Marcar materiales como completados (checkbox por tarjeta)
+   - Ver progreso en header y modal de resumen por columna
    - NO puede crear/editar/eliminar nada
    - NO puede arrastrar tarjetas
    - Ve icono de candado para login admin
@@ -288,6 +290,51 @@ Aula-Virtual-Files/
 - **Fondo:** Patron sutil de puntos
 - **Notificaciones:** Gradientes (verde exito, rojo error)
 
+### Sistema de Progreso del Estudiante
+
+Permite a los estudiantes trackear su avance en el material del diplomado. Usa **localStorage** (sin backend).
+
+```
+Estudiante entra a cursos.html?diplomado=N
+        |
+        v
+loadProgress() lee localStorage (clave: pec_progress_N)
+        |
+        v
+Cada tarjeta muestra checkbox circular a la izquierda de la fecha
+Header muestra barra de progreso "X/Y completados"
+        |
+        v
+Click en checkbox → toggleProgress(cardId)
+        → Checkbox se pone verde con animacion
+        → Tarjeta se marca visualmente (borde verde, fondo verde sutil)
+        → Barra en header se actualiza
+        → saveProgress() guarda en localStorage
+        |
+        v
+Click en barra de progreso del header
+        → Abre modal con resumen detallado:
+           - Porcentaje total con barra grande
+           - Progreso por columna (nombre + barra + "X/Y")
+           - Mensaje motivacional al 50% y 100%
+           - Boton "Reiniciar progreso"
+```
+
+**Almacenamiento:**
+- Clave localStorage: `pec_progress_[diplomadoId]` (independiente por diplomado)
+- Formato: `{ "card-uuid": { done: true, at: timestamp } }`
+- Persiste entre sesiones en el mismo navegador/dispositivo
+
+**Elementos visuales:**
+| Elemento | Descripcion |
+|----------|-------------|
+| **Checkbox** | Circulo 22px, gris sin completar, verde con check al completar |
+| **Tarjeta completada** | Borde izquierdo verde, fondo verde sutil, titulo verde, contenido 75% opacidad |
+| **Barra header** | Mini barra 80px + texto "X/Y", visible solo para estudiantes |
+| **Modal progreso** | Porcentaje grande, barra total, desglose por columna, boton reiniciar |
+
+**Nota:** El progreso NO se ve en modo admin (los checkboxes se reemplazan por botones eliminar).
+
 ---
 
 ## Tecnologias
@@ -301,6 +348,7 @@ Aula-Virtual-Files/
 | Drag & Drop | SortableJS (solo admin) |
 | Seguridad XSS | DOMPurify |
 | Auth Admin | SHA-256 hash + token en localStorage (24h) |
+| Progreso Estudiante | localStorage por diplomado (sin backend) |
 | Backend | Google Apps Script |
 | Base de datos | Google Sheets |
 | Almacenamiento | Google Drive |
