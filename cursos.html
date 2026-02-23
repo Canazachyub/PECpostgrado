@@ -14,312 +14,403 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- SortableJS para drag and drop -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
-    <!-- DOMPurify para sanitización -->
+    <!-- DOMPurify para sanitizacion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 
     <style>
         :root {
-            --primary-color: #b51c24;
-            --secondary-color: #0d1d34;
+            --primary: #E32B2B;
+            --primary-dark: #C41E1E;
+            --primary-light: #FF4444;
+            --secondary: #1B3A57;
+            --secondary-dark: #0F2438;
+            --secondary-light: #2A5580;
+            --accent: #FFC107;
+            --accent-dark: #E5AC00;
             --white: #FFFFFF;
-            --light-gray: #f0f2f5;
-            --dark-gray: #495057;
-            --forest-green: #2a7d4b;
-            --golden-ochre: #c59948;
+            --bg: #F0F2F5;
+            --bg-subtle: #E8ECF1;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --green: #059669;
+            --green-light: #D1FAE5;
+            --border-video: #E32B2B;
+            --border-link: #3B82F6;
+            --border-texto: #059669;
+            --border-pdf: #991B1B;
+            --border-imagen: #8B5CF6;
+            --border-archivo: #6B7280;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--gray-700);
+            background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
+            background-size: 24px 24px;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
-            color: var(--secondary-color);
+            color: var(--secondary);
         }
 
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--light-gray); }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
 
+        /* ===== ANIMACIONES ===== */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes scaleIn {
             from { transform: scale(0.95); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
-
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; }
         }
-
-        .animate-fade-in { animation: fadeIn 0.3s ease-out; }
-        .animate-scale-in { animation: scaleIn 0.2s ease-out; }
-
-        .columna {
-            min-width: 340px;
-            max-width: 340px;
-            background: var(--white);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            max-height: calc(100vh - 120px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
-
-        .columna:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .columna-header {
-            padding: 1.25rem;
-            border-radius: 16px 16px 0 0;
-            background: var(--secondary-color);
-            color: var(--white);
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .columna-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
-            min-height: 200px;
-        }
-
-        .tarjeta {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
-            cursor: grab;
-            transition: all 0.2s ease;
-            border: 1px solid #e5e7eb;
-        }
-
-        .tarjeta:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-            border-color: var(--primary-color);
-        }
-
-        .tarjeta.dragging { opacity: 0.5; cursor: grabbing; }
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(13, 29, 52, 0.7);
-            z-index: 50;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal.active { display: flex; }
-
-        .modal-content {
-            background: var(--white);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 680px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: scaleIn 0.2s ease-out;
-        }
-
-        .modal-video {
-            max-width: 90vw;
-            max-height: 90vh;
-        }
-
-        .modal-video .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .modal-video iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: 0;
-        }
-
-        @media (max-width: 768px) {
-            .modal-video { max-width: 95vw; }
-            .modal-video .video-container { padding-bottom: 75%; }
-        }
-
-        @media (min-width: 1400px) {
-            .modal-video { max-width: 1200px; }
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 500;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary:hover {
-            background-color: #951821;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(181, 28, 36, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: var(--light-gray);
-            color: var(--secondary-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid #e5e7eb;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background-color: #e5e7eb;
-            transform: translateY(-1px);
-        }
-
-        .drop-zone {
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            background-color: var(--light-gray);
-        }
-
-        .drop-zone.drag-over {
-            border-color: var(--primary-color);
-            background: #fef2f2;
-        }
-
-        .tab-button {
-            padding: 1rem 1.5rem;
-            font-weight: 500;
-            color: var(--dark-gray);
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s ease;
-            font-family: 'Montserrat', sans-serif;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        .tab-button:hover {
-            color: var(--primary-color);
-            background-color: rgba(181, 28, 36, 0.05);
-        }
-
-        .tab-button.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-            background-color: rgba(181, 28, 36, 0.08);
-        }
-
-        .tab-content { display: none; animation: fadeIn 0.3s ease-out; }
-        .tab-content.active { display: block; }
-
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(181, 28, 36, 0.1);
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .notification {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            z-index: 100;
-            animation: fadeIn 0.3s ease-out;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .notification.success { background: var(--forest-green); color: var(--white); }
-        .notification.error { background: var(--primary-color); color: var(--white); }
-
-        .spinner {
-            border: 3px solid var(--light-gray);
-            border-top: 3px solid var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        @media (max-width: 768px) {
-            .columna { min-width: 300px; max-width: 300px; }
-            .modal-content { max-width: 95vw; margin: 0.5rem; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .tarjeta-descripcion {
-            color: var(--dark-gray);
+        .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+        .animate-scale-in { animation: scaleIn 0.25s ease-out; }
+
+        /* ===== LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 50%, #0a1929 100%);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(255,255,255,0.15);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        .loading-text {
+            color: rgba(255,255,255,0.8);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1.25rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .loading-logo {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== HEADER ===== */
+        .app-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            padding: 0 1.5rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .header-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .header-title i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header-search {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--white);
+            padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+            border-radius: 8px;
             font-size: 0.875rem;
-            line-height: 1.5;
+            width: 220px;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .header-search::placeholder { color: rgba(255,255,255,0.5); }
+        .header-search:focus {
+            outline: none;
+            background: rgba(255,255,255,0.18);
+            border-color: var(--accent);
+            width: 280px;
+        }
+        .search-wrapper {
+            position: relative;
+        }
+        .search-wrapper i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        .header-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .header-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+        .header-btn.active-admin {
+            background: var(--accent);
+            color: var(--secondary-dark);
+            border-color: var(--accent);
+        }
+
+        .btn-new-column {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+        }
+        .btn-new-column:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(227,43,43,0.3);
+        }
+
+        /* ===== ADMIN BADGE ===== */
+        .admin-badge {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--secondary-dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* ===== COLUMNAS ===== */
+        .columna {
+            min-width: 340px;
+            max-width: 340px;
+            background: var(--white);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 88px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .columna:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .columna-header {
+            padding: 1rem 1.25rem;
+            border-radius: 14px 14px 0 0;
+            color: var(--white);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+        }
+        .columna-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.75rem;
+            min-height: 120px;
+        }
+        .columna-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            color: var(--gray-400);
+            text-align: center;
+        }
+        .columna-empty i { font-size: 2rem; margin-bottom: 0.75rem; opacity: 0.5; }
+        .columna-empty p { font-size: 0.8rem; }
+        .columna-empty .add-card-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.8rem;
             margin-top: 0.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .columna-empty .add-card-link:hover { color: var(--primary-dark); }
+
+        .col-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.15rem 0.5rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .col-add-btn {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+        }
+        .col-add-btn:hover { background: rgba(255,255,255,0.3); }
+
+        /* ===== TARJETAS ===== */
+        .tarjeta {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: all 0.2s;
+            border: 1px solid var(--gray-200);
+            border-left: 4px solid var(--gray-300);
+            position: relative;
+        }
+        .tarjeta.admin-mode { cursor: grab; }
+        .tarjeta.admin-mode:active { cursor: grabbing; }
+        .tarjeta:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+        }
+        .tarjeta.dragging { opacity: 0.5; }
+
+        .tarjeta[data-tipo="video"] { border-left-color: var(--border-video); }
+        .tarjeta[data-tipo="link"] { border-left-color: var(--border-link); }
+        .tarjeta[data-tipo="texto"] { border-left-color: var(--border-texto); }
+        .tarjeta[data-tipo="pdf"] { border-left-color: var(--border-pdf); }
+        .tarjeta[data-tipo="imagen"] { border-left-color: var(--border-imagen); }
+        .tarjeta[data-tipo="archivo"] { border-left-color: var(--border-archivo); }
+
+        .tarjeta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 0.35rem;
+        }
+        .tarjeta-desc {
+            color: var(--gray-500);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        .tarjeta-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
             padding-top: 0.5rem;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--gray-100);
+        }
+        .tarjeta-date {
+            font-size: 0.7rem;
+            color: var(--gray-400);
+        }
+        .tarjeta-type-badge {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .badge-video { background: #FEE2E2; color: #991B1B; }
+        .badge-link { background: #DBEAFE; color: #1E40AF; }
+        .badge-texto { background: var(--green-light); color: #065F46; }
+        .badge-pdf { background: #FEE2E2; color: #7F1D1D; }
+        .badge-imagen { background: #EDE9FE; color: #5B21B6; }
+        .badge-archivo { background: var(--gray-100); color: var(--gray-600); }
+
+        .delete-btn {
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+        .delete-btn:hover {
+            color: var(--primary);
+            background: #FEE2E2;
         }
 
         .video-thumbnail-wrapper {
@@ -327,72 +418,293 @@
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
+            aspect-ratio: 16/9;
+            background: var(--gray-100);
         }
-
         .video-play-button {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px; height: 60px;
-            background: rgba(181, 28, 36, 0.9);
+            width: 50px; height: 50px;
+            background: rgba(227, 43, 43, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
-
         .video-thumbnail-wrapper:hover .video-play-button {
-            background: var(--primary-color);
+            background: var(--primary);
             transform: translate(-50%, -50%) scale(1.1);
         }
+        .video-thumbnail-wrapper img { transition: transform 0.3s; }
+        .video-thumbnail-wrapper:hover img { transform: scale(1.05); }
 
-        .quick-action-btn {
-            width: 40px; height: 40px;
-            border-radius: 50%;
+        .clickable-card { cursor: pointer; }
+        .tarjeta:has(.clickable-card):hover { border-color: var(--primary); }
+        .tarjeta img { max-height: 250px; object-fit: cover; }
+
+        /* ===== MODALES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 36, 56, 0.75);
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            backdrop-filter: blur(6px);
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 640px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            animation: scaleIn 0.25s ease-out;
+        }
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .modal-body { padding: 1.5rem 2rem; }
+        .modal-footer {
+            padding: 1rem 2rem 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+        .modal-close {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: var(--gray-100);
+            color: var(--gray-500);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--white);
-            border: 1px solid #e5e7eb;
-            color: var(--dark-gray);
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+        }
+        .modal-close:hover { background: var(--gray-200); color: var(--gray-700); }
+
+        .modal-video { max-width: 90vw; max-height: 90vh; }
+        .modal-video .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .modal-video iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        /* ===== BOTONES ===== */
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(227,43,43,0.3);
+        }
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            border: 1px solid var(--gray-200);
             cursor: pointer;
         }
+        .btn-secondary:hover { background: var(--gray-200); }
 
-        .quick-action-btn:hover {
-            background: var(--primary-color);
-            color: var(--white);
-            border-color: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        .video-thumbnail-wrapper img { transition: transform 0.3s ease; }
-        .video-thumbnail-wrapper:hover img { transform: scale(1.05); }
-        .tarjeta img { max-height: 300px; object-fit: cover; }
-
-        .tarjeta .clickable-card { cursor: pointer; }
-        .tarjeta:has(.clickable-card):hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .delete-btn { position: relative; z-index: 10; }
-        .tarjeta-content { position: relative; }
-        .tarjeta:has([data-url]):hover { border-color: var(--primary-color); }
-
-        .modal-video .p-4 {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-video .video-container {
-            flex: 1;
-            margin: 0 auto;
+        /* ===== FORMULARIOS ===== */
+        .form-input {
             width: 100%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 0.7rem 0.85rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-700);
         }
-        .modal.active .modal-video { animation: scaleIn 0.3s ease-out; }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(227,43,43,0.1);
+        }
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.4rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ===== TABS ===== */
+        .tab-button {
+            padding: 0.75rem 1.25rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-family: 'Montserrat', sans-serif;
+            background: transparent;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            cursor: pointer;
+        }
+        .tab-button:hover { color: var(--primary); background: rgba(227,43,43,0.04); }
+        .tab-button.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(227,43,43,0.06);
+        }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-out; }
+        .tab-content.active { display: block; }
+
+        /* ===== DROP ZONE ===== */
+        .drop-zone {
+            border: 2px dashed var(--gray-300);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            background: var(--gray-50);
+        }
+        .drop-zone.drag-over {
+            border-color: var(--primary);
+            background: #FEF2F2;
+        }
+
+        /* ===== NOTIFICACIONES ===== */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 24px;
+            padding: 0.85rem 1.25rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 100;
+            animation: fadeIn 0.3s ease-out;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .notification.success {
+            background: linear-gradient(135deg, var(--green), #047857);
+            color: var(--white);
+        }
+        .notification.error {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+        }
+
+        /* ===== SPINNER ===== */
+        .spinner {
+            border: 3px solid var(--gray-200);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* ===== ADMIN LOGIN MODAL ===== */
+        .admin-login-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .admin-login-icon i { color: var(--accent); font-size: 1.5rem; }
+        .admin-input-wrapper {
+            position: relative;
+        }
+        .admin-input-wrapper i {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        .admin-input-wrapper input {
+            padding-left: 2.5rem;
+        }
+        .admin-error {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: #991B1B;
+            padding: 0.6rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+            display: none;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        /* ===== OCULTAR ADMIN ===== */
+        .admin-only { display: none; }
+        body.is-admin .admin-only { display: flex; }
+        body.is-admin .admin-only-inline { display: inline-flex; }
+        body.is-admin .admin-only-block { display: block; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .columna { min-width: 300px; max-width: 300px; }
+            .modal-content { max-width: 95vw; }
+            .header-search { width: 160px; }
+            .header-search:focus { width: 200px; }
+            .modal-video { max-width: 95vw; }
+            .modal-video .video-container { padding-bottom: 75%; }
+            .app-header { padding: 0 0.75rem; }
+            .modal-header, .modal-body, .modal-footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+        }
+
+        @media (min-width: 1400px) {
+            .modal-video { max-width: 1200px; }
+        }
 
         @media (max-aspect-ratio: 16/9) {
             .modal-video .video-container { padding-bottom: 100%; }
@@ -400,210 +712,235 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
-        <div class="max-w-full px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold" style="color: var(--secondary-color);">
-                        <i class="fas fa-graduation-cap mr-3" style="color: var(--primary-color);"></i>
-                        <span id="diplomadoTitle">Aula Virtual</span>
-                    </h1>
-                </div>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="text-center">
+            <div class="loading-logo"><i class="fas fa-graduation-cap"></i></div>
+            <div class="loading-spinner mx-auto"></div>
+            <p class="loading-text">Cargando Aula Virtual...</p>
+        </div>
+    </div>
 
-                <div class="flex items-center gap-4">
-                    <div class="relative">
-                        <input type="text"
-                               id="searchInput"
-                               placeholder="Buscar contenido..."
-                               class="form-input pl-10 pr-4 w-64">
-                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                    </div>
+    <!-- ===== HEADER ===== -->
+    <header class="app-header">
+        <div class="header-title">
+            <i class="fas fa-graduation-cap"></i>
+            <span id="diplomadoTitle">Aula Virtual</span>
+            <span id="adminBadge" class="admin-badge" style="display:none;">ADMIN</span>
+        </div>
 
-                    <button onclick="showModal('add-column')" class="btn-primary">
-                        <i class="fas fa-plus"></i>
-                        Nueva Columna
-                    </button>
-
-                    <button onclick="showStats()" class="quick-action-btn">
-                        <i class="fas fa-chart-line"></i>
-                    </button>
-
-                    <a href="inicio.html" class="quick-action-btn" title="Volver al inicio">
-                        <i class="fas fa-home"></i>
-                    </a>
-                </div>
+        <div class="header-actions">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar... (Ctrl+K)" class="header-search">
             </div>
+
+            <button onclick="showModal('add-column')" class="btn-new-column admin-only" id="btnNewColumn">
+                <i class="fas fa-plus"></i>
+                <span class="hidden sm:inline">Columna</span>
+            </button>
+
+            <button onclick="showStats()" class="header-btn" title="Estadisticas">
+                <i class="fas fa-chart-line"></i>
+            </button>
+
+            <button id="btnAdminToggle" onclick="toggleAdminPanel()" class="header-btn" title="Administrador">
+                <i class="fas fa-lock"></i>
+            </button>
+
+            <a href="inicio.html" class="header-btn" title="Inicio">
+                <i class="fas fa-home"></i>
+            </a>
         </div>
     </header>
 
-    <!-- Contenedor principal -->
-    <main class="flex-1 overflow-hidden">
-        <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
-            <div class="text-center">
-                <div class="spinner mx-auto mb-4"></div>
-                <p class="text-lg" style="color: var(--secondary-color); font-family: 'Montserrat', sans-serif;">
-                    Cargando Aula Virtual...
-                </p>
-            </div>
-        </div>
-
-        <div id="columnasContainer" class="flex gap-6 p-6 overflow-x-auto h-full" style="display: none;">
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main>
+        <div id="columnasContainer" class="flex gap-5 p-5 overflow-x-auto" style="display:none; min-height: calc(100vh - 64px);">
         </div>
     </main>
 
-    <!-- Modal para agregar columna -->
-    <div id="modal-add-column" class="modal">
-        <div class="modal-content">
-            <div class="p-8">
-                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
-                    Nueva Columna
-                </h2>
-
-                <form id="formNuevaColumna" onsubmit="crearColumna(event)">
-                    <div class="mb-6">
-                        <label class="form-label">Titulo de la columna</label>
-                        <input type="text" name="titulo" required class="form-input" placeholder="Ej: Recursos principales">
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="form-label">Color de la columna</label>
-                        <div class="flex gap-3">
-                            <button type="button" onclick="selectColor(this, '#b51c24')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #b51c24;"></button>
-                            <button type="button" onclick="selectColor(this, '#0d1d34')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #0d1d34;"></button>
-                            <button type="button" onclick="selectColor(this, '#2a7d4b')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #2a7d4b;"></button>
-                            <button type="button" onclick="selectColor(this, '#c59948')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #c59948;"></button>
-                            <button type="button" onclick="selectColor(this, '#495057')" class="w-12 h-12 rounded-full transition-all hover:scale-110" style="background-color: #495057;"></button>
+    <!-- ===== MODAL: ADMIN LOGIN ===== -->
+    <div id="modal-admin-login" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2>Acceso Administrador</h2>
+                <button onclick="closeModal('admin-login')" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="admin-login-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <p style="text-align:center; color: var(--gray-500); font-size: 0.85rem; margin-bottom: 1.25rem;">
+                    Ingresa la contrasena de administrador para gestionar el contenido del aula virtual.
+                </p>
+                <form id="formAdminLogin" onsubmit="loginAdmin(event)">
+                    <div class="mb-4">
+                        <label class="form-label">Contrasena</label>
+                        <div class="admin-input-wrapper">
+                            <i class="fas fa-key"></i>
+                            <input type="password" id="adminPassword" class="form-input" placeholder="Contrasena de administrador" required autocomplete="current-password">
                         </div>
-                        <input type="hidden" name="color" value="#0d1d34">
+                        <div id="adminLoginError" class="admin-error">
+                            <i class="fas fa-exclamation-circle mr-1"></i>
+                            <span id="adminLoginErrorText">Contrasena incorrecta</span>
+                        </div>
                     </div>
-
-                    <div class="flex justify-end gap-3">
-                        <button type="button" onclick="closeModal('add-column')" class="btn-secondary">Cancelar</button>
-                        <button type="submit" class="btn-primary">
-                            <i class="fas fa-check"></i> Crear Columna
-                        </button>
-                    </div>
+                    <button type="submit" class="btn-primary w-full justify-center" id="btnAdminSubmit">
+                        <i class="fas fa-sign-in-alt"></i> Ingresar como Admin
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Modal para agregar tarjeta -->
+    <!-- ===== MODAL: NUEVA COLUMNA ===== -->
+    <div id="modal-add-column" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Columna</h2>
+                <button onclick="closeModal('add-column')" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="formNuevaColumna" onsubmit="crearColumna(event)">
+                <div class="modal-body">
+                    <div class="mb-5">
+                        <label class="form-label">Titulo de la columna</label>
+                        <input type="text" name="titulo" required class="form-input" placeholder="Ej: Recursos principales">
+                    </div>
+                    <div class="mb-5">
+                        <label class="form-label">Color</label>
+                        <div class="flex gap-3">
+                            <button type="button" onclick="selectColor(this, '#1B3A57')" class="w-10 h-10 rounded-full transition-all hover:scale-110 ring-4 ring-offset-2" style="background:#1B3A57; transform:scale(1.1);"></button>
+                            <button type="button" onclick="selectColor(this, '#E32B2B')" class="w-10 h-10 rounded-full transition-all hover:scale-110" style="background:#E32B2B;"></button>
+                            <button type="button" onclick="selectColor(this, '#059669')" class="w-10 h-10 rounded-full transition-all hover:scale-110" style="background:#059669;"></button>
+                            <button type="button" onclick="selectColor(this, '#7C3AED')" class="w-10 h-10 rounded-full transition-all hover:scale-110" style="background:#7C3AED;"></button>
+                            <button type="button" onclick="selectColor(this, '#4B5563')" class="w-10 h-10 rounded-full transition-all hover:scale-110" style="background:#4B5563;"></button>
+                        </div>
+                        <input type="hidden" name="color" value="#1B3A57">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="closeModal('add-column')" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary"><i class="fas fa-check"></i> Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== MODAL: NUEVA TARJETA ===== -->
     <div id="modal-add-card" class="modal">
         <div class="modal-content">
-            <div class="p-8">
-                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
-                    Nueva Tarjeta
-                </h2>
+            <div class="modal-header">
+                <h2>Nueva Tarjeta</h2>
+                <button onclick="closeModal('add-card')" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
 
-                <div class="border-b border-gray-200 mb-6">
-                    <nav class="flex -mb-px">
-                        <button onclick="switchTab('texto')" class="tab-button active" data-tab="texto">
-                            <i class="fas fa-align-left mr-2"></i>Texto
-                        </button>
-                        <button onclick="switchTab('link')" class="tab-button" data-tab="link">
-                            <i class="fas fa-link mr-2"></i>Enlace
-                        </button>
-                        <button onclick="switchTab('video')" class="tab-button" data-tab="video">
-                            <i class="fas fa-play-circle mr-2"></i>Video
-                        </button>
-                        <button onclick="switchTab('archivo')" class="tab-button" data-tab="archivo">
-                            <i class="fas fa-file-upload mr-2"></i>Archivo
-                        </button>
-                    </nav>
-                </div>
+            <div style="padding: 0 2rem; border-bottom: 1px solid var(--gray-200);">
+                <nav class="flex -mb-px">
+                    <button onclick="switchTab('texto')" class="tab-button active" data-tab="texto">
+                        <i class="fas fa-align-left mr-1"></i>Texto
+                    </button>
+                    <button onclick="switchTab('link')" class="tab-button" data-tab="link">
+                        <i class="fas fa-link mr-1"></i>Enlace
+                    </button>
+                    <button onclick="switchTab('video')" class="tab-button" data-tab="video">
+                        <i class="fas fa-play-circle mr-1"></i>Video
+                    </button>
+                    <button onclick="switchTab('archivo')" class="tab-button" data-tab="archivo">
+                        <i class="fas fa-file-upload mr-1"></i>Archivo
+                    </button>
+                </nav>
+            </div>
 
-                <form id="formNuevaTarjeta" onsubmit="crearTarjeta(event)">
-                    <input type="hidden" name="columnaId" id="tarjetaColumnaId">
-                    <input type="hidden" name="tipo" value="texto">
+            <form id="formNuevaTarjeta" onsubmit="crearTarjeta(event)">
+                <input type="hidden" name="columnaId" id="tarjetaColumnaId">
+                <input type="hidden" name="tipo" value="texto">
 
+                <div class="modal-body">
                     <!-- Tab Texto -->
                     <div class="tab-content active" data-content="texto">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Titulo</label>
                             <input type="text" name="titulo_texto" class="form-input" placeholder="Titulo de la tarjeta">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Contenido</label>
-                            <textarea name="contenido_texto" rows="4" class="form-input" placeholder="Escribe el contenido principal..."></textarea>
+                            <textarea name="contenido_texto" rows="4" class="form-input" placeholder="Escribe el contenido..."></textarea>
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Descripcion adicional</label>
-                            <textarea name="descripcion_texto" rows="2" class="form-input" placeholder="Descripcion o notas adicionales..."></textarea>
+                            <textarea name="descripcion_texto" rows="2" class="form-input" placeholder="Notas adicionales..."></textarea>
                         </div>
                     </div>
 
                     <!-- Tab Link -->
                     <div class="tab-content" data-content="link">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">URL del enlace</label>
                             <input type="url" name="url_link" class="form-input" placeholder="https://ejemplo.com" onblur="previewLink(this.value)">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Titulo del enlace</label>
-                            <input type="text" name="titulo_link" class="form-input" placeholder="Titulo descriptivo del enlace">
+                            <input type="text" name="titulo_link" class="form-input" placeholder="Titulo descriptivo">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Descripcion</label>
-                            <textarea name="descripcion_link" rows="3" class="form-input" placeholder="Describe brevemente el contenido del enlace..."></textarea>
+                            <textarea name="descripcion_link" rows="3" class="form-input" placeholder="Describe el enlace..."></textarea>
                         </div>
                         <div id="linkPreview" class="hidden"></div>
                     </div>
 
                     <!-- Tab Video -->
                     <div class="tab-content" data-content="video">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">URL del video (YouTube, Vimeo)</label>
                             <input type="url" name="url_video" class="form-input" placeholder="https://youtube.com/watch?v=..." onblur="previewVideo(this.value)">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Titulo del video</label>
                             <input type="text" name="titulo_video" class="form-input" placeholder="Titulo del video">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Descripcion</label>
-                            <textarea name="descripcion_video" rows="3" class="form-input" placeholder="Describe el contenido del video..."></textarea>
+                            <textarea name="descripcion_video" rows="3" class="form-input" placeholder="Describe el video..."></textarea>
                         </div>
                         <div id="videoPreview" class="hidden"></div>
                     </div>
 
                     <!-- Tab Archivo -->
                     <div class="tab-content" data-content="archivo">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Archivo</label>
                             <div class="drop-zone" id="dropZone" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-                                <i class="fas fa-cloud-upload-alt text-5xl mb-3" style="color: var(--primary-color);"></i>
-                                <p class="text-gray-600 mb-3">Arrastra archivos aqui o</p>
+                                <i class="fas fa-cloud-upload-alt text-4xl mb-2" style="color: var(--primary);"></i>
+                                <p style="color: var(--gray-500); font-size: 0.85rem; margin-bottom: 0.75rem;">Arrastra archivos aqui o</p>
                                 <input type="file" id="fileInput" name="archivo" accept=".pdf,.jpg,.jpeg,.png,.gif,.mp4,.webm,.ppt,.pptx,.doc,.docx" onchange="handleFileSelect(event)" class="hidden">
                                 <button type="button" onclick="document.getElementById('fileInput').click()" class="btn-primary">
                                     Seleccionar archivo
                                 </button>
                             </div>
-                            <div id="filePreview" class="hidden mt-4"></div>
+                            <div id="filePreview" class="hidden mt-3"></div>
                         </div>
-                        <div class="mb-5">
-                            <label class="form-label">Titulo del archivo</label>
+                        <div class="mb-4">
+                            <label class="form-label">Titulo</label>
                             <input type="text" name="titulo_archivo" class="form-input" placeholder="Titulo descriptivo">
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <label class="form-label">Descripcion</label>
-                            <textarea name="descripcion_archivo" rows="3" class="form-input" placeholder="Describe el contenido del archivo..."></textarea>
+                            <textarea name="descripcion_archivo" rows="3" class="form-input" placeholder="Describe el archivo..."></textarea>
                         </div>
                     </div>
+                </div>
 
-                    <div class="flex justify-end gap-3 mt-8">
-                        <button type="button" onclick="closeModal('add-card')" class="btn-secondary">Cancelar</button>
-                        <button type="submit" class="btn-primary">
-                            <i class="fas fa-save"></i> Crear Tarjeta
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="closeModal('add-card')" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Crear Tarjeta</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Modal para reproducir videos -->
+    <!-- ===== MODAL: VIDEO PLAYER ===== -->
     <div id="modal-video-player" class="modal">
         <div class="modal-content modal-video">
             <div class="p-4 sm:p-6">
@@ -611,40 +948,153 @@
                     <h3 id="video-modal-title" class="text-lg sm:text-xl font-bold pr-4" style="font-family: 'Montserrat', sans-serif;">
                         Reproduciendo Video
                     </h3>
-                    <button onclick="closeVideoModal()" class="quick-action-btn flex-shrink-0">
+                    <button onclick="closeVideoModal()" class="modal-close">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 <div class="video-container" id="video-modal-content"></div>
-                <div id="video-modal-description" class="mt-4 p-3 sm:p-4 bg-gray-50 rounded-lg" style="display: none;"></div>
+                <div id="video-modal-description" class="mt-4 p-3 sm:p-4 rounded-lg" style="display:none; background: var(--gray-50);"></div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de estadisticas -->
+    <!-- ===== MODAL: ESTADISTICAS ===== -->
     <div id="modal-stats" class="modal">
         <div class="modal-content">
-            <div class="p-8">
-                <h2 class="text-2xl font-bold mb-6" style="font-family: 'Montserrat', sans-serif;">
-                    Estadisticas del Aula Virtual
-                </h2>
-                <div id="statsContent" class="space-y-6"></div>
-                <div class="flex justify-end mt-8">
-                    <button onclick="closeModal('stats')" class="btn-secondary">Cerrar</button>
-                </div>
+            <div class="modal-header">
+                <h2>Estadisticas del Aula</h2>
+                <button onclick="closeModal('stats')" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="statsContent" class="space-y-4"></div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeModal('stats')" class="btn-secondary">Cerrar</button>
             </div>
         </div>
     </div>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        // CONFIGURACION API REST
+        // CONFIGURACION
         // ============================================================
-        // IMPORTANTE: Pega aqui la URL de tu deployment de Apps Script
         var API_URL = 'https://script.google.com/macros/s/AKfycbxwzymlbFFt3Eu2xF_yfZtIuXzqoThpHvLh5R0ICTii4GfYD7QmL3ypc3KfMp_4B9pz1g/exec';
 
         // ============================================================
-        // HELPERS PARA COMUNICACION CON API
+        // ESTADO DE ADMIN
+        // ============================================================
+        var isAdmin = false;
+        var adminToken = null;
+        var ADMIN_SESSION_KEY = 'pec_admin_session';
+        var ADMIN_SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 horas
+
+        function checkAdminSession() {
+            try {
+                var session = localStorage.getItem(ADMIN_SESSION_KEY);
+                if (!session) return;
+                var parsed = JSON.parse(session);
+                if (Date.now() - parsed.timestamp > ADMIN_SESSION_DURATION) {
+                    localStorage.removeItem(ADMIN_SESSION_KEY);
+                    return;
+                }
+                isAdmin = true;
+                adminToken = parsed.token;
+                applyRoleUI();
+            } catch(e) {
+                localStorage.removeItem(ADMIN_SESSION_KEY);
+            }
+        }
+
+        function toggleAdminPanel() {
+            if (isAdmin) {
+                if (confirm('Cerrar sesion de administrador?')) {
+                    logoutAdmin();
+                }
+            } else {
+                showModal('admin-login');
+                setTimeout(function() {
+                    document.getElementById('adminPassword').focus();
+                }, 200);
+            }
+        }
+
+        async function loginAdmin(event) {
+            event.preventDefault();
+            var password = document.getElementById('adminPassword').value;
+            var errorEl = document.getElementById('adminLoginError');
+            var errorTextEl = document.getElementById('adminLoginErrorText');
+            var submitBtn = document.getElementById('btnAdminSubmit');
+
+            errorEl.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
+
+            try {
+                var response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({ action: 'verifyAdmin', password: password })
+                });
+                var text = await response.text();
+                var result = JSON.parse(text);
+
+                if (result.success) {
+                    isAdmin = true;
+                    adminToken = result.adminToken;
+                    localStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({
+                        token: adminToken,
+                        timestamp: Date.now()
+                    }));
+                    closeModal('admin-login');
+                    document.getElementById('formAdminLogin').reset();
+                    applyRoleUI();
+                    showNotification('Modo administrador activado', 'success');
+                    renderizarColumnas();
+                } else {
+                    errorTextEl.textContent = result.error || 'Contrasena incorrecta';
+                    errorEl.style.display = 'block';
+                }
+            } catch(e) {
+                errorTextEl.textContent = 'Error de conexion. Intenta nuevamente.';
+                errorEl.style.display = 'block';
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Ingresar como Admin';
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            adminToken = null;
+            localStorage.removeItem(ADMIN_SESSION_KEY);
+            applyRoleUI();
+            showNotification('Sesion de administrador cerrada', 'success');
+            renderizarColumnas();
+        }
+
+        function applyRoleUI() {
+            var body = document.body;
+            var toggleBtn = document.getElementById('btnAdminToggle');
+            var badge = document.getElementById('adminBadge');
+
+            if (isAdmin) {
+                body.classList.add('is-admin');
+                toggleBtn.classList.add('active-admin');
+                toggleBtn.innerHTML = '<i class="fas fa-unlock"></i>';
+                toggleBtn.title = 'Cerrar sesion admin';
+                badge.style.display = 'inline-block';
+            } else {
+                body.classList.remove('is-admin');
+                toggleBtn.classList.remove('active-admin');
+                toggleBtn.innerHTML = '<i class="fas fa-lock"></i>';
+                toggleBtn.title = 'Administrador';
+                badge.style.display = 'none';
+            }
+        }
+
+        // ============================================================
+        // API HELPERS
         // ============================================================
 
         async function apiGet(action, params) {
@@ -661,13 +1111,23 @@
         }
 
         async function apiPost(data) {
+            // Inyectar adminToken automaticamente
+            if (isAdmin && adminToken) {
+                data.adminToken = adminToken;
+            }
             var response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(data)
             });
             var text = await response.text();
-            return JSON.parse(text);
+            var result = JSON.parse(text);
+            // Si el backend rechaza por token invalido, cerrar sesion
+            if (!result.success && result.error && result.error.indexOf('No autorizado') !== -1) {
+                logoutAdmin();
+                showNotification('Sesion expirada. Inicia sesion nuevamente.', 'error');
+            }
+            return result;
         }
 
         // ============================================================
@@ -678,11 +1138,7 @@
         var currentDiplomadoId = urlParams.get('diplomado') || '1';
         var diplomadoInfo = { nombre: 'Cargando...', abreviatura: '' };
 
-        var padletData = {
-            columnas: [],
-            tarjetas: {},
-            config: {}
-        };
+        var padletData = { columnas: [], tarjetas: {}, config: {} };
 
         var currentColumnaId = null;
         var selectedFile = null;
@@ -694,7 +1150,8 @@
         // ============================================================
 
         window.addEventListener('load', async function() {
-            // Obtener info del diplomado
+            checkAdminSession();
+
             try {
                 var infoResponse = await apiGet('getDiplomadoInfo', { diplomado: currentDiplomadoId });
                 if (infoResponse.success) {
@@ -704,8 +1161,8 @@
                 console.error('Error obteniendo info del diplomado:', e);
             }
 
-            document.getElementById('diplomadoTitle').textContent = 'Diplomado en ' + diplomadoInfo.nombre;
-            document.title = 'Aula Virtual - ' + diplomadoInfo.nombre;
+            document.getElementById('diplomadoTitle').textContent = diplomadoInfo.nombre || 'Aula Virtual';
+            document.title = 'Aula Virtual - ' + (diplomadoInfo.nombre || '');
 
             cargarDatos();
 
@@ -720,8 +1177,7 @@
                 e.preventDefault();
                 e.stopPropagation();
                 var btn = e.target.closest('.delete-btn');
-                var tarjetaId = btn.dataset.id;
-                eliminarTarjeta(tarjetaId);
+                eliminarTarjeta(btn.dataset.id);
                 return;
             }
 
@@ -748,7 +1204,7 @@
         });
 
         // ============================================================
-        // COMUNICACION CON API REST
+        // CARGA DE DATOS
         // ============================================================
 
         async function cargarDatos() {
@@ -766,9 +1222,7 @@
                 if (response.success) {
                     actualizarDatosDiferencial(response);
                 }
-            } catch (error) {
-                // Silencioso
-            }
+            } catch (error) { /* silencioso */ }
         }
 
         function actualizarDatosDiferencial(newData) {
@@ -791,7 +1245,7 @@
 
         function onError(error) {
             console.error('Error:', error);
-            showError('Error de conexion. Por favor, recarga la pagina.');
+            showError('Error de conexion. Recarga la pagina.');
         }
 
         // ============================================================
@@ -818,11 +1272,13 @@
                     }
                 });
 
+                // SortableJS: solo habilitado para admin
                 var sortable = new Sortable(columnaEl.querySelector('.columna-content'), {
                     group: 'tarjetas',
                     animation: 150,
                     ghostClass: 'opacity-50',
                     dragClass: 'dragging',
+                    disabled: !isAdmin,
                     onEnd: function(evt) {
                         var tarjetaId = evt.item.dataset.id;
                         var fromColumnaId = evt.from.dataset.columnaId;
@@ -839,9 +1295,11 @@
 
             container.scrollLeft = scrollPosition;
 
+            // Reordenar columnas: solo admin
             new Sortable(container, {
                 animation: 150,
                 handle: '.columna-header',
+                disabled: !isAdmin,
                 onEnd: function(evt) {
                     var newOrder = Array.from(container.children).map(function(col) {
                         return col.dataset.columnaId;
@@ -857,19 +1315,35 @@
             div.dataset.columnaId = columna.id;
 
             var tarjetas = padletData.tarjetas[columna.id] || [];
+            var headerColor = columna.color || 'var(--secondary)';
+
+            // Boton "+" solo para admin
+            var addBtnHTML = isAdmin ?
+                '<button onclick="showAddCardModal(\'' + columna.id + '\')" class="col-add-btn"><i class="fas fa-plus"></i></button>' : '';
+
+            var tarjetasHTML = tarjetas.map(function(tarjeta) { return crearElementoTarjeta(tarjeta); }).join('');
+
+            // Estado vacio
+            var emptyHTML = '';
+            if (tarjetas.length === 0) {
+                emptyHTML = '<div class="columna-empty">' +
+                    '<i class="fas fa-inbox"></i>' +
+                    '<p>Sin contenido aun</p>' +
+                    (isAdmin ? '<span class="add-card-link" onclick="showAddCardModal(\'' + columna.id + '\')"><i class="fas fa-plus mr-1"></i>Agregar tarjeta</span>' : '') +
+                '</div>';
+            }
 
             div.innerHTML =
-                '<div class="columna-header flex justify-between items-center" style="background-color: ' + (columna.color || 'var(--secondary-color)') + '">' +
-                    '<h3 class="font-semibold text-lg">' + columna.titulo + '</h3>' +
-                    '<div class="flex items-center gap-3">' +
-                        '<span class="text-sm opacity-90 bg-white/20 px-2 py-1 rounded-full">' + tarjetas.length + '</span>' +
-                        '<button onclick="showAddCardModal(\'' + columna.id + '\')" class="hover:bg-white/20 p-2 rounded-lg transition-colors">' +
-                            '<i class="fas fa-plus"></i>' +
-                        '</button>' +
+                '<div class="columna-header flex justify-between items-center" style="background:' + headerColor + '">' +
+                    '<h3 class="font-semibold" style="font-size:0.95rem;">' + columna.titulo + '</h3>' +
+                    '<div class="flex items-center gap-2">' +
+                        '<span class="col-badge">' + tarjetas.length + '</span>' +
+                        addBtnHTML +
                     '</div>' +
                 '</div>' +
                 '<div class="columna-content" data-columna-id="' + columna.id + '">' +
-                    tarjetas.map(function(tarjeta) { return crearElementoTarjeta(tarjeta); }).join('') +
+                    tarjetasHTML +
+                    emptyHTML +
                 '</div>';
 
             return div;
@@ -881,17 +1355,23 @@
             return div.innerHTML;
         }
 
+        function getTypeBadge(tipo) {
+            var labels = { video: 'Video', link: 'Enlace', texto: 'Texto', pdf: 'PDF', imagen: 'Imagen', archivo: 'Archivo' };
+            var cls = 'badge-' + (tipo || 'archivo');
+            return '<span class="tarjeta-type-badge ' + cls + '">' + (labels[tipo] || tipo || 'Otro') + '</span>';
+        }
+
         function crearElementoTarjeta(tarjeta) {
-            var cursorStyle = (tarjeta.url || tarjeta.tipo === 'video' || tarjeta.tipo === 'imagen' || tarjeta.tipo === 'pdf') ? 'cursor: pointer;' : '';
             var contenidoHTML = '';
+            var adminClass = isAdmin ? ' admin-mode' : '';
 
             switch(tarjeta.tipo) {
                 case 'texto':
                     contenidoHTML =
                         '<div class="tarjeta-content">' +
-                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Sin titulo') + '</h4>' +
-                            '<p class="text-gray-600 text-sm">' + (tarjeta.contenido || '') + '</p>' +
-                            (tarjeta.descripcion ? '<div class="tarjeta-descripcion">' + tarjeta.descripcion + '</div>' : '') +
+                            '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Sin titulo') + '</h4>' +
+                            '<p class="tarjeta-desc">' + (tarjeta.contenido || '') + '</p>' +
+                            (tarjeta.descripcion ? '<p class="tarjeta-desc" style="margin-top:0.5rem; padding-top:0.5rem; border-top:1px solid var(--gray-100);">' + tarjeta.descripcion + '</p>' : '') +
                         '</div>';
                     break;
 
@@ -900,17 +1380,15 @@
                     try { hostname = new URL(tarjeta.url || 'https://example.com').hostname; } catch(e) { hostname = 'enlace'; }
                     contenidoHTML =
                         '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '#') + '">' +
-                            '<div class="mb-2">' +
-                                '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Enlace') + '</h4>' +
-                                (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mt-1">' + tarjeta.descripcion + '</p>' : '') +
-                            '</div>' +
+                            '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Enlace') + '</h4>' +
+                            (tarjeta.descripcion ? '<p class="tarjeta-desc">' + tarjeta.descripcion + '</p>' : '') +
                             (tarjeta.thumbnailUrl ?
-                                '<div class="mt-3 rounded-lg overflow-hidden border border-gray-200 hover:border-blue-400 transition-colors">' +
-                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-32 object-cover" alt="Preview" onerror="this.parentElement.style.display=\'none\'">' +
+                                '<div style="margin-top:0.5rem; border-radius:6px; overflow:hidden; border:1px solid var(--gray-200);">' +
+                                    '<img src="' + tarjeta.thumbnailUrl + '" style="width:100%; height:120px; object-fit:cover;" alt="Preview" onerror="this.parentElement.style.display=\'none\'">' +
                                 '</div>' : '') +
-                            '<div class="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors mt-3">' +
+                            '<div style="display:flex; align-items:center; gap:0.35rem; color:#3B82F6; margin-top:0.5rem; font-size:0.8rem;">' +
                                 '<i class="fas fa-external-link-alt"></i>' +
-                                '<span class="underline text-sm">' + hostname + '</span>' +
+                                '<span style="text-decoration:underline;">' + hostname + '</span>' +
                             '</div>' +
                         '</div>';
                     break;
@@ -918,16 +1396,16 @@
                 case 'video':
                     contenidoHTML =
                         '<div class="tarjeta-content">' +
-                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Video') + '</h4>' +
-                            (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mb-2">' + tarjeta.descripcion + '</p>' : '') +
-                            '<div class="video-thumbnail-wrapper relative overflow-hidden rounded-lg bg-gray-200" data-video-id="' + tarjeta.id + '" data-video-url="' + (tarjeta.url || '') + '" style="cursor: pointer; aspect-ratio: 16/9;">' +
+                            '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Video') + '</h4>' +
+                            (tarjeta.descripcion ? '<p class="tarjeta-desc" style="margin-bottom:0.5rem;">' + tarjeta.descripcion + '</p>' : '') +
+                            '<div class="video-thumbnail-wrapper" data-video-id="' + tarjeta.id + '" data-video-url="' + (tarjeta.url || '') + '">' +
                                 (tarjeta.thumbnailUrl ?
-                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-full object-cover" alt="' + (tarjeta.titulo || 'Video') + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' : '') +
-                                '<div class="flex items-center justify-center w-full h-full ' + (tarjeta.thumbnailUrl ? 'absolute inset-0' : '') + '" ' + (tarjeta.thumbnailUrl ? 'style="display:none;"' : '') + '>' +
-                                    '<i class="fas fa-video text-4xl text-gray-400"></i>' +
+                                    '<img src="' + tarjeta.thumbnailUrl + '" style="width:100%; height:100%; object-fit:cover;" alt="' + (tarjeta.titulo || 'Video') + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' : '') +
+                                '<div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; ' + (tarjeta.thumbnailUrl ? 'position:absolute; inset:0; display:none;' : '') + '">' +
+                                    '<i class="fas fa-video text-3xl" style="color:var(--gray-400);"></i>' +
                                 '</div>' +
                                 '<div class="video-play-button">' +
-                                    '<i class="fas fa-play text-white text-xl ml-1"></i>' +
+                                    '<i class="fas fa-play text-white" style="margin-left:2px;"></i>' +
                                 '</div>' +
                             '</div>' +
                         '</div>';
@@ -936,18 +1414,18 @@
                 case 'pdf':
                     contenidoHTML =
                         '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '#') + '">' +
-                            '<div class="flex items-start gap-3 mb-3">' +
-                                '<div class="flex-shrink-0"><i class="fas fa-file-pdf text-3xl" style="color: var(--primary-color);"></i></div>' +
-                                '<div class="flex-grow">' +
-                                    '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Documento PDF') + '</h4>' +
-                                    (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mt-1">' + tarjeta.descripcion + '</p>' : '') +
+                            '<div style="display:flex; align-items:start; gap:0.75rem; margin-bottom:0.5rem;">' +
+                                '<i class="fas fa-file-pdf text-2xl" style="color:var(--primary); flex-shrink:0;"></i>' +
+                                '<div>' +
+                                    '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Documento PDF') + '</h4>' +
+                                    (tarjeta.descripcion ? '<p class="tarjeta-desc">' + tarjeta.descripcion + '</p>' : '') +
                                 '</div>' +
                             '</div>' +
                             (tarjeta.thumbnailUrl ?
-                                '<div class="mb-3 rounded-lg overflow-hidden border border-gray-200 hover:opacity-90 transition-opacity">' +
-                                    '<img src="' + tarjeta.thumbnailUrl + '" class="w-full h-48 object-cover" alt="' + (tarjeta.titulo || 'PDF') + '" onerror="this.parentElement.style.display=\'none\'">' +
+                                '<div style="border-radius:6px; overflow:hidden; border:1px solid var(--gray-200); margin-bottom:0.5rem;">' +
+                                    '<img src="' + tarjeta.thumbnailUrl + '" style="width:100%; height:140px; object-fit:cover;" alt="' + (tarjeta.titulo || 'PDF') + '" onerror="this.parentElement.style.display=\'none\'">' +
                                 '</div>' : '') +
-                            '<div class="text-center text-sm text-red-600 hover:text-red-700"><i class="fas fa-eye mr-1"></i>Ver PDF</div>' +
+                            '<div style="text-align:center; font-size:0.8rem; color:var(--primary);"><i class="fas fa-eye mr-1"></i>Ver PDF</div>' +
                         '</div>';
                     break;
 
@@ -955,33 +1433,36 @@
                     var imageSrc = tarjeta.thumbnailUrl || tarjeta.url || '';
                     contenidoHTML =
                         '<div class="tarjeta-content clickable-card" data-url="' + (tarjeta.url || '') + '">' +
-                            '<h4 class="font-semibold mb-2" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Imagen') + '</h4>' +
-                            (tarjeta.descripcion ? '<p class="text-sm text-gray-600 mb-2">' + tarjeta.descripcion + '</p>' : '') +
-                            '<img src="' + imageSrc + '" class="w-full rounded-lg hover:opacity-95 transition-opacity" alt="' + (tarjeta.titulo || '') + '" onerror="this.src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZTBlMCIvPjwvc3ZnPg==\'">' +
+                            '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Imagen') + '</h4>' +
+                            (tarjeta.descripcion ? '<p class="tarjeta-desc" style="margin-bottom:0.5rem;">' + tarjeta.descripcion + '</p>' : '') +
+                            '<img src="' + imageSrc + '" style="width:100%; border-radius:6px;" alt="' + (tarjeta.titulo || '') + '" onerror="this.src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZTBlMCIvPjwvc3ZnPg==\'">' +
                         '</div>';
                     break;
 
                 default:
                     contenidoHTML =
                         '<div class="tarjeta-content">' +
-                            '<div class="flex items-start gap-3">' +
-                                '<i class="fas fa-file text-2xl text-gray-400 mt-1"></i>' +
+                            '<div style="display:flex; align-items:start; gap:0.75rem;">' +
+                                '<i class="fas fa-file text-xl" style="color:var(--gray-400);"></i>' +
                                 '<div>' +
-                                    '<h4 class="font-semibold" style="font-family: \'Montserrat\', sans-serif;">' + (tarjeta.titulo || 'Archivo') + '</h4>' +
-                                    '<p class="text-gray-600 text-sm mt-1">' + (tarjeta.contenido || '') + '</p>' +
-                                    (tarjeta.descripcion ? '<div class="tarjeta-descripcion">' + tarjeta.descripcion + '</div>' : '') +
+                                    '<h4 class="tarjeta-title">' + (tarjeta.titulo || 'Archivo') + '</h4>' +
+                                    '<p class="tarjeta-desc">' + (tarjeta.contenido || '') + '</p>' +
+                                    (tarjeta.descripcion ? '<p class="tarjeta-desc" style="margin-top:0.5rem;">' + tarjeta.descripcion + '</p>' : '') +
                                 '</div>' +
                             '</div>' +
                         '</div>';
             }
 
-            return '<div class="tarjeta" data-id="' + tarjeta.id + '" data-tipo="' + tarjeta.tipo + '" data-url="' + (tarjeta.url || '') + '" data-titulo="' + escapeHtml(tarjeta.titulo || '') + '" data-descripcion="' + escapeHtml(tarjeta.descripcion || '') + '" style="' + cursorStyle + '">' +
+            // Delete button solo para admin
+            var deleteHTML = isAdmin ?
+                '<button class="delete-btn" data-id="' + tarjeta.id + '" onclick="event.stopPropagation();"><i class="fas fa-trash-alt"></i></button>' :
+                getTypeBadge(tarjeta.tipo);
+
+            return '<div class="tarjeta' + adminClass + '" data-id="' + tarjeta.id + '" data-tipo="' + tarjeta.tipo + '" data-url="' + (tarjeta.url || '') + '" data-titulo="' + escapeHtml(tarjeta.titulo || '') + '" data-descripcion="' + escapeHtml(tarjeta.descripcion || '') + '">' +
                 contenidoHTML +
-                '<div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">' +
-                    '<span class="text-xs text-gray-500">' + formatDate(tarjeta.fechaCreacion) + '</span>' +
-                    '<button class="delete-btn text-red-500 hover:text-red-700 text-sm transition-colors" data-id="' + tarjeta.id + '" onclick="event.stopPropagation();">' +
-                        '<i class="fas fa-trash"></i>' +
-                    '</button>' +
+                '<div class="tarjeta-footer">' +
+                    '<span class="tarjeta-date">' + formatDate(tarjeta.fechaCreacion) + '</span>' +
+                    deleteHTML +
                 '</div>' +
             '</div>';
         }
@@ -1007,14 +1488,13 @@
                     var sep2 = embedUrl.includes('?') ? '&' : '?';
                     finalEmbedUrl = embedUrl + sep2 + 'autoplay=1&title=0&byline=0&portrait=0';
                 }
-
                 contentEl.innerHTML = '<iframe src="' + finalEmbedUrl + '" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="' + escapeHtml(title || 'Video') + '" loading="lazy"></iframe>';
             } else {
-                contentEl.innerHTML = '<div class="flex items-center justify-center h-full min-h-[300px] bg-gray-100 rounded-lg"><div class="text-center"><i class="fas fa-exclamation-triangle text-4xl text-gray-400 mb-3"></i><p class="text-gray-600">No se puede cargar el video</p></div></div>';
+                contentEl.innerHTML = '<div style="display:flex; align-items:center; justify-content:center; min-height:300px; background:var(--gray-100); border-radius:8px;"><div style="text-align:center;"><i class="fas fa-exclamation-triangle text-4xl" style="color:var(--gray-400);"></i><p style="color:var(--gray-500); margin-top:0.5rem;">No se puede cargar el video</p></div></div>';
             }
 
             if (description && description !== 'null' && description !== '') {
-                descriptionEl.innerHTML = '<h4 class="font-semibold mb-2 text-sm sm:text-base">Descripcion</h4><p class="text-gray-600 text-sm">' + escapeHtml(description) + '</p>';
+                descriptionEl.innerHTML = '<h4 style="font-weight:600; margin-bottom:0.5rem; font-size:0.9rem;">Descripcion</h4><p style="color:var(--gray-600); font-size:0.85rem;">' + escapeHtml(description) + '</p>';
                 descriptionEl.style.display = 'block';
             } else {
                 descriptionEl.style.display = 'none';
@@ -1061,23 +1541,19 @@
         async function crearColumna(event) {
             event.preventDefault();
             var formData = new FormData(event.target);
-            var columna = {
-                titulo: formData.get('titulo'),
-                color: formData.get('color')
-            };
 
             showLoading('Creando columna...');
             try {
                 await apiPost({
                     action: 'createColumna',
-                    columna: columna,
+                    columna: { titulo: formData.get('titulo'), color: formData.get('color') },
                     diplomadoId: currentDiplomadoId
                 });
                 hideLoading();
                 closeModal('add-column');
                 event.target.reset();
                 cargarDatos();
-                showNotification('Columna creada exitosamente', 'success');
+                showNotification('Columna creada', 'success');
             } catch (error) {
                 hideLoading();
                 onError(error);
@@ -1113,9 +1589,7 @@
                     break;
                 case 'archivo':
                     if (selectedFile) {
-                        var titulo = formData.get('titulo_archivo') || selectedFile.name;
-                        var descripcion = formData.get('descripcion_archivo');
-                        uploadFile(selectedFile, tarjeta.columnaId, titulo, descripcion);
+                        uploadFile(selectedFile, tarjeta.columnaId, formData.get('titulo_archivo') || selectedFile.name, formData.get('descripcion_archivo'));
                         closeModal('add-card');
                         return;
                     }
@@ -1133,7 +1607,7 @@
                 closeModal('add-card');
                 event.target.reset();
                 cargarDatos();
-                showNotification('Tarjeta creada exitosamente', 'success');
+                showNotification('Tarjeta creada', 'success');
             } catch (error) {
                 hideLoading();
                 onError(error);
@@ -1150,9 +1624,7 @@
                     diplomadoId: currentDiplomadoId
                 });
                 showNotification('Tarjeta movida', 'success');
-            } catch (error) {
-                onError(error);
-            }
+            } catch (error) { onError(error); }
         }
 
         async function eliminarTarjeta(tarjetaId) {
@@ -1165,9 +1637,7 @@
                     });
                     cargarDatos();
                     showNotification('Tarjeta eliminada', 'success');
-                } catch (error) {
-                    onError(error);
-                }
+                } catch (error) { onError(error); }
             }
         }
 
@@ -1179,9 +1649,7 @@
                     diplomadoId: currentDiplomadoId
                 });
                 showNotification('Columnas reordenadas', 'success');
-            } catch (error) {
-                onError(error);
-            }
+            } catch (error) { onError(error); }
         }
 
         // ============================================================
@@ -1217,10 +1685,10 @@
             var preview = document.getElementById('filePreview');
             var fileIcon = getFileIcon(file.type);
             preview.innerHTML =
-                '<div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">' +
-                    '<i class="fas ' + fileIcon + ' text-3xl" style="color: var(--primary-color);"></i>' +
-                    '<div><p class="font-semibold">' + file.name + '</p>' +
-                    '<p class="text-sm text-gray-500">' + (file.size / 1024 / 1024).toFixed(2) + ' MB</p></div>' +
+                '<div style="display:flex; align-items:center; gap:0.75rem; padding:0.75rem; background:var(--gray-50); border-radius:8px; border:1px solid var(--gray-200);">' +
+                    '<i class="fas ' + fileIcon + ' text-2xl" style="color:var(--primary);"></i>' +
+                    '<div><p style="font-weight:600; font-size:0.85rem;">' + file.name + '</p>' +
+                    '<p style="font-size:0.75rem; color:var(--gray-500);">' + (file.size / 1024 / 1024).toFixed(2) + ' MB</p></div>' +
                 '</div>';
             preview.classList.remove('hidden');
         }
@@ -1238,24 +1706,22 @@
             var reader = new FileReader();
             reader.onload = async function(e) {
                 var fileData = e.target.result.split(',')[1];
-                var data = {
-                    action: 'uploadFile',
-                    fileData: fileData,
-                    fileName: file.name,
-                    fileType: file.type,
-                    columnaId: columnaId,
-                    diplomadoId: currentDiplomadoId,
-                    titulo: titulo || file.name,
-                    descripcion: descripcion || ''
-                };
-
                 showLoading('Subiendo archivo...');
                 try {
-                    await apiPost(data);
+                    await apiPost({
+                        action: 'uploadFile',
+                        fileData: fileData,
+                        fileName: file.name,
+                        fileType: file.type,
+                        columnaId: columnaId,
+                        diplomadoId: currentDiplomadoId,
+                        titulo: titulo || file.name,
+                        descripcion: descripcion || ''
+                    });
                     hideLoading();
                     selectedFile = null;
                     cargarDatos();
-                    showNotification('Archivo subido exitosamente', 'success');
+                    showNotification('Archivo subido', 'success');
                 } catch (error) {
                     hideLoading();
                     onError(error);
@@ -1278,6 +1744,9 @@
             document.body.style.overflow = 'auto';
             var form = document.querySelector('#modal-' + modalId + ' form');
             if (form) form.reset();
+            if (modalId === 'admin-login') {
+                document.getElementById('adminLoginError').style.display = 'none';
+            }
             var linkPreview = document.getElementById('linkPreview');
             var videoPreview = document.getElementById('videoPreview');
             var filePreview = document.getElementById('filePreview');
@@ -1315,7 +1784,7 @@
             type = type || 'success';
             var notification = document.createElement('div');
             notification.className = 'notification ' + type + ' animate-fade-in';
-            notification.innerHTML = '<i class="fas fa-' + (type === 'success' ? 'check-circle' : 'exclamation-circle') + ' text-xl"></i><span>' + message + '</span>';
+            notification.innerHTML = '<i class="fas fa-' + (type === 'success' ? 'check-circle' : 'exclamation-circle') + '"></i><span>' + message + '</span>';
             document.body.appendChild(notification);
             setTimeout(function() {
                 notification.style.animation = 'fadeOut 0.3s ease-out';
@@ -1330,8 +1799,8 @@
             message = message || 'Cargando...';
             var loading = document.createElement('div');
             loading.id = 'loadingOverlay';
-            loading.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
-            loading.innerHTML = '<div class="bg-white rounded-2xl p-8 flex items-center gap-4 shadow-2xl"><div class="spinner"></div><span class="text-lg font-medium">' + message + '</span></div>';
+            loading.style.cssText = 'position:fixed; inset:0; background:rgba(15,36,56,0.5); display:flex; align-items:center; justify-content:center; z-index:60; backdrop-filter:blur(4px);';
+            loading.innerHTML = '<div style="background:var(--white); border-radius:14px; padding:1.5rem 2rem; display:flex; align-items:center; gap:1rem; box-shadow:0 25px 50px rgba(0,0,0,0.2);"><div class="spinner"></div><span style="font-weight:500; font-size:0.9rem;">' + message + '</span></div>';
             document.body.appendChild(loading);
         }
 
@@ -1367,16 +1836,16 @@
             try {
                 var urlObj = new URL(url);
                 preview.innerHTML =
-                    '<div class="p-4 bg-gray-50 rounded-lg border border-gray-200">' +
-                        '<div class="flex items-center gap-2 text-sm text-gray-600 mb-2"><i class="fas fa-globe"></i><span>Vista previa del enlace</span></div>' +
-                        '<div class="flex items-center gap-2">' +
-                            '<img src="https://www.google.com/s2/favicons?domain=' + urlObj.hostname + '&sz=32" alt="favicon" class="w-6 h-6" onerror="this.style.display=\'none\'">' +
-                            '<div><p class="font-semibold text-gray-800">' + urlObj.hostname + '</p><p class="text-xs text-gray-500">' + url + '</p></div>' +
+                    '<div style="padding:0.75rem; background:var(--gray-50); border-radius:8px; border:1px solid var(--gray-200);">' +
+                        '<div style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; color:var(--gray-500); margin-bottom:0.5rem;"><i class="fas fa-globe"></i><span>Vista previa</span></div>' +
+                        '<div style="display:flex; align-items:center; gap:0.5rem;">' +
+                            '<img src="https://www.google.com/s2/favicons?domain=' + urlObj.hostname + '&sz=32" alt="" style="width:20px; height:20px;" onerror="this.style.display=\'none\'">' +
+                            '<div><p style="font-weight:600; font-size:0.85rem;">' + urlObj.hostname + '</p><p style="font-size:0.7rem; color:var(--gray-400);">' + url + '</p></div>' +
                         '</div>' +
                     '</div>';
                 preview.classList.remove('hidden');
             } catch (e) {
-                preview.innerHTML = '<div class="p-4 bg-red-50 rounded-lg border border-red-200"><p class="text-sm text-red-600">URL invalida</p></div>';
+                preview.innerHTML = '<div style="padding:0.75rem; background:#FEF2F2; border-radius:8px; border:1px solid #FECACA;"><p style="font-size:0.8rem; color:#991B1B;">URL invalida</p></div>';
                 preview.classList.remove('hidden');
             }
         }
@@ -1386,7 +1855,7 @@
             var embedUrl = getEmbedUrl(url);
             if (embedUrl) {
                 var preview = document.getElementById('videoPreview');
-                preview.innerHTML = '<div class="border rounded-lg overflow-hidden"><div class="aspect-w-16 aspect-h-9"><iframe src="' + embedUrl + '" allowfullscreen class="w-full h-64"></iframe></div></div>';
+                preview.innerHTML = '<div style="border-radius:8px; overflow:hidden; border:1px solid var(--gray-200);"><iframe src="' + embedUrl + '" allowfullscreen style="width:100%; height:220px; border:0;"></iframe></div>';
                 preview.classList.remove('hidden');
             }
         }
@@ -1399,38 +1868,39 @@
                     var stats = response.stats;
                     var content = document.getElementById('statsContent');
                     content.innerHTML =
-                        '<div class="grid grid-cols-2 gap-4">' +
-                            '<div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">' +
-                                '<h3 class="font-bold text-blue-900 mb-2">Columnas</h3>' +
-                                '<p class="text-3xl font-bold text-blue-700">' + stats.columnas.total + '</p>' +
-                                '<p class="text-sm text-blue-600 mt-1">' + stats.columnas.activas + ' activas</p>' +
+                        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">' +
+                            '<div style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE); padding:1.25rem; border-radius:12px;">' +
+                                '<h3 style="font-weight:700; color:#1E3A5F; font-size:0.8rem; margin-bottom:0.5rem;">Columnas</h3>' +
+                                '<p style="font-size:1.75rem; font-weight:800; color:#1E40AF;">' + stats.columnas.total + '</p>' +
+                                '<p style="font-size:0.75rem; color:#3B82F6;">' + stats.columnas.activas + ' activas</p>' +
                             '</div>' +
-                            '<div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">' +
-                                '<h3 class="font-bold text-green-900 mb-2">Tarjetas</h3>' +
-                                '<p class="text-3xl font-bold text-green-700">' + stats.tarjetas.total + '</p>' +
-                                '<p class="text-sm text-green-600 mt-1">' + (stats.tarjetas.ultimaSemana || 0) + ' esta semana</p>' +
+                            '<div style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5); padding:1.25rem; border-radius:12px;">' +
+                                '<h3 style="font-weight:700; color:#065F46; font-size:0.8rem; margin-bottom:0.5rem;">Tarjetas</h3>' +
+                                '<p style="font-size:1.75rem; font-weight:800; color:#059669;">' + stats.tarjetas.total + '</p>' +
+                                '<p style="font-size:0.75rem; color:#10B981;">' + (stats.tarjetas.ultimaSemana || 0) + ' esta semana</p>' +
                             '</div>' +
-                            '<div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">' +
-                                '<h3 class="font-bold text-purple-900 mb-2">Archivos</h3>' +
-                                '<p class="text-3xl font-bold text-purple-700">' + (stats.archivos.fileCount || 0) + '</p>' +
-                                '<p class="text-sm text-purple-600 mt-1">' + (stats.archivos.totalSizeFormatted || '0 MB') + '</p>' +
+                            '<div style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE); padding:1.25rem; border-radius:12px;">' +
+                                '<h3 style="font-weight:700; color:#4C1D95; font-size:0.8rem; margin-bottom:0.5rem;">Archivos</h3>' +
+                                '<p style="font-size:1.75rem; font-weight:800; color:#7C3AED;">' + (stats.archivos.fileCount || 0) + '</p>' +
+                                '<p style="font-size:0.75rem; color:#8B5CF6;">' + (stats.archivos.totalSizeFormatted || '0 MB') + '</p>' +
                             '</div>' +
-                            '<div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl">' +
-                                '<h3 class="font-bold text-amber-900 mb-2">Actividad</h3>' +
-                                '<p class="text-3xl font-bold text-amber-700">' + (stats.tarjetas.ultimoMes || 0) + '</p>' +
-                                '<p class="text-sm text-amber-600 mt-1">Ultimo mes</p>' +
+                            '<div style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7); padding:1.25rem; border-radius:12px;">' +
+                                '<h3 style="font-weight:700; color:#78350F; font-size:0.8rem; margin-bottom:0.5rem;">Actividad</h3>' +
+                                '<p style="font-size:1.75rem; font-weight:800; color:#D97706;">' + (stats.tarjetas.ultimoMes || 0) + '</p>' +
+                                '<p style="font-size:0.75rem; color:#F59E0B;">Ultimo mes</p>' +
                             '</div>' +
                         '</div>' +
-                        '<div class="mt-4 text-center text-sm text-gray-500">' +
-                            '<p>Diplomado: ' + diplomadoInfo.nombre + '</p>' +
+                        '<div style="margin-top:1rem; text-align:center; font-size:0.8rem; color:var(--gray-400);">' +
+                            '<p>' + diplomadoInfo.nombre + '</p>' +
                         '</div>';
                 }
-            } catch (error) {
-                onError(error);
-            }
+            } catch (error) { onError(error); }
         }
 
-        // Busqueda en tiempo real
+        // ============================================================
+        // BUSQUEDA EN TIEMPO REAL
+        // ============================================================
+
         var searchTimeout;
         document.getElementById('searchInput').addEventListener('input', function(e) {
             clearTimeout(searchTimeout);
@@ -1441,13 +1911,17 @@
                     var columna = tarjeta.closest('.columna');
                     var matches = content.includes(query);
                     tarjeta.style.display = matches || !query ? 'block' : 'none';
-                    var visibleCards = columna.querySelectorAll('.tarjeta[style="display: block;"]').length;
+                    var visibleCards = columna.querySelectorAll('.tarjeta:not([style*="display: none"])').length;
                     columna.style.opacity = visibleCards > 0 || !query ? '1' : '0.5';
                 });
             }, 300);
         });
 
-        // Cerrar modales al hacer clic fuera
+        // ============================================================
+        // EVENTOS GLOBALES
+        // ============================================================
+
+        // Cerrar modales al clic fuera
         document.querySelectorAll('.modal').forEach(function(modal) {
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
