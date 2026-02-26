@@ -737,9 +737,13 @@
                 display: flex;
             }
             
+            .header-main {
+                position: relative;
+            }
+
             .nav-menu.active {
                 display: flex;
-                position: fixed;
+                position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
@@ -748,6 +752,7 @@
                 padding: var(--spacing-lg);
                 box-shadow: var(--shadow-xl);
                 gap: var(--spacing-sm);
+                z-index: 1000;
             }
             
             .contact-content {
@@ -761,8 +766,25 @@
             .map-container {
                 min-height: auto;
                 margin-top: var(--spacing-lg);
+                padding: var(--spacing-md);
             }
-            
+
+            .map-wrapper {
+                height: 300px;
+            }
+
+            .map-container h3 {
+                font-size: 1.2rem;
+            }
+
+            .map-info {
+                padding: var(--spacing-sm);
+            }
+
+            .map-info p {
+                font-size: 0.85rem;
+            }
+
             .quick-contact-content {
                 flex-direction: column;
                 gap: var(--spacing-md);

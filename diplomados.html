@@ -1006,9 +1006,13 @@
                 display: flex;
             }
             
+            .header-main {
+                position: relative;
+            }
+
             .nav-menu.active {
                 display: flex;
-                position: fixed;
+                position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
@@ -1017,6 +1021,7 @@
                 padding: var(--spacing-lg);
                 box-shadow: var(--shadow-xl);
                 gap: var(--spacing-sm);
+                z-index: 1000;
             }
             
             .filters-container {
