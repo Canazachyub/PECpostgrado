@@ -401,14 +401,13 @@
         
         .diplomado-header {
             position: relative;
-            height: 250px;
             overflow: hidden;
         }
-        
+
         .diplomado-header img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: var(--transition);
         }
         
@@ -551,14 +550,13 @@
         
         .modal-header {
             position: relative;
-            height: 300px;
             overflow: hidden;
         }
-        
+
         .modal-header img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
         
         .modal-close {
@@ -1150,22 +1148,22 @@
     <section class="diplomados-section">
         <div class="container">
             <div class="diplomados-grid" id="diplomadosGrid">
-                
-                <!-- Diplomado 1: Medicina Legal -->
-                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES">
+
+                <!-- 1. Ecografía -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER">
                     <div class="diplomado-header">
-                        <img src="diplomados-img/1.jpg" alt="Medicina Legal">
+                        <img src="diplomados-img/4.jpeg" alt="Ecografía">
                         <div class="diplomado-overlay">
                             <span class="diplomado-category">Medicina</span>
-                            <h3 class="diplomado-title">DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES</h3>
+                            <h3 class="diplomado-title">DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER</h3>
                         </div>
                     </div>
                     <div class="diplomado-content">
                         <ul class="diplomado-features">
                             <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
-                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio: 29/03/2025</li>
-                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                            <li><i class="fas fa-stethoscope"></i> Prácticas con pacientes</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 28/02/2026</li>
+                            <li><i class="fas fa-clock"></i> Duración: 4 meses</li>
                         </ul>
                     </div>
                     <div class="diplomado-meta">
@@ -1174,12 +1172,12 @@
                             <span>Créditos</span>
                         </div>
                         <div class="meta-item">
-                            <strong>S/150</strong>
+                            <strong>S/200</strong>
                             <span>Matrícula</span>
                         </div>
                     </div>
                     <div class="diplomado-actions">
-                        <button class="btn btn-outline" onclick="openModal(1)">
+                        <button class="btn btn-outline" onclick="openModal(4)">
                             <i class="fas fa-info-circle"></i> Ver detalles
                         </button>
                         <button class="btn btn-primary">
@@ -1187,48 +1185,11 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Diplomado 2: Medicina Alternativa -->
-                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA">
-                    <div class="diplomado-header">
-                        <img src="https://pec.edu.pe/web/wp-content/uploads/2025/03/d94a444b-cb05-455b-8247-2fe533edf284-e1745248265310-1024x1002.jpg" alt="Medicina Alternativa">
-                        <div class="diplomado-overlay">
-                            <span class="diplomado-category">Medicina</span>
-                            <h3 class="diplomado-title">DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA</h3>
-                        </div>
-                    </div>
-                    <div class="diplomado-content">
-                        <ul class="diplomado-features">
-                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
-                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes internacionales</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio: 04/04/2025</li>
-                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
-                        </ul>
-                    </div>
-                    <div class="diplomado-meta">
-                        <div class="meta-item">
-                            <strong>36</strong>
-                            <span>Créditos</span>
-                        </div>
-                        <div class="meta-item">
-                            <strong>S/110</strong>
-                            <span>Matrícula</span>
-                        </div>
-                    </div>
-                    <div class="diplomado-actions">
-                        <button class="btn btn-outline" onclick="openModal(2)">
-                            <i class="fas fa-info-circle"></i> Ver detalles
-                        </button>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-user-plus"></i> Inscribirse
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Diplomado 3: Emergencias Médicas -->
+
+                <!-- 2. Emergencias y Urgencias -->
                 <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS">
                     <div class="diplomado-header">
-                        <img src="diplomados-img/3.jpg" alt="Emergencias Médicas">
+                        <img src="diplomados-img/3.jfif" alt="Emergencias Médicas">
                         <div class="diplomado-overlay">
                             <span class="diplomado-category">Medicina</span>
                             <h3 class="diplomado-title">DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS</h3>
@@ -1238,7 +1199,7 @@
                         <ul class="diplomado-features">
                             <li><i class="fas fa-certificate"></i> Triple Certificación</li>
                             <li><i class="fas fa-heart"></i> Incluye BLS - AHA</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio: 31/05/2025</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 21/03/2026</li>
                             <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
                         </ul>
                     </div>
@@ -1261,48 +1222,11 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Diplomado 4: Ecografía -->
-                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER">
-                    <div class="diplomado-header">
-                        <img src="diplomados-img/4.jpg" alt="Ecografía">
-                        <div class="diplomado-overlay">
-                            <span class="diplomado-category">Medicina</span>
-                            <h3 class="diplomado-title">DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER</h3>
-                        </div>
-                    </div>
-                    <div class="diplomado-content">
-                        <ul class="diplomado-features">
-                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
-                            <li><i class="fas fa-stethoscope"></i> Prácticas con pacientes</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio: 22/05/2025</li>
-                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
-                        </ul>
-                    </div>
-                    <div class="diplomado-meta">
-                        <div class="meta-item">
-                            <strong>36</strong>
-                            <span>Créditos</span>
-                        </div>
-                        <div class="meta-item">
-                            <strong>S/200</strong>
-                            <span>Matrícula</span>
-                        </div>
-                    </div>
-                    <div class="diplomado-actions">
-                        <button class="btn btn-outline" onclick="openModal(4)">
-                            <i class="fas fa-info-circle"></i> Ver detalles
-                        </button>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-user-plus"></i> Inscribirse
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Diplomado 5: Artículos Científicos -->
+
+                <!-- 3. Redacción y Publicación de Artículos -->
                 <div class="diplomado-card" data-category="investigacion" data-title="DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTIFICOS EN SALUD">
                     <div class="diplomado-header">
-                        <img src="https://pec.edu.pe/web/wp-content/uploads/2025/02/fcd523c8-f6c2-49b1-b66c-6552c8e63a07-1-1024x1024.jpg" alt="Artículos Científicos">
+                        <img src="diplomados-img/5.jfif" alt="Artículos Científicos">
                         <div class="diplomado-overlay">
                             <span class="diplomado-category">Investigación</span>
                             <h3 class="diplomado-title">DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS</h3>
@@ -1312,7 +1236,7 @@
                         <ul class="diplomado-features">
                             <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
                             <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
-                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 28/03/2026</li>
                             <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
                         </ul>
                     </div>
@@ -1335,48 +1259,11 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Diplomado 6: Tesis -->
-                <div class="diplomado-card" data-category="investigacion" data-title="DIPLOMADO EN ASESORIA Y ELABORACIÓN DE TESIS EN SALUD">
-                    <div class="diplomado-header">
-                        <img src="diplomados-img/6.jpg" alt="Tesis en Salud">
-                        <div class="diplomado-overlay">
-                            <span class="diplomado-category">Investigación</span>
-                            <h3 class="diplomado-title">DIPLOMADO EN ASESORÍA Y ELABORACIÓN DE TESIS EN SALUD</h3>
-                        </div>
-                    </div>
-                    <div class="diplomado-content">
-                        <ul class="diplomado-features">
-                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
-                            <li><i class="fas fa-project-diagram"></i> Proyecto de tesis incluido</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio flexible</li>
-                            <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
-                        </ul>
-                    </div>
-                    <div class="diplomado-meta">
-                        <div class="meta-item">
-                            <strong>24.5</strong>
-                            <span>Créditos</span>
-                        </div>
-                        <div class="meta-item">
-                            <strong>S/100</strong>
-                            <span>Matrícula</span>
-                        </div>
-                    </div>
-                    <div class="diplomado-actions">
-                        <button class="btn btn-outline" onclick="openModal(6)">
-                            <i class="fas fa-info-circle"></i> Ver detalles
-                        </button>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-user-plus"></i> Inscribirse
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Diplomado 7: SSOMA -->
+
+                <!-- 4. SSOMA -->
                 <div class="diplomado-card" data-category="seguridad" data-title="DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE SSOMA">
                     <div class="diplomado-header">
-                        <img src="diplomados-img/7.jpg" alt="SSOMA">
+                        <img src="diplomados-img/7.jfif" alt="SSOMA">
                         <div class="diplomado-overlay">
                             <span class="diplomado-category">Seguridad</span>
                             <h3 class="diplomado-title">DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE</h3>
@@ -1386,7 +1273,7 @@
                         <ul class="diplomado-features">
                             <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
                             <li><i class="fas fa-hard-hat"></i> Enfoque práctico</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio próximo</li>
+                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
                             <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
                         </ul>
                     </div>
@@ -1409,7 +1296,118 @@
                         </button>
                     </div>
                 </div>
-                
+
+                <!-- 5. Asesoría y Elaboración de Tesis -->
+                <div class="diplomado-card" data-category="investigacion" data-title="DIPLOMADO EN ASESORIA Y ELABORACIÓN DE TESIS EN SALUD">
+                    <div class="diplomado-header">
+                        <img src="diplomados-img/6.jfif" alt="Tesis en Salud">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Investigación</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN ASESORÍA Y ELABORACIÓN DE TESIS EN SALUD</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-project-diagram"></i> Proyecto de tesis incluido</li>
+                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
+                            <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>24.5</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/100</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(6)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 6. Medicina Legal -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES">
+                    <div class="diplomado-header">
+                        <img src="diplomados-img/1.jfif" alt="Medicina Legal">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
+                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/150</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(1)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 7. Medicina Alternativa -->
+                <div class="diplomado-card" data-category="medicina" data-title="DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA">
+                    <div class="diplomado-header">
+                        <img src="diplomados-img/2.jfif" alt="Medicina Alternativa">
+                        <div class="diplomado-overlay">
+                            <span class="diplomado-category">Medicina</span>
+                            <h3 class="diplomado-title">DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA</h3>
+                        </div>
+                    </div>
+                    <div class="diplomado-content">
+                        <ul class="diplomado-features">
+                            <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes internacionales</li>
+                            <li><i class="fas fa-calendar-alt"></i> Próximamente</li>
+                            <li><i class="fas fa-clock"></i> Duración: 5 meses</li>
+                        </ul>
+                    </div>
+                    <div class="diplomado-meta">
+                        <div class="meta-item">
+                            <strong>36</strong>
+                            <span>Créditos</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>S/110</strong>
+                            <span>Matrícula</span>
+                        </div>
+                    </div>
+                    <div class="diplomado-actions">
+                        <button class="btn btn-outline" onclick="openModal(2)">
+                            <i class="fas fa-info-circle"></i> Ver detalles
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Inscribirse
+                        </button>
+                    </div>
+                </div>
+
             </div>
             
             <!-- No Results Message -->
@@ -1550,7 +1548,7 @@
         const diplomadosData = {
             1: {
                 title: "DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/6741333d-4bd5-49dc-be40-df8b0972a6b4-1024x1024.jpg",
+                image: "diplomados-img/1.jfif",
                 descripcion: {
                     content: `<p>En el complejo mundo de la justicia y la salud, la Medicina Legal y las Ciencias Forenses juegan un papel crucial al proporcionar el conocimiento y las herramientas necesarias para la investigación de delitos, la resolución de casos legales y la garantía de justicia. La intersección entre la medicina, la ciencia y el derecho requiere una formación especializada que permita a los profesionales abordar los desafíos de manera precisa, ética y efectiva.</p>
                     <p>El Diplomado en Medicina Legal y Ciencias Forenses es un programa de posgrado diseñado para profesionales del ámbito de la salud, la justicia y áreas afines que buscan adquirir conocimientos avanzados y habilidades prácticas en la aplicación de principios médicos y científicos en el ámbito legal.</p>`,
@@ -1707,7 +1705,7 @@
             },
             2: {
                 title: "DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2025/03/d94a444b-cb05-455b-8247-2fe533edf284-e1745248265310-1024x1002.jpg",
+                image: "diplomados-img/2.jfif",
                 descripcion: {
                     content: `<p>Desde la Declaración de Alma-Ata (1977), la OMS ha promovido la incorporación de la Medicina Alternativa y Complementaria (MAC) en los sistemas de salud, enfatizando la necesidad de políticas adecuadas, difusión de información y colaboración interdisciplinaria. Asimismo, ha resaltado la importancia de una formación rigurosa y basada en evidencia científica para garantizar la seguridad y eficacia de estas terapias.</p>
                     <p>El Diplomado en Medicina Alternativa y Complementaria responde a estas recomendaciones al proporcionar una formación integral que permite a los profesionales integrar tratamientos complementarios en su práctica clínica. Su enfoque científico, ético y holístico prepara a los egresados para atender a sus pacientes con una visión integral del bienestar.</p>`,
@@ -1856,7 +1854,7 @@
             },
             3: {
                 title: "DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2023/03/6cca4a96-6a4f-4b23-a2ac-2d80a261ebab-1024x1024.jpg",
+                image: "diplomados-img/3.jfif",
                 descripcion: {
                     content: `<p>La atención de Emergencia se centra en personas que se encuentran en una condición de dependencia frente al profesional sanitario, así pues, para salir de esa condición, el paciente requiere de apoyo eficaz y eficiente del profesional de salud.</p>
                     <p>Más aún la adecuada atención en una situación de urgencia y emergencias disminuye las complicaciones y secuelas en las que pueda estar expuesto el paciente, para ello se requiere de profesionales altamente capacitados para discernir los cuidados adecuados en el momento oportuno y en las mejores condiciones, puesto que la necesidad de atención es contra el tiempo.</p>
@@ -2018,7 +2016,7 @@
             },
             4: {
                 title: "DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/d7e796bd-03e1-4cb5-9cb8-7ba656dafd01-1024x1024.jpg",
+                image: "diplomados-img/4.jpeg",
                 descripcion: {
                     content: `<p>La Ecografía en Medicina está orientada a otorgar conocimientos e instrumentos necesarios para que el Médico haga un buen uso de la Tecnología. En las últimas décadas se ha avanzado tanto en este campo que se ha convertido en un complemento indispensable para el Diagnóstico y tratamiento de las diferentes patologías.</p>
                     <p>La necesidad de capacitar a los profesionales Médicos en diversas áreas de la medicina, es una realidad que va en crecimiento en nuestro País. Dado a que existe una aplastante demanda de estudios de ultrasonido ante el insuficiente número de médicos radiólogos, la labor de este Diplomado es formar de manera profesional a los médicos para que cubran y aminore en gran medida este problema que habita en el sector de salud.</p>
@@ -2144,13 +2142,13 @@
                 ],
                 inversion: {
                     matricula: "S/. 200",
-                    modulo: "S/. 220",
-                    diploma: "S/. 300"
+                    modulo: "S/. 299",
+                    diploma: "S/. 350"
                 }
             },
             5: {
                 title: "DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS EN SALUD",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2025/02/fcd523c8-f6c2-49b1-b66c-6552c8e63a07-1-1024x1024.jpg",
+                image: "diplomados-img/5.jfif",
                 descripcion: {
                     content: `<p>La investigación científica y la publicación de resultados son pilares fundamentales para el avance del conocimiento en ciencias de la salud. Este diplomado está diseñado para proporcionar las herramientas necesarias para la redacción efectiva y la publicación exitosa de artículos científicos en revistas indexadas.</p>
                     <p>Los participantes aprenderán desde los fundamentos de la escritura científica hasta las estrategias avanzadas para lograr la aceptación de sus manuscritos en revistas de alto impacto.</p>`,
@@ -2191,7 +2189,7 @@
             },
             6: {
                 title: "DIPLOMADO EN ASESORÍA Y ELABORACIÓN DE TESIS EN SALUD",
-                image: "https://i.ibb.co/fVqqP64J/IMA.jpg",
+                image: "diplomados-img/6.jfif",
                 descripcion: {
                     content: `<p>En el ámbito de la investigación en salud, diseñar y llevar a cabo una tesis de excelencia no solo impulsa el conocimiento científico y mejora las prácticas sanitarias, sino que también fortalece el desarrollo académico y profesional de quienes están en plena fase de investigación.</p>
                     <p>El Diplomado en Asesoría y Elaboración de Tesis en Salud está diseñado para proporcionar a los participantes las herramientas y técnicas necesarias para llevar a cabo investigaciones rigurosas y efectivas en el ámbito de la salud. Este curso combina teoría con práctica para ofrecer una formación completa en el proceso de elaboración de tesis, desde la concepción de la idea hasta la defensa final del trabajo.</p>
@@ -2330,7 +2328,7 @@
             },
             7: {
                 title: "DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE SSOMA",
-                image: "https://pec.edu.pe/web/wp-content/uploads/2023/03/01d6da67-36ca-40a5-a0f2-10489aae806a-1-1024x1024.jpg",
+                image: "diplomados-img/7.jfif",
                 descripcion: {
                     content: `<p>La OMS y la OIT destacan la importancia de la seguridad y salud de los trabajadores para mantener sistemas de salud efectivos. A pesar de los esfuerzos, aún ocurren 2,8 millones de muertes laborales anualmente. El Ministerio de Salud del Perú prioriza la seguridad, salud ocupacional y ambiental para proteger a los trabajadores y mejorar los servicios de salud.</p>
                     <p>La creciente conciencia sobre las condiciones laborales impulsa la demanda de profesionales capacitados, contribuyendo al desarrollo sostenible y al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS).</p>
