@@ -24,12 +24,16 @@ posgradopec.com/
 ├── au.html                 → Login alternativo (legacy Firebase)
 ├── CNAME                   → Dominio personalizado GitHub Pages
 ├── .gitignore              → Excluye .gs y .md de documentacion
-└── diplomados-img/         → Imagenes de diplomados
-    ├── 1.jpg   (Medicina Legal)
-    ├── 3.jpg   (Emergencias Medicas)
-    ├── 4.jpg   (Ecografia)
-    ├── 6.jpg   (Tesis en Salud)
-    └── 7.jpg   (SSOMA)
+└── diplomados-img/         → Imagenes locales
+    ├── 1.jfif  (Medicina Legal)
+    ├── 2.jfif  (Medicina Alternativa)
+    ├── 3.jfif  (Emergencias Medicas)
+    ├── 4.jpeg  (Ecografia)
+    ├── 5.jfif  (Redaccion y Publicacion)
+    ├── 6.jfif  (Tesis en Salud)
+    ├── 7.jfif  (SSOMA)
+    ├── Dante.jfif        (Foto CEO - Dr. Dante Hancco)
+    └── Inicio foto.jfif  (Hero image inicio.html)
 ```
 
 ### Archivos locales (NO en GitHub, excluidos por .gitignore)
@@ -44,15 +48,37 @@ posgradopec.com/
 
 ## Diplomados (7)
 
-| # | Nombre | Abreviatura |
-|---|--------|-------------|
-| 1 | DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES | MLCF |
-| 2 | DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA | MAC |
-| 3 | DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS | EUM |
-| 4 | DIPLOMADO EN ECOGRAFIA GENERAL Y VELOCIMETRIA DOPPLER | EGVD |
-| 5 | DIPLOMADO EN REDACCION Y PUBLICACION DE ARTICULOS CIENTIFICOS | RPAC |
-| 6 | DIPLOMADO EN ASESORIA Y ELABORACION DE TESIS EN SALUD | AETS |
-| 7 | DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE | SSOMA |
+| # | Nombre | Abreviatura | Inicio | Duracion |
+|---|--------|-------------|--------|----------|
+| 4 | DIPLOMADO EN ECOGRAFIA GENERAL Y VELOCIMETRIA DOPPLER | EGVD | 28/02/2026 | 4 meses |
+| 3 | DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS | EUM | 21/03/2026 | 5 meses |
+| 5 | DIPLOMADO EN REDACCION Y PUBLICACION DE ARTICULOS CIENTIFICOS | RPAC | 28/03/2026 | 3 meses |
+| 7 | DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE | SSOMA | Proximamente | 4 meses |
+| 6 | DIPLOMADO EN ASESORIA Y ELABORACION DE TESIS EN SALUD | AETS | Proximamente | 4 meses |
+| 1 | DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES | MLCF | Proximamente | 4 meses |
+| 2 | DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA | MAC | Proximamente | 4 meses |
+
+### Costos Ecografia (EGVD)
+- Matricula: S/. 200
+- Pago por modulo: S/. 299
+- Diploma: S/. 350
+
+---
+
+## Informacion Institucional
+
+- **Fundacion:** 2015 (11 años de funcionamiento)
+- **CEO y Gerente General:** Dr. Dante Elmer Hancco Monrroy
+- **Egresados:** +420 satisfechos
+- **Diplomados activos:** 8+
+
+### Linea de Tiempo
+| Año | Hito |
+|-----|------|
+| 2015 | Fundacion |
+| 2018 | Expansion Nacional |
+| 2022 | Transformacion Digital |
+| 2025 | Liderazgo Regional |
 
 ---
 
