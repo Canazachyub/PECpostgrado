@@ -667,28 +667,87 @@
         
         .instructors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
+            grid-template-columns: 1fr;
+            gap: 20px;
             margin-top: var(--spacing-md);
         }
-        
+
         .instructor-card {
-            background-color: var(--color-light);
-            padding: var(--spacing-md);
-            border-radius: 10px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s ease;
         }
-        
-        .instructor-card h4 {
+
+        .instructor-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .instructor-card .docente-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .instructor-card .docente-photo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-secondary);
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .instructor-card .docente-info {
+            flex: 1;
+        }
+
+        .instructor-card .docente-name-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .instructor-card .docente-name-row h4 {
+            color: var(--color-secondary);
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .instructor-card .country-flag {
+            width: 28px;
+            height: 19px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+            flex-shrink: 0;
+        }
+
+        .instructor-card .docente-info .credentials {
+            font-size: 0.82rem;
             color: var(--color-primary);
-            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.2px;
         }
-        
-        .instructor-card p {
-            font-size: 0.875rem;
+
+        .instructor-card .docente-bio {
+            font-size: 0.88rem;
             color: var(--color-gray-dark);
             margin: 0;
+            line-height: 1.65;
+            text-align: justify;
         }
-        
+
         .syllabus-module {
             background-color: var(--color-light);
             padding: var(--spacing-md);
@@ -1240,9 +1299,9 @@
                     <div class="diplomado-content">
                         <ul class="diplomado-features">
                             <li><i class="fas fa-certificate"></i> Certificación Universitaria</li>
-                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes calificados</li>
-                            <li><i class="fas fa-calendar-alt"></i> Inicio: 28/03/2026</li>
-                            <li><i class="fas fa-clock"></i> Duración: 3 meses</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Docentes RENACYT Perú - Argentina</li>
+                            <li><i class="fas fa-calendar-alt"></i> Inicio: 04/04/2026</li>
+                            <li><i class="fas fa-clock"></i> Duración: 4 meses</li>
                         </ul>
                     </div>
                     <div class="diplomado-meta">
@@ -1251,7 +1310,7 @@
                             <span>Créditos</span>
                         </div>
                         <div class="meta-item">
-                            <strong>S/120</strong>
+                            <strong>S/100</strong>
                             <span>Matrícula</span>
                         </div>
                     </div>
@@ -1870,12 +1929,12 @@
                         "Modalidad Semipresencial",
                         "Docentes Especialistas e Instructores BLS, ACLS, PALS, NAEMT, PHTLS con amplia experiencia",
                         "Docentes de Argentina: Universidad Nacional de Rosario – UNR",
-                        "Docentes de Perú: Universidad Peruana Cayetano Heredia, Universidad Nacional Mayor de San Marcos, Instituto Nacional Materno perinatal Lima",
+                        "Docentes de Perú: Universidad Nacional Mayor de San Marcos, Instituto Nacional Materno Perinatal Lima",
                         "Talleres prácticos presencial con aprendizaje basado en simulación",
                         "Lecturas complementarias",
                         "Entrega de Material de estudio por cada módulo en PDF",
                         "Recibe tutoría académica durante el Diplomado",
-                        "TRIPLE CERTIFICACIÓN: 01 certificado Basic Life Support (BLS) Expedido por la UPCH",
+                        "TRIPLE CERTIFICACIÓN: 01 certificado Basic Life Support (BLS)",
                         "01 Ecard a nombre de la American Heart Association (válido por dos años)",
                         "01 Diploma de 36 créditos Académicos expedido por la Universidad Nacional Hermilio Valdizán"
                     ]
@@ -1993,24 +2052,32 @@
                 ],
                 docentes: [
                     {
-                        name: "YAZCITK MIGUEL SANDOVAL GUEVARA",
+                        name: "DR. YAZCITK M. SANDOVAL GUEVARA",
                         credentials: "CMP. 034883 RNE. 020293",
-                        description: "Médico Especialista en Medicina Intensiva, Jefe de Servicio de Cardiología Perioperatoria del Instituto Nacional Cardiovascular (INCOR). Maestría en Salud Pública y Gestión Pública. Instructor NAEMT, PHTLS, AMLS, EPC, Instructor AHA, ACLS, PALS. Docente universitario de pre y posgrado."
+                        country: "pe",
+                        photo: "diplomados-img/docentes/sandoval.jfif",
+                        description: "Médico Especialista en Medicina Intensiva, Jefe de Servicio Cardiología Perioperatoria INCOR EsSalud. Maestría en Salud Pública y Gestión Pública, Diplomado en Ecografía. Entrenador WINFOCUS, Terapeuta Respiratorio Certificado (Consejo Latinoamericano - Certificación Profesional en TR). Facultado EKG & Fármaco, BLS, ACLS y PALS. Instructor NAEMT: PHTLS, AMLS, EPC. Instructor AHA: BLS, ACLS, PALS. Instructor MAVE. Entrenador WINFOCUS, SOPEMI: FCCS, ENED."
+                    },
+                    {
+                        name: "DR. GUILLERMO PIPET",
+                        credentials: "CMCP | M.A | 28414 Medicina de Emergencias - Argentina",
+                        country: "ar",
+                        photo: "diplomados-img/docentes/pipet.jfif",
+                        description: "Médico Cirujano, egresado de la Universidad Nacional de Córdoba Argentina. Especialista en Toxicología Clínica, amplia experiencia en medicina de emergencias de aeroevacuación sanitaria y en docencia universitaria en emergentología. Es instructor y director médico en cursos internacionales acreditados como ACLS, BLS, PHTLS, AMLS y AHLS, entre otros. Disertante destacado en jornadas científicas sobre trauma, reanimación, toxicología con participación activa en residencias médicas académicas."
+                    },
+                    {
+                        name: "DR. DAVID PACHERRE PULACHE",
+                        credentials: "CMP. 036636 RNE. 060881",
+                        country: "pe",
+                        photo: "diplomados-img/docentes/pacherre.jfif",
+                        description: "Médico Cirujano especialista en Ginecología y Obstetricia, Pre y Posgrado realizado en la Universidad Nacional Mayor de San Marcos (UNMSM), con residentado médico en el Instituto Nacional Materno Perinatal (INMP) Lima. Maestría en Docencia y Educación Superior Universidad Peruana de Ciencias Aplicadas (UPC). Docente Universitario comprometido con la formación médica a nivel de pre y posgrado con liderazgo académico y trabajo interdisciplinario."
                     },
                     {
                         name: "DRA. VIVIANA LORENA MOLINA RODRIGUEZ",
-                        credentials: "CMCP : M.P. : 39149 Medicina de Emergencias Pediátricas : 18977 – Argentina",
-                        description: "Médica Pediatra – Especialista en Medicina de Emergencias Pediátricas- Especialista en Toxicología Clínica. Coordinadora de Servicio de Guardia del Hospital R. Ferreyra de Córdoba – Argentina. Instructora PALS- AHA. Socia Fundadora de la Sociedad Latinoamericana de Emergencia Pediátrica."
-                    },
-                    {
-                        name: "JORGE IVAR BRUNO RAMOS",
-                        credentials: "CMP. 064950 RNE.050090",
-                        description: "Médico Cirujano Especialista en Ginecología y Obstetricia UNMSM. Médico especialista asistente del Instituto Nacional Materno Perinatal INMP Lima. Coeditor Experto clínico invitado para el ajuste técnico de la Guía de práctica clínica MINSA 2025. Docente Universitario Pre y posgrado."
-                    },
-                    {
-                        name: "ALFREDO A. ALLAGUAL DE LA QUINTANA",
-                        credentials: "CMP. 26289 RNE. 17234",
-                        description: "Médico Cirujano con Especialidad en Cirugía General. Jefe del Departamento de emergencia y Cuidados críticos Hospital María Auxiliadora MINSA. Formación en Emergencias y desastres. Docente de la Facultad de Medicina Universidad Científica del Sur."
+                        credentials: "CMCP | M.A | 39149 | 18977 - Argentina",
+                        country: "ar",
+                        photo: "diplomados-img/docentes/molina.jfif",
+                        description: "Médica Pediatra - Especialista en Medicina de Emergencias Pediátricas. Especialista en Toxicología Clínica. Médica de Planta del Servicio de Emergencias del Hospital de Niños de la Santísima Trinidad de Córdoba – Argentina. Coordinadora de Servicio de Guardia y de Internación del Anexo Centro del Hospital R. Ferreyra de Córdoba – Argentina. Instructora PALS- AHA. Socia Fundadora de la Sociedad Latinoamericana de Emergencia Pediátrica."
                     }
                 ],
                 inversion: {
@@ -2155,41 +2222,144 @@
                 title: "DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS EN SALUD",
                 image: "diplomados-img/5.jfif",
                 descripcion: {
-                    content: `<p>La investigación científica y la publicación de resultados son pilares fundamentales para el avance del conocimiento en ciencias de la salud. Este diplomado está diseñado para proporcionar las herramientas necesarias para la redacción efectiva y la publicación exitosa de artículos científicos en revistas indexadas.</p>
-                    <p>Los participantes aprenderán desde los fundamentos de la escritura científica hasta las estrategias avanzadas para lograr la aceptación de sus manuscritos en revistas de alto impacto.</p>`,
-                    dirigido: "Profesionales de la salud, investigadores, docentes universitarios y estudiantes de posgrado que deseen mejorar sus habilidades en redacción científica y aumentar sus publicaciones en revistas indexadas.",
-                    objetivos: "Desarrollar competencias avanzadas en redacción científica, conocer el proceso editorial de revistas indexadas, y proporcionar herramientas prácticas para la publicación exitosa de artículos de investigación en salud.",
+                    content: `<p>La producción de conocimiento científico es un pilar fundamental en el avance de la medicina. Sin embargo, saber investigar no es suficiente: comunicar los hallazgos con rigor, claridad y estrategia es lo que transforma un estudio de investigación en un aporte real a la práctica clínica y las políticas sanitarias.</p>
+                    <p>Este diplomado guía a los participantes a lo largo de todo el proceso: desde los fundamentos de la redacción científica hasta la publicación en revistas académicas indexadas en Scopus, Web of Science, Scielo. Los participantes desarrollarán habilidades para organizar ideas, redactar manuscritos coherentes y cumplir con las normativas éticas vigentes.</p>
+                    <p>Aprenderán a seleccionar las revistas más adecuadas para su investigación, comprenderán el proceso de revisión por pares, y sabrán cómo responder constructivamente a los revisores. Además, se integran fundamentos de Inteligencia Artificial como herramienta de apoyo para el investigador moderno, asegurando que los trabajos realizados respeten las normativas y principios éticos.</p>
+                    <p>El programa está orientado a profesionales que buscan incrementar la visibilidad e impacto de sus investigaciones tanto quienes inician en la escritura científica como quienes desean validar y consolidar las competencias que ya poseen.</p>`,
+                    dirigido: "Bachilleres y profesionales del sector salud y áreas afines. Estudiantes de posgrado: Doctorado, maestría entre otras. Servidores de instituciones de educación universitaria, entre otros. En general, cualquier persona que desee fortalecer sus competencias investigadoras.",
+                    objetivos: "Fortalecer las competencias en investigación y desarrollar habilidades de estructuración y redacción técnico-científicas para la elaboración de artículos con la calidad metodológica y científica que solicitan las revistas nacionales y/o internacionales.",
                     beneficios: [
-                        "Modalidad Virtual",
-                        "Docentes con publicaciones en revistas de alto impacto",
-                        "Revisión personalizada de manuscritos",
-                        "Acceso a bases de datos científicas",
-                        "Taller de manejo de gestores bibliográficos",
-                        "Certificación Universitaria",
-                        "Material de estudio actualizado",
-                        "Asesoría post-diplomado"
+                        "Modalidad flexible: Semipresencial o 100% virtual vía Zoom",
+                        "Docentes investigadores RENACYT Perú - Argentina con sólida experiencia en publicaciones científicas",
+                        "Uso responsable y ético de herramientas de Inteligencia Artificial",
+                        "Uso de Inteligencia Artificial en la redacción científica",
+                        "Publicación en bases de datos internacionales: Scopus, Web of Science y/o SciELO",
+                        "Tutoría personalizada y asesoría permanente",
+                        "Lecturas complementarias",
+                        "Entrega de material de estudio",
+                        "Diploma Oficial Universitario de 24.5 créditos académicos, 392 horas académicas otorgada por la Unidad de Posgrado Facultad de Medicina Universidad Nacional Hermilio Valdizán"
                     ]
                 },
                 plan: [
                     {
-                        module: "Módulo pendiente de actualización",
-                        hours: "Por definir",
+                        module: "MÓDULO 1: INTRODUCCIÓN A LA REDACCIÓN CIENTÍFICA",
+                        hours: "8 horas",
                         topics: [
-                            "Contenido en proceso de actualización"
+                            "Introducción",
+                            "Motores de búsqueda de información científica",
+                            "Estructura del artículo científico: Título, Resumen, Introducción, Materiales y Métodos, Resultados, Discusión y Conclusiones",
+                            "Escritura científica: Lineamientos generales, construcción de oraciones y párrafos, técnicas de parafraseo"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 2: INTELIGENCIA ARTIFICIAL APLICADA A LA INVESTIGACIÓN CIENTÍFICA",
+                        hours: "8 horas",
+                        topics: [
+                            "Fundamentos básicos y éticos de Inteligencia Artificial",
+                            "Ética en la Inteligencia Artificial",
+                            "Herramientas de IA para la búsqueda y gestión de literatura científica",
+                            "Aplicación de IA en la redacción de artículos científicos",
+                            "Escritura científica asistida por IA",
+                            "Taller práctico"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 3: EL TÍTULO Y EL RESUMEN",
+                        hours: "6 horas",
+                        topics: [
+                            "Introducción",
+                            "Relevancia del Título y resumen. Información contenida en el Título y resumen",
+                            "Cómo redactar el Título y Resumen: redacción clara y precisa"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 4: REDACCIÓN DE LA INTRODUCCIÓN, MATERIALES Y MÉTODOS",
+                        hours: "8 horas",
+                        topics: [
+                            "Estructura de la Introducción",
+                            "Cómo redactar la Introducción",
+                            "Estructura de Materiales y Métodos",
+                            "Cómo redactar Materiales y Métodos",
+                            "Taller práctico"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 5: REDACCIÓN DE LOS RESULTADOS",
+                        hours: "6 horas",
+                        topics: [
+                            "Introducción",
+                            "Presentación de la información",
+                            "Cómo redactar los Resultados",
+                            "Taller práctico"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 6: REDACCIÓN DE LA DISCUSIÓN Y CONCLUSIONES",
+                        hours: "8 horas",
+                        topics: [
+                            "Metodología y técnicas",
+                            "Estructura de la Discusión",
+                            "Cómo redactar la Discusión",
+                            "Cómo redactar las Conclusiones",
+                            "Referencias y Secciones Complementarias",
+                            "Taller práctico"
+                        ]
+                    },
+                    {
+                        module: "MÓDULO 7: PUBLICACIÓN Y VISIBILIDAD CIENTÍFICA",
+                        hours: "8 horas",
+                        topics: [
+                            "Búsqueda de una revista científica y tipos de publicaciones WOS, SCOPUS, SCIMAGO, SCIELO",
+                            "Factor de impacto, índice H, SJR",
+                            "Pautas para la corrección de estilo de artículos científicos",
+                            "Pautas para el envío de artículos a revistas indexadas",
+                            "Difusión del artículo científico"
                         ]
                     }
                 ],
+                metodologia: `El Diplomado de redacción y publicación de artículos científicos en salud está constituido por clases teóricas y prácticas, se aplica una metodología de clase invertida y aprendizaje activo con participación dinámica delimitando el sentido lógico y psicológico en los aprendizajes. Las Clases teóricas serán con participación activa y guiadas por un facilitador a través del cual se orientará a los participantes hacia el campo de acción de la redacción y publicación de artículos científicos en Salud. Las clases prácticas se realizarán mediante en talleres aplicativos.`,
+                evaluacion: [
+                    "Participación activa durante el desarrollo de las clases",
+                    "Asistencia a clases, como mínimo 80%",
+                    "Nota mínima aprobatoria por curso es de 14 (catorce)",
+                    "Examen y Presentación de trabajos, talleres en cada módulo",
+                    "Presentación de artículo científico"
+                ],
+                certificacion: "Los Participantes que cumplan con los requisitos académicos y administrativos del Diplomado, reciben un Diploma oficial Universitario 24.5 créditos, 392 horas académicas el cual es expedido por la Unidad de Posgrado de la Facultad de Medicina de La Universidad Nacional Hermilio Valdizán.",
                 docentes: [
                     {
-                        name: "Por confirmar",
-                        credentials: "",
-                        description: "Información de docentes próximamente disponible."
+                        name: "DR. CRISTIAN A. MARTINEZ",
+                        credentials: "ID: 57560299300",
+                        country: "ar",
+                        photo: "diplomados-img/docentes/martinez.jfif",
+                        description: "Doctor en ciencias de Computación Universidad de Buenos Aires Argentina. Docente investigador. Orcid: 0000-0001-5825-9814. Scopus: author ID: 57560299300. Especialista en Docencia universitaria, Universidad Nacional de Salta Facultad de Ciencias de la Salud Argentina. Acreditado por CONEAU tipo C D.2-Investigación. Director del Proyecto de Investigación CIUNSa (Tipo A). Experto en Inteligencia Artificial con sólida trayectoria en investigación científica aplicada, su experiencia docente en Inteligencia Artificial se extiende a Bolivia, Perú y Chile. Cuenta con publicaciones en revistas internacionales indexadas en Scopus Web of Science, viene dirigiendo tesis doctorales y de maestría en universidades de Argentina, Chile, Perú y España."
+                    },
+                    {
+                        name: "DR. JULIO CÉSAR CHARRI VICTORIO",
+                        credentials: "CMP: 107744",
+                        country: "pe",
+                        photo: "diplomados-img/docentes/charri.jfif",
+                        description: "Médico Cirujano Investigador RENACYT. (P0200838). Orcid: 0000-0002-3613-3791. Scopus: author ID: 57208057960. Maestría en Ciencias en Investigación Epidemiológica UPCH. Metodólogo en el Instituto Nacional de Salud MINSA, desarrollo de Guías de Práctica Clínica. Evaluador de Ensayos Clínicos INS MINSA. Autor y coautor de artículos científicos en Scopus. Ganador del Programa Two x Research (2XR) – IETSI EsSalud, categoría Investigador Junior en metodología GRADE. Posgrado en revisiones sistemáticas, meta análisis. Manejo avanzado de software estadístico Stata, R Studio y SPSS. Docente Universitario de pre y posgrado."
+                    },
+                    {
+                        name: "DR. MARCO ANTONIO SANCHEZ TITO",
+                        credentials: "COP: 019252",
+                        country: "pe",
+                        photo: "diplomados-img/docentes/sanchez.jfif",
+                        description: "Cirujano Dentista Investigador RENACYT Nivel II. (P0027836). Orcid: 0000-0001-5886-9372. Scopus: author ID: 57219773191. Doctor en estomatología UPCH. Magister en investigación, científica e innovación UPT. Maestría en Ciencias en Investigación epidemiológica UPCH. Posgrado en Bioestadística avanzada de la Pontificia Universidad Católica - Chile. Segunda Especialidad en estadística en investigación por la UPCH. Revisor de revistas científicas indexadas, entre ellas International Orthodontics (Elsevier), F1000Research y Journal of Dental Research de Chile. Docente investigador universitario UPC, UPT."
+                    },
+                    {
+                        name: "DR. FRANZ KOVY ARTEAGA LIVIAS",
+                        credentials: "CMP: 55544",
+                        country: "pe",
+                        photo: "diplomados-img/docentes/arteaga.jfif",
+                        description: "Médico Cirujano Investigador RENACYT. Nivel II (P0017630). Orcid: 0000-0002-0182-703X. Scopus: author ID: 57192991034. Especialista en Enfermedades Infecciosas y Tropicales UNMSM. Maestría en Epidemiología Clínica y Bioestadística UCSUR, Doctorado en Ciencias de la Salud UNHEVAL. Editor asociado BMC Infectious Diseases. Editor asociado Frontiersin Tropical Diseases. Editor en jefe Microbes, Infection and Chemotherapy. Docente Universitario de Pre y Posgrado. Autor y coautor de artículos científicos publicados en revistas indexadas a Scopus."
                     }
                 ],
                 inversion: {
-                    matricula: "S/. 120",
-                    modulo: "Por definir",
-                    diploma: "Por definir"
+                    matricula: "S/. 100",
+                    modulo: "S/. 140",
+                    diploma: "S/. 250"
                 }
             },
             6: {
@@ -2604,18 +2774,45 @@
                         </ul>
                     </div>
                 `).join('')}
+                ${data.metodologia ? `
+                <div style="margin-top: 25px;">
+                    <h3>Metodología</h3>
+                    <p style="text-align: justify; line-height: 1.7;">${data.metodologia}</p>
+                </div>` : ''}
+                ${data.evaluacion ? `
+                <div style="margin-top: 25px;">
+                    <h3>Evaluación</h3>
+                    <p>La evaluación será de manera permanente mediante los siguientes criterios:</p>
+                    <ul class="syllabus-topics">
+                        ${data.evaluacion.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>` : ''}
+                ${data.certificacion ? `
+                <div style="margin-top: 25px;">
+                    <h3>Certificación</h3>
+                    <p style="text-align: justify; line-height: 1.7;">${data.certificacion}</p>
+                </div>` : ''}
             `;
             
             // Update docentes tab
             const docentesTab = document.getElementById('tab-docentes');
             docentesTab.innerHTML = `
-                <h3>Plana Docente</h3>
+                <h3 style="color: var(--color-secondary); margin-bottom: 5px;">Plana Docente</h3>
+                <p style="color: var(--color-gray); font-size: 0.9rem; margin-bottom: 20px;">Docentes principales del programa</p>
                 <div class="instructors-grid">
                     ${data.docentes.map(docente => `
                         <div class="instructor-card">
-                            <h4>${docente.name}</h4>
-                            ${docente.credentials ? `<p><strong>${docente.credentials}</strong></p>` : ''}
-                            <p>${docente.description}</p>
+                            <div class="docente-header">
+                                ${docente.photo ? `<img src="${docente.photo}" alt="${docente.name}" class="docente-photo" onerror="this.style.display='none'">` : ''}
+                                <div class="docente-info">
+                                    <div class="docente-name-row">
+                                        <h4>${docente.name}</h4>
+                                        ${docente.country ? `<img src="https://flagcdn.com/w40/${docente.country}.png" alt="" class="country-flag">` : ''}
+                                    </div>
+                                    ${docente.credentials ? `<p class="credentials">${docente.credentials}</p>` : ''}
+                                </div>
+                            </div>
+                            <p class="docente-bio">${docente.description}</p>
                         </div>
                     `).join('')}
                 </div>
