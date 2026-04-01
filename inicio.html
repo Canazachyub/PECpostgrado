@@ -619,8 +619,8 @@
             padding: var(--spacing-md);
             border-top: 1px solid var(--color-gray-light);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 10px;
         }
         
         .course-price {
@@ -641,7 +641,312 @@
             background-color: var(--color-primary-dark);
             transform: translateX(5px);
         }
-        
+
+        .course-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-info {
+            background: transparent;
+            border: 2px solid var(--color-secondary);
+            color: var(--color-secondary);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+        }
+
+        .btn-info:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .btn-info i {
+            margin-right: 5px;
+        }
+
+        /* Modal Diplomado Inicio */
+        .dip-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 15px;
+            overflow-y: auto;
+        }
+
+        .dip-modal-overlay.active {
+            display: flex;
+        }
+
+        .dip-modal {
+            background: white;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dip-modal-header {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dip-modal-header h2 {
+            font-size: 1.3rem;
+            margin: 0;
+            flex: 1;
+        }
+
+        .dip-modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+
+        .dip-modal-close:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .dip-modal-tabs {
+            display: flex;
+            border-bottom: 2px solid #e9ecef;
+            background: #f8f9fa;
+            overflow-x: auto;
+        }
+
+        .dip-modal-tabs button {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-family: var(--font-primary);
+            white-space: nowrap;
+        }
+
+        .dip-modal-tabs button.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+            background: white;
+        }
+
+        .dip-modal-tabs button:hover:not(.active) {
+            color: var(--color-secondary);
+            background: #eef1f5;
+        }
+
+        .dip-modal-body {
+            padding: 30px;
+        }
+
+        .dip-tab-content {
+            display: none;
+        }
+
+        .dip-tab-content.active {
+            display: block;
+        }
+
+        .dip-modal-body h3 {
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--color-primary);
+            display: inline-block;
+        }
+
+        .dip-modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .dip-modal-body p {
+            line-height: 1.7;
+            color: var(--color-gray-dark);
+            text-align: justify;
+        }
+
+        .dip-benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .dip-benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .dip-benefit-item i {
+            color: #22c55e;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .dip-module {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .dip-module h4 {
+            color: var(--color-secondary);
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .dip-module ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .dip-module ul li {
+            font-size: 0.88rem;
+            color: var(--color-gray-dark);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .dip-docente-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .dip-docente-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .dip-docente-header h4 {
+            color: var(--color-secondary);
+            margin: 0 0 4px 0;
+            font-size: 1rem;
+        }
+
+        .dip-docente-header .dip-flag {
+            width: 28px;
+            height: 19px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            margin-left: 8px;
+        }
+
+        .dip-docente-header .dip-credentials {
+            font-size: 0.82rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .dip-docente-card .dip-docente-bio {
+            font-size: 0.88rem;
+            color: var(--color-gray-dark);
+            margin: 0;
+            line-height: 1.65;
+            text-align: justify;
+        }
+
+        .dip-investment-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .dip-investment-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .dip-investment-item:last-child {
+            border-bottom: none;
+        }
+
+        .dip-investment-item span {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .dip-modal-header h2 {
+                font-size: 1.05rem;
+            }
+            .dip-modal-body {
+                padding: 20px;
+            }
+            .dip-benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .course-footer {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .course-actions {
+                flex-direction: column;
+            }
+            .btn-info, .btn-enroll {
+                text-align: center;
+            }
+        }
+
         /* ===== Facebook News Section ===== */
         .news-section {
             padding: var(--spacing-xxl) 0;
@@ -1176,7 +1481,10 @@
                     </div>
                     <div class="course-footer">
                         <span class="course-price">S/200.00</span>
-                        <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        <div class="course-actions">
+                            <button class="btn-info" onclick="openDiplomadoModal('ecografia')"><i class="fas fa-info-circle"></i> Ver información</button>
+                            <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1195,12 +1503,15 @@
                         <ul class="course-features">
                             <li>Triple Certificación</li>
                             <li>Incluye BLS - AHA</li>
-                            <li>Inicio: 21/03/2026</li>
+                            <li>Inicio: 13/04/2026</li>
                         </ul>
                     </div>
                     <div class="course-footer">
                         <span class="course-price">S/150.00</span>
-                        <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        <div class="course-actions">
+                            <button class="btn-info" onclick="openDiplomadoModal('emergencias')"><i class="fas fa-info-circle"></i> Ver información</button>
+                            <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        </div>
                     </div>
                 </div>
 
@@ -1223,8 +1534,11 @@
                         </ul>
                     </div>
                     <div class="course-footer">
-                        <span class="course-price">S/120.00</span>
-                        <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        <span class="course-price">S/100.00</span>
+                        <div class="course-actions">
+                            <button class="btn-info" onclick="openDiplomadoModal('redaccion')"><i class="fas fa-info-circle"></i> Ver información</button>
+                            <a href="contacto.html" class="btn-enroll">Inscribirse</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1236,7 +1550,19 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- Modal Diplomado Info -->
+    <div class="dip-modal-overlay" id="dipModalOverlay" onclick="if(event.target===this)closeDipModal()">
+        <div class="dip-modal">
+            <div class="dip-modal-header">
+                <h2 id="dipModalTitle"></h2>
+                <button class="dip-modal-close" onclick="closeDipModal()">&times;</button>
+            </div>
+            <div class="dip-modal-tabs" id="dipModalTabs"></div>
+            <div class="dip-modal-body" id="dipModalBody"></div>
+        </div>
+    </div>
+
     <!-- Facebook News Section -->
     <section class="news-section" id="facebook-news">
         <div class="container">
@@ -1454,6 +1780,192 @@
         // Inicializar animaciones
         document.addEventListener('DOMContentLoaded', () => {
             animateNumbers();
+        });
+
+        // ===== Modal Diplomados Destacados =====
+        const diplomadosInfo = {
+            ecografia: {
+                title: "DIPLOMADO EN ECOGRAFÍA GENERAL Y VELOCIMETRÍA DOPPLER",
+                descripcion: `<p>El Diplomado en Ecografía General y Velocimetría Doppler está diseñado para médicos que desean adquirir y perfeccionar competencias en el uso del ultrasonido como herramienta diagnóstica. El programa combina fundamentos teóricos con una sólida formación práctica, incluyendo prácticas con pacientes reales.</p>`,
+                dirigido: "Médicos Cirujanos, Médicos Especialistas, Médicos Residentes y Médicos Serumistas.",
+                objetivos: "Desarrollar competencias teórico-prácticas en ecografía general y velocimetría Doppler para el diagnóstico médico, con énfasis en la aplicación clínica y la interpretación de imágenes ecográficas.",
+                beneficios: [
+                    "Modalidad Semipresencial",
+                    "Prácticas con pacientes reales",
+                    "Certificación Universitaria UNHEVAL",
+                    "Docentes Médicos Radiólogos especialistas",
+                    "Material de estudio por módulo",
+                    "Tutoría académica permanente",
+                    "36 créditos, 576 horas académicas"
+                ],
+                plan: [
+                    { module: "MÓDULO 1: FÍSICA DEL ULTRASONIDO Y EQUIPO ECOGRÁFICO", topics: ["Principios físicos del ultrasonido", "Instrumentación y equipos ecográficos", "Artefactos ecográficos", "Técnicas de exploración"] },
+                    { module: "MÓDULO 2: ECOGRAFÍA ABDOMINAL", topics: ["Hígado y vías biliares", "Páncreas y bazo", "Riñones y retroperitoneo", "Taller práctico con pacientes"] },
+                    { module: "MÓDULO 3: ECOGRAFÍA OBSTÉTRICA", topics: ["Ecografía del primer trimestre", "Ecografía del segundo y tercer trimestre", "Biometría fetal", "Taller práctico"] },
+                    { module: "MÓDULO 4: ECOGRAFÍA GINECOLÓGICA", topics: ["Útero y anexos", "Patología ginecológica", "Ecografía transvaginal", "Taller práctico"] },
+                    { module: "MÓDULO 5: ECOGRAFÍA DE PARTES BLANDAS", topics: ["Tiroides y paratiroides", "Mama", "Músculo-esquelético", "Taller práctico"] },
+                    { module: "MÓDULO 6: VELOCIMETRÍA DOPPLER", topics: ["Principios del Doppler", "Doppler vascular periférico", "Doppler obstétrico", "Taller práctico"] }
+                ],
+                docentes: [
+                    { name: "Médicos Radiólogos Especialistas", credentials: "", country: "", description: "Staff de Médicos Radiólogos del INEN Lima con amplia experiencia en diagnóstico por imágenes y docencia universitaria." }
+                ],
+                inversion: { matricula: "S/. 200", modulo: "S/. 299", diploma: "S/. 350" }
+            },
+            emergencias: {
+                title: "DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS",
+                descripcion: `<p>La atención de Emergencia se centra en personas que se encuentran en una condición de dependencia frente al profesional sanitario, así pues, para salir de esa condición, el paciente requiere de apoyo eficaz y eficiente del profesional de salud.</p>
+                <p>Más aún la adecuada atención en una situación de urgencia y emergencias disminuye las complicaciones y secuelas en las que pueda estar expuesto el paciente, para ello se requiere de profesionales altamente capacitados para discernir los cuidados adecuados en el momento oportuno y en las mejores condiciones, puesto que la necesidad de atención es contra el tiempo.</p>
+                <p>El presente Diplomado desarrolla profesionales con una visión de la atención de urgencia, emergencia de vanguardia y basado en la mejor evidencia disponible, capaces de generar respuestas efectivas a las necesidades de salud de la población.</p>`,
+                dirigido: "Dirigido exclusivamente a profesionales Médicos: Médico Cirujano, Médicos Especialistas, Médicos Residentes, Médicos Serumistas y Bachilleres en Medicina.",
+                objetivos: "Capacitar profesionales de la ciencia médica en Emergencias y Urgencias Médicas en el nivel de Post Grado, para el ejercicio de la misma de manera profesional y responsable. Validar a los profesionales de la ciencia médica en Emergencias y Urgencias Médicas y puedan los mismos formar parte de las unidades de Urgencia y emergencias en los distintos establecimientos del sistema nacional de salud, o en la práctica privada.",
+                beneficios: [
+                    "Modalidad Semipresencial",
+                    "Docentes Especialistas e Instructores BLS, ACLS, PALS, NAEMT, PHTLS",
+                    "Docentes de Argentina: Universidad Nacional de Rosario – UNR",
+                    "Docentes de Perú: Universidad Nacional Mayor de San Marcos, Instituto Nacional Materno Perinatal Lima",
+                    "Talleres prácticos presencial con aprendizaje basado en simulación",
+                    "Lecturas complementarias",
+                    "Entrega de Material de estudio por cada módulo en PDF",
+                    "Recibe tutoría académica durante el Diplomado",
+                    "TRIPLE CERTIFICACIÓN: 01 certificado Basic Life Support (BLS)",
+                    "01 Ecard a nombre de la American Heart Association (válido por dos años)",
+                    "01 Diploma de 36 créditos Académicos expedido por la Universidad Nacional Hermilio Valdizán"
+                ],
+                plan: [
+                    { module: "MÓDULO 1: EMERGENCIAS Y URGENCIAS MÉDICO-QUIRÚRGICAS", topics: ["Introducción Emergencias y Urgencias Médicas", "Manejo inicial y general del Trauma", "Trauma abdominal", "Abdomen agudo quirúrgico", "Colocación de catéter venoso central"] },
+                    { module: "MÓDULO 2: BASIC LIFE SUPPORT (BLS)", topics: ["Guías de AHA para CPR y ECC", "RCP de alta calidad para adultos, niños y bebés", "Cadena de Supervivencia de la AHA", "Uso de DEA", "Intubación endotraqueal"] },
+                    { module: "MÓDULO 3: EMERGENCIAS CARDIOVASCULARES", topics: ["Dolor torácico: diagnóstico diferencial", "Síndrome Coronario agudo", "Tromboembolismo pulmonar", "Shock Cardiogénico", "Interpretación de EKG"] },
+                    { module: "MÓDULO 4: EMERGENCIAS RESPIRATORIAS", topics: ["Insuficiencia Respiratoria aguda", "Neumonía grave", "EPOC descompensado", "Asma: de la Crisis al Status", "Covid-19 e insuficiencia respiratoria"] },
+                    { module: "MÓDULO 5: EMERGENCIAS GINECO-OBSTÉTRICAS", topics: ["Hemorragia obstétrica", "Preeclampsia y eclampsia", "Complicaciones de parto", "Monitorización fetal"] },
+                    { module: "MÓDULO 6: EMERGENCIAS PEDIÁTRICAS", topics: ["Estabilización del paciente pediátrico grave", "RCP pediátrico", "Manejo de vía aérea pediátrico", "Intoxicaciones en pediatría"] },
+                    { module: "MÓDULO 7: EMERGENCIAS GENITOURINARIAS Y GASTROINTESTINALES", topics: ["Urolitiasis", "Hemorragia Digestiva", "Dolor abdominal no traumático", "Daño hepático crónico descompensado"] },
+                    { module: "MÓDULO 8: EMERGENCIAS MÉDICAS EN TRAUMA", topics: ["Cinemática del trauma", "TEC moderado y grave", "Trauma de Tórax", "Trauma Abdominal", "Trauma Raquimedular"] }
+                ],
+                docentes: [
+                    { name: "DR. YAZCITK M. SANDOVAL GUEVARA", credentials: "CMP. 034883 RNE. 020293", country: "pe", description: "Médico Especialista en Medicina Intensiva, Jefe de Servicio Cardiología Perioperatoria INCOR EsSalud. Instructor NAEMT: PHTLS, AMLS, EPC. Instructor AHA: BLS, ACLS, PALS." },
+                    { name: "DR. GUILLERMO PIPET", credentials: "CMCP | M.A | 28414", country: "ar", description: "Médico Cirujano, Universidad Nacional de Córdoba Argentina. Especialista en Toxicología Clínica. Instructor y director médico en cursos ACLS, BLS, PHTLS, AMLS y AHLS." },
+                    { name: "DR. DAVID PACHERRE PULACHE", credentials: "CMP. 036636 RNE. 060881", country: "pe", description: "Médico Cirujano especialista en Ginecología y Obstetricia UNMSM. Residentado médico en el Instituto Nacional Materno Perinatal (INMP) Lima. Docente Universitario." },
+                    { name: "DRA. VIVIANA LORENA MOLINA RODRIGUEZ", credentials: "CMCP | M.A | 39149 | 18977", country: "ar", description: "Médica Pediatra - Especialista en Medicina de Emergencias Pediátricas. Especialista en Toxicología Clínica. Instructora PALS-AHA. Socia Fundadora de la Sociedad Latinoamericana de Emergencia Pediátrica." }
+                ],
+                inversion: { matricula: "S/. 150", modulo: "S/. 190", diploma: "S/. 290" }
+            },
+            redaccion: {
+                title: "DIPLOMADO EN REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS EN SALUD",
+                descripcion: `<p>La producción de conocimiento científico es un pilar fundamental en el avance de la medicina. Sin embargo, saber investigar no es suficiente: comunicar los hallazgos con rigor, claridad y estrategia es lo que transforma un estudio de investigación en un aporte real a la práctica clínica y las políticas sanitarias.</p>
+                <p>Este diplomado guía a los participantes a lo largo de todo el proceso: desde los fundamentos de la redacción científica hasta la publicación en revistas académicas indexadas en Scopus, Web of Science, Scielo.</p>
+                <p>Además, se integran fundamentos de Inteligencia Artificial como herramienta de apoyo para el investigador moderno, asegurando que los trabajos realizados respeten las normativas y principios éticos.</p>`,
+                dirigido: "Bachilleres y profesionales del sector salud y áreas afines. Estudiantes de posgrado: Doctorado, maestría entre otras. Servidores de instituciones de educación universitaria. En general, cualquier persona que desee fortalecer sus competencias investigadoras.",
+                objetivos: "Fortalecer las competencias en investigación y desarrollar habilidades de estructuración y redacción técnico-científicas para la elaboración de artículos con la calidad metodológica y científica que solicitan las revistas nacionales y/o internacionales.",
+                beneficios: [
+                    "Modalidad flexible: Semipresencial o 100% virtual vía Zoom",
+                    "Docentes investigadores RENACYT Perú - Argentina",
+                    "Uso de Inteligencia Artificial en la redacción científica",
+                    "Publicación en Scopus, Web of Science y/o SciELO",
+                    "Tutoría personalizada y asesoría permanente",
+                    "Lecturas complementarias",
+                    "Entrega de material de estudio",
+                    "Diploma Oficial Universitario de 24.5 créditos académicos, 392 horas académicas UNHEVAL"
+                ],
+                plan: [
+                    { module: "MÓDULO 1: INTRODUCCIÓN A LA REDACCIÓN CIENTÍFICA", topics: ["Motores de búsqueda de información científica", "Estructura del artículo científico", "Escritura científica: lineamientos generales, parafraseo"] },
+                    { module: "MÓDULO 2: INTELIGENCIA ARTIFICIAL APLICADA A LA INVESTIGACIÓN", topics: ["Fundamentos y ética de IA", "Herramientas de IA para literatura científica", "Aplicación de IA en redacción de artículos", "Taller práctico"] },
+                    { module: "MÓDULO 3: EL TÍTULO Y EL RESUMEN", topics: ["Relevancia del Título y resumen", "Cómo redactar el Título y Resumen: redacción clara y precisa"] },
+                    { module: "MÓDULO 4: REDACCIÓN DE INTRODUCCIÓN, MATERIALES Y MÉTODOS", topics: ["Estructura y redacción de la Introducción", "Estructura y redacción de Materiales y Métodos", "Taller práctico"] },
+                    { module: "MÓDULO 5: REDACCIÓN DE LOS RESULTADOS", topics: ["Presentación de la información", "Cómo redactar los Resultados", "Taller práctico"] },
+                    { module: "MÓDULO 6: REDACCIÓN DE LA DISCUSIÓN Y CONCLUSIONES", topics: ["Estructura de la Discusión", "Cómo redactar Discusión y Conclusiones", "Referencias y Secciones Complementarias"] },
+                    { module: "MÓDULO 7: PUBLICACIÓN Y VISIBILIDAD CIENTÍFICA", topics: ["Búsqueda de revista científica: WOS, SCOPUS, SCIMAGO, SCIELO", "Factor de impacto, índice H, SJR", "Pautas para envío y difusión del artículo"] }
+                ],
+                docentes: [
+                    { name: "DR. CRISTIAN A. MARTINEZ", credentials: "ID: 57560299300", country: "ar", description: "Doctor en Ciencias de Computación, Universidad de Buenos Aires. Experto en IA con publicaciones en Scopus y Web of Science. Dirige tesis doctorales en universidades de Argentina, Chile, Perú y España." },
+                    { name: "DR. JULIO CÉSAR CHARRI VICTORIO", credentials: "CMP: 107744", country: "pe", description: "Médico Cirujano Investigador RENACYT. Maestría en Investigación Epidemiológica UPCH. Metodólogo en el Instituto Nacional de Salud MINSA. Manejo avanzado de Stata, R Studio y SPSS." },
+                    { name: "DR. MARCO ANTONIO SANCHEZ TITO", credentials: "COP: 019252", country: "pe", description: "Cirujano Dentista Investigador RENACYT Nivel II. Doctor en estomatología UPCH. Revisor de revistas científicas indexadas internacionales. Docente investigador UPC, UPT." },
+                    { name: "DR. FRANZ KOVY ARTEAGA LIVIAS", credentials: "CMP: 55544", country: "pe", description: "Médico Cirujano Investigador RENACYT Nivel II. Editor asociado BMC Infectious Diseases. Editor en jefe Microbes, Infection and Chemotherapy. Docente Universitario de Pre y Posgrado." }
+                ],
+                inversion: { matricula: "S/. 100", modulo: "S/. 140", diploma: "S/. 250" }
+            }
+        };
+
+        function openDiplomadoModal(id) {
+            const data = diplomadosInfo[id];
+            if (!data) return;
+
+            document.getElementById('dipModalTitle').textContent = data.title;
+
+            const tabs = ['Descripción', 'Plan de Estudios', 'Docentes', 'Inversión'];
+            const tabIds = ['desc', 'plan', 'docentes', 'inversion'];
+
+            document.getElementById('dipModalTabs').innerHTML = tabs.map((tab, i) =>
+                `<button class="${i === 0 ? 'active' : ''}" onclick="switchDipTab('${tabIds[i]}')">${tab}</button>`
+            ).join('');
+
+            document.getElementById('dipModalBody').innerHTML = `
+                <div class="dip-tab-content active" id="dip-tab-desc">
+                    ${data.descripcion}
+                    <h3>A quién va dirigido</h3>
+                    <p>${data.dirigido}</p>
+                    <h3>Objetivos</h3>
+                    <p>${data.objetivos}</p>
+                    <h3>Beneficios</h3>
+                    <div class="dip-benefits-grid">
+                        ${data.beneficios.map(b => `<div class="dip-benefit-item"><i class="fas fa-check-circle"></i><span>${b}</span></div>`).join('')}
+                    </div>
+                </div>
+                <div class="dip-tab-content" id="dip-tab-plan">
+                    <h3>Plan de Estudios</h3>
+                    ${data.plan.map(m => `
+                        <div class="dip-module">
+                            <h4>${m.module}</h4>
+                            <ul>${m.topics.map(t => `<li>${t}</li>`).join('')}</ul>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="dip-tab-content" id="dip-tab-docentes">
+                    <h3>Plana Docente</h3>
+                    ${data.docentes.map(d => `
+                        <div class="dip-docente-card">
+                            <div class="dip-docente-header">
+                                <div>
+                                    <h4>${d.name} ${d.country ? `<img src="https://flagcdn.com/w40/${d.country}.png" alt="" class="dip-flag">` : ''}</h4>
+                                    ${d.credentials ? `<p class="dip-credentials">${d.credentials}</p>` : ''}
+                                </div>
+                            </div>
+                            <p class="dip-docente-bio">${d.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="dip-tab-content" id="dip-tab-inversion">
+                    <h3>Inversión</h3>
+                    <div class="dip-investment-box">
+                        <div class="dip-investment-item"><strong>Matrícula:</strong><span>${data.inversion.matricula}</span></div>
+                        <div class="dip-investment-item"><strong>Pago por Módulo:</strong><span>${data.inversion.modulo}</span></div>
+                        <div class="dip-investment-item"><strong>Diploma:</strong><span>${data.inversion.diploma}</span></div>
+                    </div>
+                    <p style="margin-top:20px;text-align:center;">
+                        <a href="contacto.html" class="btn btn-primary" style="background:var(--color-primary);color:white;padding:12px 30px;border-radius:25px;font-weight:600;text-decoration:none;display:inline-block;">
+                            <i class="fas fa-info-circle"></i> Solicitar más información
+                        </a>
+                    </p>
+                </div>
+            `;
+
+            document.getElementById('dipModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function switchDipTab(tabId) {
+            document.querySelectorAll('.dip-tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('#dipModalTabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById('dip-tab-' + tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function closeDipModal() {
+            document.getElementById('dipModalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDipModal();
         });
     </script>
 </body>
