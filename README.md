@@ -33,7 +33,10 @@ posgradopec.com/
     ├── 6.jfif  (Tesis en Salud)
     ├── 7.jfif  (SSOMA)
     ├── Dante.jfif        (Foto CEO - Dr. Dante Hancco)
-    └── Inicio foto.jfif  (Hero image inicio.html)
+    ├── Inicio foto.jfif  (Hero image inicio.html)
+    └── docentes/         → Fotos de docentes por diplomado
+        ├── martinez.jfif, charri.jfif, sanchez.jfif, arteaga.jfif (RPAC)
+        └── sandoval.jfif, pipet.jfif, pacherre.jfif, molina.jfif (EUM)
 ```
 
 ### Archivos locales (NO en GitHub, excluidos por .gitignore)
@@ -48,20 +51,22 @@ posgradopec.com/
 
 ## Diplomados (7)
 
-| # | Nombre | Abreviatura | Inicio | Duracion |
-|---|--------|-------------|--------|----------|
-| 4 | DIPLOMADO EN ECOGRAFIA GENERAL Y VELOCIMETRIA DOPPLER | EGVD | 28/02/2026 | 4 meses |
-| 3 | DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS | EUM | 21/03/2026 | 5 meses |
-| 5 | DIPLOMADO EN REDACCION Y PUBLICACION DE ARTICULOS CIENTIFICOS | RPAC | 28/03/2026 | 3 meses |
-| 7 | DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE | SSOMA | Proximamente | 4 meses |
-| 6 | DIPLOMADO EN ASESORIA Y ELABORACION DE TESIS EN SALUD | AETS | Proximamente | 4 meses |
-| 1 | DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES | MLCF | Proximamente | 4 meses |
-| 2 | DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA | MAC | Proximamente | 4 meses |
+| # | Nombre | Abreviatura | Inicio | Duracion | Matricula |
+|---|--------|-------------|--------|----------|-----------|
+| 4 | DIPLOMADO EN ECOGRAFIA GENERAL Y VELOCIMETRIA DOPPLER | EGVD | 28/02/2026 | 4 meses | S/. 200 |
+| 3 | DIPLOMADO EN EMERGENCIAS Y URGENCIAS MEDICAS | EUM | 13/04/2026 | 5 meses | S/. 150 |
+| 5 | DIPLOMADO EN REDACCION Y PUBLICACION DE ARTICULOS CIENTIFICOS EN SALUD | RPAC | 04/04/2026 | 4 meses | S/. 100 |
+| 7 | DIPLOMADO EN SEGURIDAD, SALUD OCUPACIONAL Y MEDIO AMBIENTE | SSOMA | Proximamente | 4 meses | - |
+| 6 | DIPLOMADO EN ASESORIA Y ELABORACION DE TESIS EN SALUD | AETS | Proximamente | 4 meses | - |
+| 1 | DIPLOMADO MEDICINA LEGAL Y CIENCIAS FORENSES | MLCF | Proximamente | 4 meses | - |
+| 2 | DIPLOMADO EN MEDICINA ALTERNATIVA Y COMPLEMENTARIA | MAC | Proximamente | 4 meses | - |
 
-### Costos Ecografia (EGVD)
-- Matricula: S/. 200
-- Pago por modulo: S/. 299
-- Diploma: S/. 350
+### Costos por Diplomado
+| Diplomado | Matricula | Modulo | Diploma |
+|-----------|-----------|--------|---------|
+| EGVD (Ecografia) | S/. 200 | S/. 299 | S/. 350 |
+| EUM (Emergencias) | S/. 150 | S/. 190 | S/. 290 |
+| RPAC (Redaccion) | S/. 100 | S/. 140 | S/. 250 |
 
 ---
 
@@ -79,6 +84,32 @@ posgradopec.com/
 | 2018 | Expansion Nacional |
 | 2022 | Transformacion Digital |
 | 2025 | Liderazgo Regional |
+
+---
+
+## Funcionalidades del Frontend
+
+### Diplomados Destacados en Inicio
+- 3 diplomados destacados (Ecografia, Emergencias, Redaccion) con boton "Ver informacion"
+- Modal con pestanas: Descripcion, Plan de Estudios, Docentes, Inversion
+- Docentes muestran banderas de pais (via flagcdn.com) y credenciales
+
+### Seccion de Docentes (diplomados.html)
+- Tarjetas de docentes con foto circular, bandera de pais, credenciales
+- Layout de 1 columna, borde lateral rojo, hover con sombra
+- Fotos opcionales: se ocultan automaticamente si no existen (onerror)
+- Banderas de pais via flagcdn.com (ar=Argentina, pe=Peru)
+
+### Timeline (nosotros.html)
+- Linea de tiempo moderna con degradado, tarjetas con sombra
+- Badges de ano estilo pill, hover con elevacion
+- Responsive: colapsa a 1 columna en movil
+
+### Responsive Mobile
+- Logo clickable (enlaza a inicio.html) en todas las paginas
+- Filtros de diplomados no sticky en movil
+- Botones apilados verticalmente en pantallas pequenas
+- Modales adaptados a pantallas moviles
 
 ---
 
