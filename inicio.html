@@ -191,7 +191,9 @@
         }
         
         .logo-main {
-            height: 60px;
+            height: 80px;
+            max-width: 80px;
+            object-fit: contain;
         }
         
         .logo-partners {
@@ -925,11 +927,15 @@
         }
 
         @media (max-width: 768px) {
+            .dip-modal {
+                margin: 10px;
+                max-height: 95vh;
+            }
             .dip-modal-header h2 {
-                font-size: 1.05rem;
+                font-size: 1rem;
             }
             .dip-modal-body {
-                padding: 20px;
+                padding: 15px;
             }
             .dip-benefits-grid {
                 grid-template-columns: 1fr;
@@ -941,9 +947,12 @@
             }
             .course-actions {
                 flex-direction: column;
+                gap: 8px;
             }
             .btn-info, .btn-enroll {
                 text-align: center;
+                display: block;
+                width: 100%;
             }
         }
 
@@ -1225,16 +1234,21 @@
             .logo-partners {
                 display: none;
             }
-            
+
+            .logo-main {
+                height: 55px;
+                max-width: 55px;
+            }
+
             .nav-menu,
             .btn-contact {
                 display: none;
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
-            
+
             .header-main {
                 position: relative;
             }
@@ -1262,8 +1276,14 @@
                 display: none;
             }
             
+            .logo-main {
+                height: 55px;
+                max-width: 55px;
+            }
+
             .hero-stats {
                 justify-content: center;
+                padding-bottom: 20px;
             }
             
             .hero-buttons {
@@ -1317,7 +1337,7 @@
         <div class="container">
             <div class="header-main-content">
                 <div class="logo-container">
-                    <img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main">
+                    <a href="inicio.html"><img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main"></a>
                     <div class="logo-partners">
                         <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
                         <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">

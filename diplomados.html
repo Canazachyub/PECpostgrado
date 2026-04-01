@@ -189,7 +189,9 @@
         }
         
         .logo-main {
-            height: 60px;
+            height: 80px;
+            max-width: 80px;
+            object-fit: contain;
         }
         
         .logo-partners {
@@ -1055,16 +1057,21 @@
             .logo-partners {
                 display: none;
             }
-            
+
+            .logo-main {
+                height: 55px;
+                max-width: 55px;
+            }
+
             .nav-menu,
             .btn-contact {
                 display: none;
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
-            
+
             .header-main {
                 position: relative;
             }
@@ -1083,6 +1090,11 @@
                 z-index: 1000;
             }
             
+            .filters-section {
+                position: relative;
+                top: auto;
+            }
+
             .filters-container {
                 flex-direction: column;
                 gap: var(--spacing-md);
@@ -1095,10 +1107,27 @@
             
             .diplomados-grid {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-md);
             }
-            
+
+            .diplomado-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .diplomado-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
             .modal-content {
-                margin: 20px;
+                width: 95%;
+                margin: 10px auto;
+                max-height: 90vh;
+            }
+
+            .modal-header img {
+                height: 150px;
             }
             
             .modal-tabs {
@@ -1148,7 +1177,7 @@
         <div class="container">
             <div class="header-main-content">
                 <div class="logo-container">
-                    <img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main">
+                    <a href="inicio.html"><img src="https://i.ibb.co/Dg5Gddny/PEC-3.png" alt="Posgrado PEC" class="logo-main"></a>
                     <div class="logo-partners">
                         <img src="https://i.ibb.co/8LxFyZQN/uni.png" alt="UNIVEVAL">
                         <img src="https://i.ibb.co/S4SwHczf/Unidad.png" alt="Facultad de Medicina">
